@@ -204,10 +204,11 @@ export default function Hero() {
             minHeight: '36px',
             display: 'flex',
             alignItems: 'center',
+            maxWidth: '680px',
           }}>
             <span style={{
               fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: 'var(--fs-hero-role)',
+              fontSize: 'clamp(1.3rem, 2.4vw, 2.1rem)',
               fontWeight: '500',
               color: '#e8e2f3',
               letterSpacing: '-0.3px',
@@ -231,7 +232,7 @@ export default function Hero() {
             lineHeight: '1.65',
             marginBottom: '52px',
             fontWeight: '300',
-            maxWidth: 'var(--text-max)',
+            maxWidth: '680px',
           }}>
             I build polished web applications that combine clean architecture, thoughtful UX and strong visual design.
           </p>
