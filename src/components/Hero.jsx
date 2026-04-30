@@ -21,10 +21,6 @@ export default function Hero() {
   // Typewriter
   useEffect(() => {
     const fullText = roles[roleIdx];
-    if (roles.length === 1) {
-      setDisplayed(fullText);
-      return;
-    }
     let timeout;
     if (!isDeleting) {
       if (displayed.length < fullText.length) {
