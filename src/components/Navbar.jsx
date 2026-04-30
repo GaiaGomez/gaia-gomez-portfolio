@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 
 const links = [
-  { label: 'Work',    href: '#projects' },
-  { label: 'Skills',  href: '#skills'   },
-  { label: 'About',   href: '#about'    },
+  { label: 'Projects', href: '#projects' },
+  { label: 'About me', href: '#about' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open,     setOpen]     = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -35,19 +33,19 @@ export default function Navbar() {
 
   const logoStyle = {
     fontFamily: "'Space Grotesk', sans-serif",
-    fontSize: '20px',
+    fontSize: '27px',
     fontWeight: '700',
     color: '#e8e0f5',
     letterSpacing: '-0.5px',
     display: 'flex',
     alignItems: 'center',
-    gap: '2px',
+    gap: '3px',
   };
 
   const dotStyle = {
     display: 'inline-block',
-    width: '6px',
-    height: '6px',
+    width: '7px',
+    height: '7px',
     borderRadius: '50%',
     background: '#B57BFF',
     marginLeft: '1px',
@@ -64,7 +62,7 @@ export default function Navbar() {
       <ul style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '36px',
+        gap: '28px',
         listStyle: 'none',
         margin: 0,
         padding: 0,

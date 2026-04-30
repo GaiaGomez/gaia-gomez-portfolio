@@ -5,11 +5,11 @@ const roles = [
 ];
 
 const chips = [
-  { label: 'Product',      top: '21%', right: '11%', left: 'auto', bottom: 'auto', delay: '0s' },
-  { label: 'Code',         top: '44%', right: '4%', left: 'auto', bottom: 'auto', delay: '0.6s' },
-  { label: 'Architecture', top: '68%', right: '11%', left: 'auto', bottom: 'auto', delay: '0.9s' },
-  { label: 'Design',       top: 'auto', right: '11%', left: 'auto', bottom: '12%', delay: '1.2s' },
-  { label: 'AI',           top: '25%', right: '32%', left: 'auto', bottom: 'auto', delay: '0.4s' },
+  { label: 'Product', top: '20%', right: '10%', left: 'auto', bottom: 'auto', delay: '0s' },
+  { label: 'Code', top: '43%', right: '3.5%', left: 'auto', bottom: 'auto', delay: '0.6s' },
+  { label: 'Architecture', top: '67%', right: '10%', left: 'auto', bottom: 'auto', delay: '0.9s' },
+  { label: 'Design', top: 'auto', right: '10%', left: 'auto', bottom: '12%', delay: '1.2s' },
+  { label: 'AI', top: '24%', right: '33%', left: 'auto', bottom: 'auto', delay: '0.4s' },
 ];
 
 export default function Hero() {
@@ -149,7 +149,7 @@ export default function Hero() {
       </div>
 
       {/* ── Main content ─────────────────────────────── */}
-      <div className="container hero-content-wrap" style={{ paddingTop: '92px', paddingLeft: '36px', marginLeft: 0, maxWidth: 'none', position: 'relative', zIndex: 2 }}>
+      <div className="container hero-content-wrap" style={{ paddingTop: '86px', paddingLeft: '34px', marginLeft: 0, maxWidth: 'none', position: 'relative', zIndex: 2 }}>
         <div style={{ maxWidth: '760px' }}>
 
           {/* 1. Badge */}
@@ -161,7 +161,7 @@ export default function Hero() {
             borderRadius: '999px',
             background: 'rgba(181,123,255,0.1)',
             border: '1px solid rgba(181,123,255,0.28)',
-            marginBottom: '44px',
+            marginBottom: '38px',
           }}>
             <span style={{
               fontFamily: "'DM Sans', sans-serif",
@@ -177,18 +177,18 @@ export default function Hero() {
           {/* 2. Name */}
           <h1 style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: 'clamp(5.2rem, 12vw, 8.8rem)',
+            fontSize: 'clamp(5rem, 11vw, 8.2rem)',
             fontWeight: '700',
             lineHeight: '0.9',
             letterSpacing: '-2px',
-            marginBottom: '18px',
+            marginBottom: '14px',
           }}>
             <span style={{ display: 'block', color: '#f7f5fb' }}>Gaia</span>
           </h1>
 
           {/* 3. Typewriter */}
           <div style={{
-            marginBottom: '10px',
+            marginBottom: '6px',
             minHeight: '36px',
             display: 'flex',
             alignItems: 'center',
@@ -219,7 +219,7 @@ export default function Hero() {
             fontSize: 'clamp(1.8rem, 2.8vw, 3rem)',
             color: '#f1edf8',
             lineHeight: '1.2',
-            marginBottom: '46px',
+            marginBottom: '42px',
             fontWeight: '600',
             width: '100%',
             maxWidth: '820px',
@@ -259,50 +259,25 @@ export default function Hero() {
       </div>
 
       <img
-        src="/hero-portrait.png"
+        className="hero-portrait"
+        src="/gaia-portrait-final.png"
         alt="Gaia portrait"
         style={{
           position: 'absolute',
-          bottom: '0',
-          left: '50%',
-          transform: 'translateX(-5%)',
-          height: '76vh',
-          maxHeight: '760px',
+          bottom: '-6px',
+          left: '57%',
+          transform: 'translateX(-50%)',
+          height: '73vh',
+          maxHeight: '780px',
           width: 'auto',
           objectFit: 'contain',
           zIndex: 1,
           pointerEvents: 'none',
           userSelect: 'none',
-          filter: 'drop-shadow(0 30px 40px rgba(0, 0, 0, 0.55))',
+          opacity: 0.78,
+          filter: 'brightness(0.73) saturate(0.88) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.58))',
         }}
       />
-
-      {/* ── Scroll indicator ─────────────────────────── */}
-      <div style={{
-        position: 'absolute',
-        bottom: '36px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '8px',
-        opacity: 0.35,
-        pointerEvents: 'none',
-      }}>
-        <span style={{
-          fontSize: '10px',
-          letterSpacing: '2.5px',
-          fontFamily: "'DM Sans', sans-serif",
-          textTransform: 'uppercase',
-        }}>scroll</span>
-        <div style={{
-          width: '1px',
-          height: '38px',
-          background: 'linear-gradient(to bottom, rgba(181,123,255,0.9), transparent)',
-          animation: 'scrollLine 1.9s ease-in-out infinite',
-        }} />
-      </div>
 
       {/* ── Keyframes ────────────────────────────────── */}
       <style>{`
@@ -319,13 +294,6 @@ export default function Hero() {
           50%  { background-position: 100% 50%; }
           100% { background-position: 0%   50%; }
         }
-        @keyframes scrollLine {
-          0%   { transform: scaleY(0); transform-origin: top;    }
-          50%  { transform: scaleY(1); transform-origin: top;    }
-          51%  { transform: scaleY(1); transform-origin: bottom; }
-          100% { transform: scaleY(0); transform-origin: bottom; }
-        }
-
         .hero-content-wrap {
           padding-right: clamp(24px, 6vw, 88px);
         }
@@ -333,7 +301,7 @@ export default function Hero() {
         /* Reserved area for upcoming side video on large screens */
         @media (min-width: 1200px) {
           .hero-content-wrap {
-            padding-right: clamp(180px, 20vw, 320px);
+            padding-right: clamp(210px, 22vw, 350px);
           }
         }
 
@@ -343,15 +311,23 @@ export default function Hero() {
             z-index: 3;
           }
 
-          section img[alt="Gaia portrait"] {
-            opacity: 0.35;
-            height: 70vh !important;
-            left: 58% !important;
+          .hero-portrait {
+            opacity: 0.42;
+            height: 62vh !important;
+            left: 64% !important;
           }
 
           .hero-content-wrap {
             padding-right: 24px;
             padding-left: 24px !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .hero-portrait {
+            opacity: 0.33;
+            height: 52vh !important;
+            left: 68% !important;
           }
         }
       `}</style>
