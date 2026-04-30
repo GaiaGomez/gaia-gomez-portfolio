@@ -21,6 +21,10 @@ export default function Hero() {
   // Typewriter
   useEffect(() => {
     const fullText = roles[roleIdx];
+    if (roles.length === 1) {
+      setDisplayed(fullText);
+      return;
+    }
     let timeout;
     if (!isDeleting) {
       if (displayed.length < fullText.length) {
@@ -204,7 +208,8 @@ export default function Hero() {
             minHeight: '36px',
             display: 'flex',
             alignItems: 'center',
-            maxWidth: '760px',
+            width: '100%',
+            maxWidth: '820px',
           }}>
             <span style={{
               fontFamily: "'Space Grotesk', sans-serif",
@@ -232,7 +237,8 @@ export default function Hero() {
             lineHeight: '1.65',
             marginBottom: '52px',
             fontWeight: '300',
-            maxWidth: '760px',
+            width: '100%',
+            maxWidth: '820px',
           }}>
             I build polished web applications that combine clean architecture, thoughtful UX and strong visual design.
           </p>
