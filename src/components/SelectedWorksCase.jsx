@@ -174,7 +174,7 @@ export default function SelectedWorksCase({ onClose }) {
           {/* Hero image */}
           <div style={{ width: '100%', marginBottom: 48 }}>
             <img
-              src="/selectedworks.jpg"
+              src="/selectedworks.webp"
               alt="Selected Works"
               style={{
                 width: '100%',

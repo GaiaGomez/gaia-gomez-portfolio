@@ -178,7 +178,7 @@ export default function MistikCase({ onClose }) {
             marginBottom: 48,
           }}>
             <img
-              src="/mistik.jpg"
+              src="/mistik.webp"
               alt="Mistik Brand"
               style={{
                 width: '100%',

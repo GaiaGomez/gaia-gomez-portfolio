@@ -174,7 +174,7 @@ export default function ComoEnCasaCase({ onClose }) {
           {/* Hero image */}
           <div style={{ width: '100%', marginBottom: 48 }}>
             <img
-              src="/comoencasa.jpg"
+              src="/comoencasa.webp"
               alt="Como en Casa Brand"
               style={{
                 width: '100%',
