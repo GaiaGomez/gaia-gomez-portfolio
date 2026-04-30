@@ -5,11 +5,11 @@ const roles = [
 ];
 
 const chips = [
-  { label: 'Product',      top: '20%',  right: '10%', left: 'auto', bottom: 'auto', delay: '0s' },
-  { label: 'Code',         top: '42%',  right: '4%', left: 'auto', bottom: 'auto', delay: '0.6s' },
-  { label: 'Design',       top: 'auto', right: '15%', left: 'auto', bottom: '12%', delay: '1.2s' },
-  { label: 'AI',           top: 'auto', right: 'auto', left: '45%', bottom: '48%', delay: '0.4s' },
-  { label: 'Architecture', top: '66%',  right: '11%', left: 'auto', bottom: 'auto', delay: '0.9s' },
+  { label: 'Product',      top: '21%', right: '11%', left: 'auto', bottom: 'auto', delay: '0s' },
+  { label: 'Code',         top: '44%', right: '4%', left: 'auto', bottom: 'auto', delay: '0.6s' },
+  { label: 'Architecture', top: '68%', right: '11%', left: 'auto', bottom: 'auto', delay: '0.9s' },
+  { label: 'Design',       top: 'auto', right: '11%', left: 'auto', bottom: '12%', delay: '1.2s' },
+  { label: 'AI',           top: '25%', right: '32%', left: 'auto', bottom: 'auto', delay: '0.4s' },
 ];
 
 export default function Hero() {
@@ -149,8 +149,8 @@ export default function Hero() {
       </div>
 
       {/* ── Main content ─────────────────────────────── */}
-      <div className="container hero-content-wrap" style={{ paddingTop: '90px', paddingLeft: '48px', marginLeft: 0, maxWidth: 'none', position: 'relative', zIndex: 1 }}>
-        <div style={{ maxWidth: '860px' }}>
+      <div className="container hero-content-wrap" style={{ paddingTop: '92px', paddingLeft: '36px', marginLeft: 0, maxWidth: 'none', position: 'relative', zIndex: 2 }}>
+        <div style={{ maxWidth: '760px' }}>
 
           {/* 1. Badge */}
           <div style={{
@@ -177,30 +177,18 @@ export default function Hero() {
           {/* 2. Name */}
           <h1 style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: 'var(--fs-hero-name)',
+            fontSize: 'clamp(5.2rem, 12vw, 8.8rem)',
             fontWeight: '700',
-            lineHeight: '0.93',
-            letterSpacing: '-4px',
-            marginBottom: '24px',
+            lineHeight: '0.9',
+            letterSpacing: '-2px',
+            marginBottom: '18px',
           }}>
-            <span style={{
-              display: 'block',
-              color: '#ede8f5',
-            }}>
-              Gaia
-            </span>
-            <span style={{
-              display: 'block',
-              color: '#efeaf7',
-              textShadow: '0 0 18px rgba(181,123,255,0.14)',
-            }}>
-              Gómez
-            </span>
+            <span style={{ display: 'block', color: '#f7f5fb' }}>Gaia</span>
           </h1>
 
           {/* 3. Typewriter */}
           <div style={{
-            marginBottom: '28px',
+            marginBottom: '10px',
             minHeight: '36px',
             display: 'flex',
             alignItems: 'center',
@@ -210,8 +198,8 @@ export default function Hero() {
             <span style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: 'clamp(1.3rem, 2.4vw, 2.1rem)',
-              fontWeight: '500',
-              color: '#e8e2f3',
+              fontWeight: '600',
+              color: '#9f64f5',
               letterSpacing: '-0.3px',
             }}>
               {displayed}
@@ -228,15 +216,15 @@ export default function Hero() {
           {/* 4. Subtitle */}
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 'var(--fs-body)',
-            color: 'rgba(241,238,248,0.58)',
-            lineHeight: '1.65',
-            marginBottom: '52px',
-            fontWeight: '300',
+            fontSize: 'clamp(1.8rem, 2.8vw, 3rem)',
+            color: '#f1edf8',
+            lineHeight: '1.2',
+            marginBottom: '46px',
+            fontWeight: '600',
             width: '100%',
             maxWidth: '820px',
           }}>
-            I build polished web applications that combine clean architecture, thoughtful UX and strong visual design.
+            Glad you're here.
           </p>
 
           {/* 5. Buttons */}
@@ -269,6 +257,25 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      <img
+        src="/hero-portrait.png"
+        alt="Gaia portrait"
+        style={{
+          position: 'absolute',
+          bottom: '0',
+          left: '50%',
+          transform: 'translateX(-5%)',
+          height: '76vh',
+          maxHeight: '760px',
+          width: 'auto',
+          objectFit: 'contain',
+          zIndex: 1,
+          pointerEvents: 'none',
+          userSelect: 'none',
+          filter: 'drop-shadow(0 30px 40px rgba(0, 0, 0, 0.55))',
+        }}
+      />
 
       {/* ── Scroll indicator ─────────────────────────── */}
       <div style={{
@@ -331,6 +338,17 @@ export default function Hero() {
         }
 
         @media (max-width: 1024px) {
+          .hero-content-wrap {
+            position: relative;
+            z-index: 3;
+          }
+
+          section img[alt="Gaia portrait"] {
+            opacity: 0.35;
+            height: 70vh !important;
+            left: 58% !important;
+          }
+
           .hero-content-wrap {
             padding-right: 24px;
             padding-left: 24px !important;
