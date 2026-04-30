@@ -149,8 +149,8 @@ export default function Hero() {
       </div>
 
       {/* ── Main content ─────────────────────────────── */}
-      <div className="container" style={{ paddingTop: '90px', paddingLeft: '48px', marginLeft: 0, maxWidth: 'none', position: 'relative', zIndex: 1 }}>
-        <div style={{ maxWidth: '780px' }}>
+      <div className="container hero-content-wrap" style={{ paddingTop: '90px', paddingLeft: '48px', marginLeft: 0, maxWidth: 'none', position: 'relative', zIndex: 1 }}>
+        <div style={{ maxWidth: '860px' }}>
 
           {/* 1. Badge */}
           <div style={{
@@ -204,7 +204,7 @@ export default function Hero() {
             minHeight: '36px',
             display: 'flex',
             alignItems: 'center',
-            maxWidth: '680px',
+            maxWidth: '760px',
           }}>
             <span style={{
               fontFamily: "'Space Grotesk', sans-serif",
@@ -232,7 +232,7 @@ export default function Hero() {
             lineHeight: '1.65',
             marginBottom: '52px',
             fontWeight: '300',
-            maxWidth: '680px',
+            maxWidth: '760px',
           }}>
             I build polished web applications that combine clean architecture, thoughtful UX and strong visual design.
           </p>
@@ -315,6 +315,24 @@ export default function Hero() {
           50%  { transform: scaleY(1); transform-origin: top;    }
           51%  { transform: scaleY(1); transform-origin: bottom; }
           100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        .hero-content-wrap {
+          padding-right: clamp(24px, 6vw, 88px);
+        }
+
+        /* Reserved area for upcoming side video on large screens */
+        @media (min-width: 1200px) {
+          .hero-content-wrap {
+            padding-right: clamp(180px, 20vw, 320px);
+          }
+        }
+
+        @media (max-width: 1024px) {
+          .hero-content-wrap {
+            padding-right: 24px;
+            padding-left: 24px !important;
+          }
         }
       `}</style>
     </section>
