@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react';
 
 const roles = [
-  'Software Engineer',
-  'Graphic Designer',
-  'UX Thinker',
-  'AI Explorer',
+  'Software Engineer + Designer',
 ];
 
 const chips = [
-  { label: 'Code',    top: '22%',  right: '10%',  left: 'auto', bottom: 'auto',  delay: '0s'    },
-  { label: 'Design',  top: '52%',  right: '4%',  left: 'auto', bottom: 'auto',  delay: '0.6s'  },
-  { label: 'Create',  top: 'auto', right: '15%', left: 'auto', bottom: '12%',   delay: '1.2s'  },
-  { label: 'AI ✦',   top: 'auto', right: 'auto', left: '45%', bottom: '48%',   delay: '0.4s'  },
+  { label: 'Product',      top: '20%',  right: '10%', left: 'auto', bottom: 'auto', delay: '0s' },
+  { label: 'Code',         top: '42%',  right: '4%', left: 'auto', bottom: 'auto', delay: '0.6s' },
+  { label: 'Design',       top: 'auto', right: '15%', left: 'auto', bottom: '12%', delay: '1.2s' },
+  { label: 'AI',           top: 'auto', right: 'auto', left: '45%', bottom: '48%', delay: '0.4s' },
+  { label: 'Architecture', top: '66%',  right: '11%', left: 'auto', bottom: 'auto', delay: '0.9s' },
 ];
 
 export default function Hero() {
@@ -239,11 +237,7 @@ export default function Hero() {
             fontWeight: '300',
             maxWidth: '480px',
           }}>
-            I design things. I build things.
-            <br />
-            <em style={{ color: '#c9a8ff', fontStyle: 'italic', fontWeight: '300' }}>
-              Sometimes both at the same time.
-            </em>
+            I build polished web applications that combine clean architecture, thoughtful UX and strong visual design.
           </p>
 
           {/* 5. Buttons */}
@@ -271,33 +265,10 @@ export default function Hero() {
               onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
-              View my work
+              View projects
               <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
-            <a
-              href="#contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '14px 32px',
-                borderRadius: '999px',
-                background: 'transparent',
-                color: 'rgba(237,232,245,0.65)',
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '14px',
-                fontWeight: '400',
-                border: '1px solid rgba(237,232,245,0.12)',
-                cursor: 'none',
-                transition: 'border-color 0.25s, color 0.25s',
-                textDecoration: 'none',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(181,123,255,0.4)'; e.currentTarget.style.color = '#ede8f5'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(237,232,245,0.12)'; e.currentTarget.style.color = 'rgba(237,232,245,0.65)'; }}
-            >
-              Let&rsquo;s talk
             </a>
           </div>
         </div>

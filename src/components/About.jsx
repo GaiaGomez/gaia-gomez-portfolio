@@ -76,9 +76,23 @@ export default function About() {
               ))}
             </div>
 
-            <a href="#contact" className="btn btn-primary" style={{ position: 'relative' }}>
-              <span style={{ position: 'relative', zIndex: 1 }}>Get in touch</span>
-            </a>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <a href="#contact" className="btn btn-primary" style={{ position: 'relative' }}>
+                <span style={{ position: 'relative', zIndex: 1 }}>Get in touch</span>
+              </a>
+              <a
+                href="/Gaia-Gomez-CV.pdf"
+                download
+                className="btn"
+                style={{
+                  background: 'transparent',
+                  borderColor: 'rgba(181,123,255,0.25)',
+                  color: 'rgba(232,224,245,0.85)',
+                }}
+              >
+                Download CV
+              </a>
+            </div>
           </div>
 
           {/* Right: visual card */}

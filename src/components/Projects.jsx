@@ -1,22 +1,21 @@
 import { useState } from 'react';
 import { projects } from '../data/projects';
-import MistikCase from './MistikCase';
-import ComoEnCasaCase from './ComoEnCasaCase';
 import SelectedWorksCase from './SelectedWorksCase';
 
-const filters = ['All', 'Engineering', 'Hybrid', 'Design'];
+const filters = ['All', 'Clinical Operations App', 'Personal Finance App', 'Personal Website', 'Brand & Visual Design'];
 
 const categoryColors = {
-  Engineering: { bg: 'rgba(93,181,255,0.08)', border: 'rgba(93,181,255,0.25)', text: '#5db5ff' },
-  Hybrid:      { bg: 'rgba(255,181,93,0.08)', border: 'rgba(255,181,93,0.25)', text: '#ffb55d' },
-  Design:      { bg: 'rgba(181,123,255,0.1)', border: 'rgba(181,123,255,0.25)', text: '#B57BFF' },
+  'Clinical Operations App': { bg: 'rgba(93,181,255,0.08)', border: 'rgba(93,181,255,0.25)', text: '#5db5ff' },
+  'Personal Finance App':    { bg: 'rgba(255,181,93,0.08)', border: 'rgba(255,181,93,0.25)', text: '#ffb55d' },
+  'Personal Website':        { bg: 'rgba(161,255,168,0.08)', border: 'rgba(161,255,168,0.25)', text: '#92e598' },
+  'Brand & Visual Design':   { bg: 'rgba(181,123,255,0.1)', border: 'rgba(181,123,255,0.25)', text: '#B57BFF' },
 };
 
 function ProjectCard({ project, onClick }) {
   const [hovered, setHovered] = useState(false);
   const c = categoryColors[project.category];
 
-  const isModal = project.title === 'Mistik' || project.title === 'Como en Casa' || project.title === 'Selected Works';
+  const isModal = project.title === 'Selected Design Works';
   const Tag = isModal ? 'div' : 'a';
   const linkProps = isModal
     ? { onClick, style: { cursor: 'pointer' } }
@@ -120,6 +119,51 @@ function ProjectCard({ project, onClick }) {
         ))}
       </div>
 
+      {/* Links */}
+      {(project.liveDemo || project.github) && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '20px' }}>
+          {project.liveDemo && (
+            <a
+              href={project.liveDemo}
+              target="_blank"
+              rel="noreferrer"
+              onClick={e => e.stopPropagation()}
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '12px',
+                color: '#c9a8ff',
+                textDecoration: 'none',
+                border: '1px solid rgba(181,123,255,0.25)',
+                background: 'rgba(181,123,255,0.08)',
+                borderRadius: '999px',
+                padding: '6px 12px',
+              }}
+            >
+              Live Demo
+            </a>
+          )}
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              onClick={e => e.stopPropagation()}
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '12px',
+                color: 'rgba(232,224,245,0.8)',
+                textDecoration: 'none',
+                border: '1px solid rgba(232,224,245,0.2)',
+                borderRadius: '999px',
+                padding: '6px 12px',
+              }}
+            >
+              GitHub
+            </a>
+          )}
+        </div>
+      )}
+
       {/* Arrow link */}
       <div style={{
         position: 'absolute',
@@ -146,8 +190,6 @@ function ProjectCard({ project, onClick }) {
 
 export default function Projects() {
   const [active, setActive] = useState('All');
-  const [showMistik, setShowMistik] = useState(false);
-  const [showComoEnCasa, setShowComoEnCasa] = useState(false);
   const [showSelectedWorks, setShowSelectedWorks] = useState(false);
 
   const filtered = active === 'All'
@@ -156,8 +198,6 @@ export default function Projects() {
 
   return (
     <>
-    {showMistik && <MistikCase onClose={() => setShowMistik(false)} />}
-    {showComoEnCasa && <ComoEnCasaCase onClose={() => setShowComoEnCasa(false)} />}
     {showSelectedWorks && <SelectedWorksCase onClose={() => setShowSelectedWorks(false)} />}
     <section className="section" id="projects">
       <div className="container">
@@ -207,9 +247,7 @@ export default function Projects() {
               key={p.id}
               project={p}
               onClick={
-                p.title === 'Mistik' ? () => setShowMistik(true) :
-                p.title === 'Como en Casa' ? () => setShowComoEnCasa(true) :
-                p.title === 'Selected Works' ? () => setShowSelectedWorks(true) :
+                p.title === 'Selected Design Works' ? () => setShowSelectedWorks(true) :
                 undefined
               }
             />
