@@ -1,0 +1,4 @@
+/* App-level resets — all styling lives in index.css and components */
+#root {
+  min-height: 100vh;
+}
