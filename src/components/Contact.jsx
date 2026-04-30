@@ -60,11 +60,12 @@ export default function Contact() {
             </h2>
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: '16px',
+              fontSize: 'var(--fs-body)',
               color: 'rgba(241,238,248,0.58)',
               lineHeight: '1.7',
               marginBottom: '48px',
               fontWeight: '300',
+              maxWidth: 'var(--text-max)',
             }}>
               My inbox is always open.
             </p>
@@ -142,8 +143,8 @@ export default function Contact() {
 
           {/* Right: form */}
           <div style={{
-            padding: '44px',
-            borderRadius: '24px',
+            padding: '32px',
+            borderRadius: 'var(--radius-card)',
             background: 'rgba(15,12,26,0.8)',
             border: '1px solid rgba(181,123,255,0.12)',
           }}>
@@ -186,7 +187,7 @@ export default function Contact() {
                   <label style={{
                     display: 'block',
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: '12px',
+                    fontSize: 'var(--fs-label)',
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
                     color: 'rgba(232,224,245,0.35)',
@@ -209,7 +210,7 @@ export default function Contact() {
                   <label style={{
                     display: 'block',
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: '12px',
+                    fontSize: 'var(--fs-label)',
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
                     color: 'rgba(232,224,245,0.35)',
@@ -232,7 +233,7 @@ export default function Contact() {
                   <label style={{
                     display: 'block',
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: '12px',
+                    fontSize: 'var(--fs-label)',
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
                     color: 'rgba(232,224,245,0.35)',
@@ -254,7 +255,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   className="btn btn-primary"
-                  style={{ width: '100%', justifyContent: 'center', marginTop: '8px', position: 'relative' }}
+                  style={{ width: '100%', justifyContent: 'center', marginTop: '8px', position: 'relative', minHeight: 'var(--btn-h)' }}
                 >
                   <span style={{ position: 'relative', zIndex: 1 }}>Send message</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ position: 'relative', zIndex: 1 }}>

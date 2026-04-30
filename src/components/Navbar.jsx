@@ -93,7 +93,7 @@ export default function Navbar() {
           <a
             href="#contact"
             className="btn btn-outline"
-            style={{ padding: '8px 22px', fontSize: '13px' }}
+            style={{ minHeight: 'var(--btn-h)', padding: '0 24px', fontSize: 'var(--fs-btn)' }}
           >
             Say hi ✦
           </a>

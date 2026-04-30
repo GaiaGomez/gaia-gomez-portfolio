@@ -177,7 +177,7 @@ export default function Hero() {
           {/* 2. Name */}
           <h1 style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: 'clamp(64px, 10vw, 130px)',
+            fontSize: 'var(--fs-hero-name)',
             fontWeight: '700',
             lineHeight: '0.93',
             letterSpacing: '-4px',
@@ -207,7 +207,7 @@ export default function Hero() {
           }}>
             <span style={{
               fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: 'clamp(18px, 2.2vw, 26px)',
+              fontSize: 'var(--fs-hero-role)',
               fontWeight: '500',
               color: '#e8e2f3',
               letterSpacing: '-0.3px',
@@ -226,12 +226,12 @@ export default function Hero() {
           {/* 4. Subtitle */}
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 'clamp(16px, 1.8vw, 19px)',
+            fontSize: 'var(--fs-body)',
             color: 'rgba(241,238,248,0.58)',
             lineHeight: '1.65',
             marginBottom: '52px',
             fontWeight: '300',
-            maxWidth: '480px',
+            maxWidth: 'var(--text-max)',
           }}>
             I build polished web applications that combine clean architecture, thoughtful UX and strong visual design.
           </p>
@@ -245,17 +245,13 @@ export default function Hero() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '14px 32px',
-                borderRadius: '999px',
                 background: 'rgba(15,12,26,0.88)',
                 color: '#f4f1fa',
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: '14px',
-                fontWeight: '500',
                 letterSpacing: '0.3px',
                 border: '1px solid rgba(181,123,255,0.28)',
                 cursor: 'none',
-                transition: 'opacity 0.25s, transform 0.25s',
+                transition: 'opacity var(--t-hover) var(--ease-standard), transform var(--t-hover) var(--ease-standard)',
                 boxShadow: '0 8px 22px rgba(0,0,0,0.35)',
                 textDecoration: 'none',
               }}

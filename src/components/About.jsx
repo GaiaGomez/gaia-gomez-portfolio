@@ -26,21 +26,23 @@ export default function About() {
 
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: '16px',
+              fontSize: 'var(--fs-body)',
               color: 'rgba(241,238,248,0.58)',
               lineHeight: '1.75',
               marginBottom: '20px',
               fontWeight: '300',
+              maxWidth: 'var(--text-max)',
             }}>
               I’m Gaia, a junior software engineer with a curious brain, a design aware mindset and a genuine obsession with learning how things work. I like building digital experiences that make sense, feel good to use and keep getting better through iteration.
             </p>
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: '16px',
+              fontSize: 'var(--fs-body)',
               color: 'rgba(241,238,248,0.58)',
               lineHeight: '1.75',
               marginBottom: '44px',
               fontWeight: '300',
+              maxWidth: 'var(--text-max)',
             }}>
               I’m fully in it: learning, testing, improving and trying things until they click. My design background adds an extra layer of clarity and user sensitivity to the way I build.
 
@@ -51,8 +53,8 @@ export default function About() {
               {facts.map(f => (
                 <div key={f.label} style={{
                   padding: '24px',
-                  borderRadius: '16px',
-                  background: 'rgba(181,123,255,0.05)',
+                  borderRadius: '24px',
+                  background: 'rgba(15,12,26,0.8)',
                   border: '1px solid rgba(181,123,255,0.12)',
                 }}>
                   <div style={{
@@ -67,7 +69,7 @@ export default function About() {
                   </div>
                   <div style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: '13px',
+                    fontSize: 'var(--fs-label)',
                     color: 'rgba(232,224,245,0.4)',
                   }}>
                     {f.label}
@@ -85,7 +87,8 @@ export default function About() {
                 download
                 className="btn"
                 style={{
-                  background: 'transparent',
+                  minHeight: 'var(--btn-h)',
+                  background: 'rgba(15,12,26,0.75)',
                   borderColor: 'rgba(181,123,255,0.22)',
                   color: 'rgba(241,238,248,0.88)',
                 }}
@@ -112,8 +115,8 @@ export default function About() {
             {/* Main card */}
             <div style={{
               position: 'relative',
-              borderRadius: '24px',
-              padding: '48px 40px',
+              borderRadius: 'var(--radius-card)',
+              padding: '32px',
               background: 'rgba(15,12,26,0.9)',
               border: '1px solid rgba(181,123,255,0.15)',
               backdropFilter: 'blur(10px)',

@@ -74,7 +74,7 @@ export default function CustomCursor() {
     zIndex: 99999,
     transition: 'background 0.25s, width 0.2s, height 0.2s, top 0.2s, left 0.2s',
     background: variant === 'project'
-      ? '#ff6b6b'
+      ? '#B57BFF'
       : variant === 'link'
       ? '#fff'
       : '#B57BFF',
@@ -88,12 +88,12 @@ export default function CustomCursor() {
     borderRadius: '50%',
     transition: 'width 0.25s, height 0.25s, top 0.25s, left 0.25s, border-color 0.25s, opacity 0.25s',
     border: `1.5px solid ${
-      variant === 'project' ? '#ff6b6b99'
+      variant === 'project' ? 'rgba(181,123,255,0.65)'
       : variant === 'link'   ? 'rgba(255,255,255,0.6)'
       : 'rgba(181,123,255,0.5)'
     }`,
     background: variant === 'project'
-      ? 'rgba(255,107,107,0.06)'
+      ? 'rgba(181,123,255,0.08)'
       : variant === 'link'
       ? 'rgba(255,255,255,0.04)'
       : 'transparent',

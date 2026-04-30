@@ -24,21 +24,18 @@ function ProjectCard({ project, onClick }) {
   return (
     <Tag
       {...linkProps}
-      className="project-card"
+      className="project-card ui-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         display: 'block',
         position: 'relative',
-        padding: '36px',
-        borderRadius: '20px',
         background: hovered
           ? 'rgba(22,17,33,0.88)'
           : 'rgba(15,12,26,0.8)',
         border: `1px solid ${hovered ? 'rgba(181,123,255,0.2)' : 'rgba(181,123,255,0.12)'}`,
-        transition: 'all 0.35s ease',
         overflow: 'hidden',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
         boxShadow: hovered
           ? '0 20px 60px rgba(0,0,0,0.38), 0 0 0 1px rgba(181,123,255,0.12)'
           : '0 4px 20px rgba(0,0,0,0.3)',
@@ -69,7 +66,7 @@ function ProjectCard({ project, onClick }) {
           background: c.bg,
           border: `1px solid ${c.border}`,
           color: c.text,
-          fontSize: '11px',
+          fontSize: 'var(--fs-label)',
           fontFamily: "'DM Sans', sans-serif",
           fontWeight: '500',
           letterSpacing: '0.8px',
@@ -89,7 +86,7 @@ function ProjectCard({ project, onClick }) {
       {/* Title */}
       <h3 style={{
         fontFamily: "'Space Grotesk', sans-serif",
-        fontSize: '22px',
+        fontSize: 'var(--fs-card-title)',
         fontWeight: '600',
         color: hovered ? '#f1eef8' : 'rgba(241,238,248,0.92)',
         marginBottom: '12px',
@@ -103,7 +100,7 @@ function ProjectCard({ project, onClick }) {
       {/* Description */}
       <p style={{
         fontFamily: "'DM Sans', sans-serif",
-        fontSize: '14px',
+        fontSize: 'var(--fs-body)',
         color: 'rgba(241,238,248,0.55)',
         lineHeight: '1.65',
         marginBottom: '28px',
@@ -128,16 +125,8 @@ function ProjectCard({ project, onClick }) {
               target="_blank"
               rel="noreferrer"
               onClick={e => e.stopPropagation()}
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '12px',
-                color: '#c9a8ff',
-                textDecoration: 'none',
-                border: '1px solid rgba(181,123,255,0.22)',
-                background: 'rgba(13,10,22,0.85)',
-                borderRadius: '999px',
-                padding: '6px 12px',
-              }}
+              className="ui-pill-link"
+              style={{ color: '#c9a8ff', textDecoration: 'none' }}
             >
               Live Demo
             </a>
@@ -148,16 +137,8 @@ function ProjectCard({ project, onClick }) {
               target="_blank"
               rel="noreferrer"
               onClick={e => e.stopPropagation()}
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '12px',
-                color: 'rgba(241,238,248,0.86)',
-                textDecoration: 'none',
-                border: '1px solid rgba(181,123,255,0.22)',
-                background: 'rgba(13,10,22,0.85)',
-                borderRadius: '999px',
-                padding: '6px 12px',
-              }}
+              className="ui-pill-link"
+              style={{ textDecoration: 'none' }}
             >
               GitHub
             </a>
@@ -224,8 +205,8 @@ export default function Projects() {
                   background: active === f ? 'rgba(181,123,255,0.15)' : 'transparent',
                   color: active === f ? '#B57BFF' : 'rgba(232,224,245,0.45)',
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: '13px',
-                  fontWeight: '500',
+                  fontSize: 'var(--fs-btn)',
+                  fontWeight: '600',
                   cursor: 'none',
                   transition: 'all 0.25s',
                   letterSpacing: '0.3px',
