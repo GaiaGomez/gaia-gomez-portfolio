@@ -59,14 +59,14 @@ export default function Hero() {
       <div style={{
         position: 'absolute', top: '-15%', right: '-8%',
         width: '650px', height: '650px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(181,123,255,0.13) 0%, transparent 68%)',
-        filter: 'blur(48px)', pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(181,123,255,0.08) 0%, transparent 68%)',
+        filter: 'blur(56px)', pointerEvents: 'none',
       }} />
       <div style={{
         position: 'absolute', bottom: '5%', left: '-12%',
         width: '480px', height: '480px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(123,47,190,0.09) 0%, transparent 70%)',
-        filter: 'blur(64px)', pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(123,47,190,0.06) 0%, transparent 70%)',
+        filter: 'blur(70px)', pointerEvents: 'none',
       }} />
 
       {/* ── Subtle grid ──────────────────────────────── */}
@@ -191,12 +191,8 @@ export default function Hero() {
             </span>
             <span style={{
               display: 'block',
-              background: 'linear-gradient(90deg, #E0AAFF 0%, #B57BFF 40%, #7B2FBE 70%, #E0AAFF 100%)',
-              backgroundSize: '200% 100%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              animation: 'shimmerText 3s ease-in-out infinite',
+              color: '#efeaf7',
+              textShadow: '0 0 18px rgba(181,123,255,0.14)',
             }}>
               Gómez
             </span>
@@ -213,7 +209,7 @@ export default function Hero() {
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: 'clamp(18px, 2.2vw, 26px)',
               fontWeight: '500',
-              color: '#E0AAFF',
+              color: '#e8e2f3',
               letterSpacing: '-0.3px',
             }}>
               {displayed}
@@ -231,7 +227,7 @@ export default function Hero() {
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 'clamp(16px, 1.8vw, 19px)',
-            color: 'rgba(237,232,245,0.45)',
+            color: 'rgba(241,238,248,0.58)',
             lineHeight: '1.65',
             marginBottom: '52px',
             fontWeight: '300',
@@ -244,22 +240,23 @@ export default function Hero() {
           <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
             <a
               href="#projects"
+              className="btn btn-primary"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
                 padding: '14px 32px',
                 borderRadius: '999px',
-                background: 'linear-gradient(135deg, #B57BFF 0%, #7B2FBE 100%)',
-                color: '#fff',
+                background: 'rgba(15,12,26,0.88)',
+                color: '#f4f1fa',
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: '14px',
                 fontWeight: '500',
                 letterSpacing: '0.3px',
-                border: 'none',
+                border: '1px solid rgba(181,123,255,0.28)',
                 cursor: 'none',
                 transition: 'opacity 0.25s, transform 0.25s',
-                boxShadow: '0 4px 24px rgba(181,123,255,0.35)',
+                boxShadow: '0 8px 22px rgba(0,0,0,0.35)',
                 textDecoration: 'none',
               }}
               onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)'; }}

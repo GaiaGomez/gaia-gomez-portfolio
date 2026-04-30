@@ -21,13 +21,13 @@ export default function About() {
             <h2 className="section-title">
               Code, design<br />
               and everything<br />
-              <span style={{ color: '#B57BFF' }}>in between</span>
+              <span style={{ color: '#f1eef8' }}>in between</span>
             </h2>
 
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: '16px',
-              color: 'rgba(232,224,245,0.55)',
+              color: 'rgba(241,238,248,0.58)',
               lineHeight: '1.75',
               marginBottom: '20px',
               fontWeight: '300',
@@ -37,7 +37,7 @@ export default function About() {
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: '16px',
-              color: 'rgba(232,224,245,0.55)',
+              color: 'rgba(241,238,248,0.58)',
               lineHeight: '1.75',
               marginBottom: '44px',
               fontWeight: '300',
@@ -86,8 +86,8 @@ export default function About() {
                 className="btn"
                 style={{
                   background: 'transparent',
-                  borderColor: 'rgba(181,123,255,0.25)',
-                  color: 'rgba(232,224,245,0.85)',
+                  borderColor: 'rgba(181,123,255,0.22)',
+                  color: 'rgba(241,238,248,0.88)',
                 }}
               >
                 Download CV

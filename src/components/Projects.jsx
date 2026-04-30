@@ -33,14 +33,14 @@ function ProjectCard({ project, onClick }) {
         padding: '36px',
         borderRadius: '20px',
         background: hovered
-          ? 'rgba(181,123,255,0.06)'
+          ? 'rgba(22,17,33,0.88)'
           : 'rgba(15,12,26,0.8)',
-        border: `1px solid ${hovered ? 'rgba(181,123,255,0.3)' : 'rgba(181,123,255,0.1)'}`,
+        border: `1px solid ${hovered ? 'rgba(181,123,255,0.2)' : 'rgba(181,123,255,0.12)'}`,
         transition: 'all 0.35s ease',
         overflow: 'hidden',
         transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
         boxShadow: hovered
-          ? '0 20px 60px rgba(181,123,255,0.12), 0 0 0 1px rgba(181,123,255,0.15)'
+          ? '0 20px 60px rgba(0,0,0,0.38), 0 0 0 1px rgba(181,123,255,0.12)'
           : '0 4px 20px rgba(0,0,0,0.3)',
         textDecoration: 'none',
         color: 'inherit',
@@ -91,7 +91,7 @@ function ProjectCard({ project, onClick }) {
         fontFamily: "'Space Grotesk', sans-serif",
         fontSize: '22px',
         fontWeight: '600',
-        color: hovered ? '#e8e0f5' : 'rgba(232,224,245,0.9)',
+        color: hovered ? '#f1eef8' : 'rgba(241,238,248,0.92)',
         marginBottom: '12px',
         transition: 'color 0.25s',
         letterSpacing: '-0.3px',
@@ -104,7 +104,7 @@ function ProjectCard({ project, onClick }) {
       <p style={{
         fontFamily: "'DM Sans', sans-serif",
         fontSize: '14px',
-        color: 'rgba(232,224,245,0.45)',
+        color: 'rgba(241,238,248,0.55)',
         lineHeight: '1.65',
         marginBottom: '28px',
         fontWeight: '300',
@@ -133,8 +133,8 @@ function ProjectCard({ project, onClick }) {
                 fontSize: '12px',
                 color: '#c9a8ff',
                 textDecoration: 'none',
-                border: '1px solid rgba(181,123,255,0.25)',
-                background: 'rgba(181,123,255,0.08)',
+                border: '1px solid rgba(181,123,255,0.22)',
+                background: 'rgba(13,10,22,0.85)',
                 borderRadius: '999px',
                 padding: '6px 12px',
               }}
@@ -151,9 +151,10 @@ function ProjectCard({ project, onClick }) {
               style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: '12px',
-                color: 'rgba(232,224,245,0.8)',
+                color: 'rgba(241,238,248,0.86)',
                 textDecoration: 'none',
-                border: '1px solid rgba(232,224,245,0.2)',
+                border: '1px solid rgba(181,123,255,0.22)',
+                background: 'rgba(13,10,22,0.85)',
                 borderRadius: '999px',
                 padding: '6px 12px',
               }}
@@ -206,7 +207,7 @@ export default function Projects() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '28px', marginBottom: '56px' }}>
           <h2 className="section-title" style={{ marginBottom: 0 }}>
             Projects that<br />
-            <span style={{ color: '#B57BFF' }}>matter</span>
+            <span style={{ color: '#f1eef8' }}>matter</span>
           </h2>
 
           {/* Filter buttons */}

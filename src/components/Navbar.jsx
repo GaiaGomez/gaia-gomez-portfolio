@@ -31,7 +31,7 @@ export default function Navbar() {
     transition: 'background 0.4s, border-color 0.4s',
     background: scrolled ? 'rgba(8,6,14,0.85)' : 'transparent',
     backdropFilter: scrolled ? 'blur(20px)' : 'none',
-    borderBottom: scrolled ? '1px solid rgba(181,123,255,0.1)' : '1px solid transparent',
+    borderBottom: scrolled ? '1px solid rgba(181,123,255,0.08)' : '1px solid transparent',
   };
 
   const logoStyle = {
@@ -79,12 +79,12 @@ export default function Navbar() {
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: '14px',
                 fontWeight: '400',
-                color: 'rgba(232,224,245,0.65)',
+                color: 'rgba(241,238,248,0.72)',
                 transition: 'color 0.2s',
                 letterSpacing: '0.2px',
               }}
               onMouseEnter={e => e.target.style.color = '#B57BFF'}
-              onMouseLeave={e => e.target.style.color = 'rgba(232,224,245,0.65)'}
+              onMouseLeave={e => e.target.style.color = 'rgba(241,238,248,0.72)'}
             >
               {l.label}
             </a>

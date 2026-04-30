@@ -27,14 +27,14 @@ export default function Contact() {
     width: '100%',
     padding: '16px 20px',
     borderRadius: '12px',
-    background: 'rgba(181,123,255,0.05)',
-    border: `1px solid ${focused === field ? 'rgba(181,123,255,0.5)' : 'rgba(181,123,255,0.12)'}`,
-    color: '#e8e0f5',
+    background: 'rgba(13,10,22,0.75)',
+    border: `1px solid ${focused === field ? 'rgba(181,123,255,0.34)' : 'rgba(181,123,255,0.14)'}`,
+    color: '#f1eef8',
     fontFamily: "'DM Sans', sans-serif",
     fontSize: '15px',
     outline: 'none',
     transition: 'border-color 0.25s, box-shadow 0.25s',
-    boxShadow: focused === field ? '0 0 0 3px rgba(181,123,255,0.08)' : 'none',
+    boxShadow: focused === field ? '0 0 0 3px rgba(181,123,255,0.06)' : 'none',
     resize: 'none',
   });
 
@@ -45,7 +45,7 @@ export default function Contact() {
 
   return (
     <section className="section" id="contact" style={{
-      background: 'linear-gradient(180deg, transparent 0%, rgba(181,123,255,0.03) 100%)',
+      background: 'linear-gradient(180deg, transparent 0%, rgba(181,123,255,0.015) 100%)',
     }}>
       <div className="container">
 
@@ -56,12 +56,12 @@ export default function Contact() {
           <div>
             <h2 className="section-title">
               Let's build<br />
-              something <span style={{ color: '#B57BFF' }}>great</span>
+              something <span style={{ color: '#f1eef8' }}>great</span>
             </h2>
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: '16px',
-              color: 'rgba(232,224,245,0.5)',
+              color: 'rgba(241,238,248,0.58)',
               lineHeight: '1.7',
               marginBottom: '48px',
               fontWeight: '300',
@@ -117,20 +117,20 @@ export default function Contact() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      background: 'rgba(181,123,255,0.06)',
-                      border: '1px solid rgba(181,123,255,0.12)',
-                      color: 'rgba(232,224,245,0.5)',
+                      background: 'rgba(13,10,22,0.8)',
+                      border: '1px solid rgba(181,123,255,0.14)',
+                      color: 'rgba(241,238,248,0.6)',
                       transition: 'all 0.25s',
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.background = 'rgba(181,123,255,0.15)';
-                      e.currentTarget.style.borderColor = 'rgba(181,123,255,0.4)';
+                      e.currentTarget.style.background = 'rgba(181,123,255,0.08)';
+                      e.currentTarget.style.borderColor = 'rgba(181,123,255,0.28)';
                       e.currentTarget.style.color = '#B57BFF';
                     }}
                     onMouseLeave={e => {
-                      e.currentTarget.style.background = 'rgba(181,123,255,0.06)';
-                      e.currentTarget.style.borderColor = 'rgba(181,123,255,0.12)';
-                      e.currentTarget.style.color = 'rgba(232,224,245,0.5)';
+                      e.currentTarget.style.background = 'rgba(13,10,22,0.8)';
+                      e.currentTarget.style.borderColor = 'rgba(181,123,255,0.14)';
+                      e.currentTarget.style.color = 'rgba(241,238,248,0.6)';
                     }}
                   >
                     {s.icon}
@@ -281,7 +281,7 @@ export default function Contact() {
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: '18px',
             fontWeight: '700',
-            color: 'rgba(232,224,245,0.6)',
+            color: 'rgba(241,238,248,0.76)',
           }}>
             GG<span style={{ color: '#B57BFF' }}>.</span>
           </span>
