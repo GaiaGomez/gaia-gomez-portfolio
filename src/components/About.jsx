@@ -109,7 +109,7 @@ export default function About() {
         {/* 2. Vibe cards grid */}
         <div className="vibe-grid" style={{ marginBottom: 'clamp(56px, 8vw, 96px)' }}>
           {vibeCards.map(card => (
-            <div key={card.phrase} className="ui-card">
+            <div key={card.phrase} className="ui-card vibe-card">
               <div style={{
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: 'clamp(1.3rem, 2.2vw, 1.9rem)',
@@ -316,30 +316,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* 4. CTA links */}
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-          <a
-            href="https://www.linkedin.com/in/gaiagomez/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary"
-          >
-            LinkedIn ↗
-          </a>
-          <a
-            href="https://github.com/GaiaGomez"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn"
-            style={{
-              background: 'rgba(18,18,20,0.82)',
-              border: '1px solid rgba(255,255,255,0.09)',
-              color: 'rgba(241,238,248,0.88)',
-            }}
-          >
-            GitHub ↗
-          </a>
-        </div>
 
       </div>
     </section>
