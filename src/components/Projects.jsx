@@ -10,7 +10,7 @@ function ProjectCard({ project, onClick }) {
   const Tag = isModal ? 'div' : 'a';
   const linkProps = isModal
     ? { onClick, style: { cursor: 'pointer' } }
-    : { href: project.link };
+    : { href: project.link, target: '_blank', rel: 'noopener noreferrer' };
 
   const showImage = project.image && !imgError;
 
