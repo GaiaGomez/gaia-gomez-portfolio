@@ -260,7 +260,7 @@ export default function Hero() {
 
       <img
         className="hero-portrait"
-        src="/gaia-portrait-final.png"
+        src="/gaia-portrait-cutout.webp"
         alt="Gaia portrait"
         style={{
           position: 'absolute',
@@ -274,8 +274,7 @@ export default function Hero() {
           zIndex: 1,
           pointerEvents: 'none',
           userSelect: 'none',
-          opacity: 0.78,
-          filter: 'brightness(0.73) saturate(0.88) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.58))',
+          filter: 'drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45))',
         }}
       />
 
@@ -312,7 +311,6 @@ export default function Hero() {
           }
 
           .hero-portrait {
-            opacity: 0.42;
             height: 62vh !important;
             left: 64% !important;
           }
@@ -325,7 +323,6 @@ export default function Hero() {
 
         @media (max-width: 640px) {
           .hero-portrait {
-            opacity: 0.33;
             height: 52vh !important;
             left: 68% !important;
           }
