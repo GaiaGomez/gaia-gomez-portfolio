@@ -47,28 +47,53 @@ export default function ProjectDrawer({ project, onClose }) {
         right: 0,
         bottom: 0,
         width: 'min(520px, 100vw)',
-        background: 'rgba(11,8,20,0.97)',
-        backdropFilter: 'blur(28px)',
         borderLeft: '1px solid rgba(181,123,255,0.15)',
         zIndex: 1001,
         display: 'flex',
         flexDirection: 'column',
         animation: 'drawerSlideIn 0.3s cubic-bezier(0.22,0.61,0.36,1)',
+        overflow: 'hidden',
       }}>
+        {/* Blurred image background layer */}
+        {project.image ? (
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: `url(${project.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'blur(22px)',
+            transform: 'scale(1.08)',
+            zIndex: 0,
+          }} />
+        ) : null}
+
+        {/* Dark overlay */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: project.image
+            ? 'rgba(7,4,16,0.84)'
+            : 'linear-gradient(160deg, rgba(14,10,28,0.98) 0%, rgba(8,5,18,0.99) 100%)',
+          zIndex: 1,
+        }} />
+
         {/* Sticky header */}
         <div style={{
           padding: '26px 30px 20px',
-          background: 'rgba(11,8,20,0.99)',
+          background: 'rgba(7,4,16,0.5)',
           borderBottom: '1px solid rgba(181,123,255,0.1)',
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'space-between',
           gap: '16px',
           flexShrink: 0,
+          position: 'relative',
+          zIndex: 2,
         }}>
           <h2 style={{
             fontFamily: 'var(--font-display)',
-            fontSize: '1.45rem',
+            fontSize: '1.65rem',
             fontWeight: '700',
             color: '#f1eef8',
             letterSpacing: '-0.3px',
@@ -102,12 +127,14 @@ export default function ProjectDrawer({ project, onClose }) {
           overflowY: 'auto',
           flex: 1,
           padding: '26px 30px 48px',
+          position: 'relative',
+          zIndex: 2,
         }}>
           {/* Subtitle */}
           <p style={{
             fontFamily: 'var(--font-body)',
-            fontSize: '0.95rem',
-            color: 'rgba(241,238,248,0.62)',
+            fontSize: 'var(--fs-body)',
+            color: 'rgba(241,238,248,0.72)',
             lineHeight: '1.55',
             marginBottom: '8px',
           }}>
@@ -117,7 +144,7 @@ export default function ProjectDrawer({ project, onClose }) {
           {/* Meta */}
           <p style={{
             fontFamily: 'var(--font-body)',
-            fontSize: '0.76rem',
+            fontSize: 'var(--fs-label)',
             color: 'rgba(181,123,255,0.75)',
             letterSpacing: '0.2px',
             marginBottom: '22px',
@@ -139,7 +166,7 @@ export default function ProjectDrawer({ project, onClose }) {
               background: 'rgba(181,123,255,0.1)',
               border: '1px solid rgba(181,123,255,0.26)',
               color: '#c9a8ff',
-              fontSize: '0.82rem',
+              fontSize: 'var(--fs-btn)',
               fontWeight: '600',
               fontFamily: 'var(--font-body)',
               marginBottom: '30px',
@@ -167,7 +194,7 @@ export default function ProjectDrawer({ project, onClose }) {
               <div key={label} style={{
                 padding: '14px',
                 borderRadius: '12px',
-                background: 'rgba(15,12,26,0.7)',
+                background: 'rgba(12,9,22,0.72)',
                 border: '1px solid rgba(181,123,255,0.1)',
               }}>
                 <p style={{
@@ -182,7 +209,7 @@ export default function ProjectDrawer({ project, onClose }) {
                   {label}
                 </p>
                 <p style={{
-                  fontSize: '0.78rem',
+                  fontSize: 'var(--fs-body)',
                   color: 'rgba(241,238,248,0.82)',
                   fontFamily: 'var(--font-body)',
                   lineHeight: '1.4',
@@ -202,7 +229,7 @@ export default function ProjectDrawer({ project, onClose }) {
               <div key={label} style={{
                 padding: '16px',
                 borderRadius: '12px',
-                background: 'rgba(15,12,26,0.7)',
+                background: 'rgba(12,9,22,0.72)',
                 border: '1px solid rgba(181,123,255,0.1)',
               }}>
                 <p style={{
@@ -217,8 +244,8 @@ export default function ProjectDrawer({ project, onClose }) {
                   {label}
                 </p>
                 <p style={{
-                  fontSize: '0.82rem',
-                  color: 'rgba(241,238,248,0.65)',
+                  fontSize: 'var(--fs-body)',
+                  color: 'rgba(241,238,248,0.72)',
                   fontFamily: 'var(--font-body)',
                   lineHeight: '1.55',
                 }}>
@@ -235,7 +262,7 @@ export default function ProjectDrawer({ project, onClose }) {
               <div key={i} style={{
                 padding: '14px 18px',
                 borderRadius: '12px',
-                background: 'rgba(15,12,26,0.7)',
+                background: 'rgba(12,9,22,0.72)',
                 border: '1px solid rgba(181,123,255,0.1)',
                 display: 'flex',
                 gap: '14px',
@@ -254,7 +281,7 @@ export default function ProjectDrawer({ project, onClose }) {
                 </span>
                 <div>
                   <p style={{
-                    fontSize: '0.83rem',
+                    fontSize: 'var(--fs-body)',
                     fontWeight: '600',
                     color: 'rgba(241,238,248,0.88)',
                     fontFamily: 'var(--font-body)',
@@ -263,8 +290,8 @@ export default function ProjectDrawer({ project, onClose }) {
                     {d.title}
                   </p>
                   <p style={{
-                    fontSize: '0.8rem',
-                    color: 'rgba(241,238,248,0.5)',
+                    fontSize: 'var(--fs-body)',
+                    color: 'rgba(241,238,248,0.58)',
                     fontFamily: 'var(--font-body)',
                     lineHeight: '1.5',
                   }}>
@@ -287,10 +314,10 @@ export default function ProjectDrawer({ project, onClose }) {
               <span key={tech} style={{
                 padding: '4px 11px',
                 borderRadius: '999px',
-                fontSize: '0.75rem',
+                fontSize: 'var(--fs-label)',
                 fontFamily: 'var(--font-body)',
                 fontWeight: '500',
-                background: 'rgba(13,10,22,0.85)',
+                background: 'rgba(10,7,20,0.88)',
                 color: 'rgba(218,200,244,0.82)',
                 border: '1px solid rgba(181,123,255,0.17)',
               }}>
@@ -302,13 +329,13 @@ export default function ProjectDrawer({ project, onClose }) {
           {/* What it shows */}
           <SectionLabel>What it shows</SectionLabel>
           <p style={{
-            fontSize: '0.85rem',
-            color: 'rgba(241,238,248,0.58)',
+            fontSize: 'var(--fs-body)',
+            color: 'rgba(241,238,248,0.68)',
             fontFamily: 'var(--font-body)',
             lineHeight: '1.65',
             padding: '16px 18px',
             borderRadius: '12px',
-            background: 'rgba(15,12,26,0.7)',
+            background: 'rgba(12,9,22,0.72)',
             border: '1px solid rgba(181,123,255,0.1)',
           }}>
             {drawer.shows}
