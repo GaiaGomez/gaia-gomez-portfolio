@@ -343,6 +343,29 @@ img { display: block; max-width: 100%; }
   }
 }
 
+/* ── About — Vibe cards grid ───────────────────────────── */
+.vibe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.vibe-card {
+  padding: 20px 22px;
+}
+
+@media (max-width: 900px) {
+  .vibe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .vibe-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── Design Works Gallery ──────────────────────────────── */
 .design-gallery {
   display: grid;
