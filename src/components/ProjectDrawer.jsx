@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const SectionLabel = ({ children }) => (
   <p style={{
@@ -40,8 +40,34 @@ const CardLabel = ({ children }) => (
   </p>
 );
 
+function GalleryImage({ src }) {
+  const [error, setError] = useState(false);
+  return error ? (
+    <div style={{
+      width: '100%',
+      aspectRatio: '4/3',
+      borderRadius: '12px',
+      background: 'rgba(255,255,255,0.03)',
+      border: '1px solid rgba(255,255,255,0.07)',
+    }} />
+  ) : (
+    <img
+      src={src}
+      alt=""
+      onError={() => setError(true)}
+      style={{
+        width: '100%',
+        display: 'block',
+        borderRadius: '12px',
+        objectFit: 'cover',
+      }}
+    />
+  );
+}
+
 export default function ProjectDrawer({ project, onClose }) {
   const { drawer } = project;
+  const isDesign = !!drawer.overview;
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
@@ -111,31 +137,33 @@ export default function ProjectDrawer({ project, onClose }) {
             </div>
 
             <div className="project-modal-header-actions">
-              <a
-                href={drawer.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '7px',
-                  padding: '8px 16px',
-                  borderRadius: '999px',
-                  background: 'rgba(18,18,20,0.92)',
-                  border: '1px solid rgba(181,123,255,0.2)',
-                  color: 'rgba(241,238,248,0.88)',
-                  fontSize: 'var(--fs-btn)',
-                  fontWeight: '600',
-                  fontFamily: 'var(--font-body)',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                Open project
-                <svg width="11" height="11" viewBox="0 0 14 14" fill="none">
-                  <path d="M3 11L11 3M11 3H5M11 3v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
+              {drawer.url && (
+                <a
+                  href={drawer.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '7px',
+                    padding: '8px 16px',
+                    borderRadius: '999px',
+                    background: 'rgba(18,18,20,0.92)',
+                    border: '1px solid rgba(181,123,255,0.2)',
+                    color: 'rgba(241,238,248,0.88)',
+                    fontSize: 'var(--fs-btn)',
+                    fontWeight: '600',
+                    fontFamily: 'var(--font-body)',
+                    textDecoration: 'none',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  Open project
+                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 11L11 3M11 3H5M11 3v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              )}
               <button
                 onClick={onClose}
                 style={{
@@ -162,124 +190,197 @@ export default function ProjectDrawer({ project, onClose }) {
           {/* Scrollable body */}
           <div className="project-modal-body">
 
-            {/* Snapshot — 3 cols */}
-            <div className="project-modal-snap-grid">
-              {[
-                { label: 'Role', value: drawer.snapshot.role },
-                { label: 'Focus', value: drawer.snapshot.focus },
-                { label: 'Stack', value: drawer.snapshot.stack },
-              ].map(({ label, value }) => (
-                <Card key={label}>
-                  <CardLabel>{label}</CardLabel>
-                  <p style={{
-                    fontSize: 'var(--fs-body)',
-                    color: 'rgba(241,238,248,0.82)',
-                    fontFamily: 'var(--font-body)',
-                    lineHeight: '1.4',
-                  }}>
-                    {value}
-                  </p>
-                </Card>
-              ))}
-            </div>
-
-            {/* Challenge / Solution — 2 cols */}
-            <div className="project-modal-2col">
-              {[
-                { label: 'Challenge', text: drawer.challenge },
-                { label: 'Solution', text: drawer.solution },
-              ].map(({ label, text }) => (
-                <Card key={label} style={{ padding: '18px 20px' }}>
-                  <CardLabel>{label}</CardLabel>
-                  <p style={{
-                    fontSize: 'var(--fs-body)',
-                    color: 'rgba(241,238,248,0.7)',
-                    fontFamily: 'var(--font-body)',
-                    lineHeight: '1.55',
-                  }}>
-                    {text}
-                  </p>
-                </Card>
-              ))}
-            </div>
-
-            {/* Technical decisions — 2 cols */}
-            <SectionLabel>Technical Decisions</SectionLabel>
-            <div className="project-modal-2col">
-              {drawer.decisions.map((d, i) => (
-                <Card key={i} style={{ padding: '14px 18px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                  <span style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '0.65rem',
-                    fontWeight: '700',
-                    color: 'rgba(181,123,255,0.45)',
-                    paddingTop: '3px',
-                    flexShrink: 0,
-                    minWidth: '18px',
-                  }}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <p style={{
-                      fontSize: 'var(--fs-body)',
-                      fontWeight: '600',
-                      color: 'rgba(241,238,248,0.88)',
-                      fontFamily: 'var(--font-body)',
-                      marginBottom: '3px',
-                    }}>
-                      {d.title}
-                    </p>
-                    <p style={{
-                      fontSize: 'var(--fs-body)',
-                      color: 'rgba(241,238,248,0.55)',
-                      fontFamily: 'var(--font-body)',
-                      lineHeight: '1.5',
-                    }}>
-                      {d.text}
-                    </p>
-                  </div>
-                </Card>
-              ))}
-            </div>
-
-            {/* Stack pills */}
-            <SectionLabel>Stack</SectionLabel>
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '7px',
-              marginBottom: '24px',
-            }}>
-              {drawer.stack.map((tech) => (
-                <span key={tech} style={{
-                  padding: '4px 11px',
-                  borderRadius: '999px',
-                  fontSize: 'var(--fs-label)',
+            {isDesign ? (
+              <>
+                {/* Overview */}
+                <SectionLabel>Overview</SectionLabel>
+                <p style={{
+                  fontSize: 'var(--fs-body)',
+                  color: 'rgba(241,238,248,0.65)',
                   fontFamily: 'var(--font-body)',
-                  fontWeight: '500',
-                  background: 'rgba(16,16,18,0.92)',
-                  color: 'rgba(200,196,212,0.75)',
-                  border: '1px solid rgba(181,123,255,0.13)',
+                  lineHeight: '1.65',
+                  padding: '16px 18px',
+                  borderRadius: '12px',
+                  background: 'rgba(12,9,22,0.6)',
+                  border: '1px solid rgba(181,123,255,0.1)',
+                  marginBottom: '24px',
                 }}>
-                  {tech}
-                </span>
-              ))}
-            </div>
+                  {drawer.overview}
+                </p>
 
-            {/* What it shows */}
-            <SectionLabel>What it shows</SectionLabel>
-            <p style={{
-              fontSize: 'var(--fs-body)',
-              color: 'rgba(241,238,248,0.65)',
-              fontFamily: 'var(--font-body)',
-              lineHeight: '1.65',
-              padding: '16px 18px',
-              borderRadius: '12px',
-              background: 'rgba(12,9,22,0.6)',
-              border: '1px solid rgba(181,123,255,0.1)',
-            }}>
-              {drawer.shows}
-            </p>
+                {/* Gallery */}
+                {drawer.gallery && (
+                  <>
+                    <SectionLabel>Work Samples</SectionLabel>
+                    <div className="design-gallery">
+                      {drawer.gallery.map((src, i) => (
+                        <GalleryImage key={i} src={src} />
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                {/* Disciplines */}
+                <SectionLabel>Disciplines</SectionLabel>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '7px',
+                  marginBottom: '24px',
+                }}>
+                  {drawer.stack.map((item) => (
+                    <span key={item} style={{
+                      padding: '4px 11px',
+                      borderRadius: '999px',
+                      fontSize: 'var(--fs-label)',
+                      fontFamily: 'var(--font-body)',
+                      fontWeight: '500',
+                      background: 'rgba(16,16,18,0.92)',
+                      color: 'rgba(200,196,212,0.75)',
+                      border: '1px solid rgba(181,123,255,0.13)',
+                    }}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                {/* What it shows */}
+                <SectionLabel>What it shows</SectionLabel>
+                <p style={{
+                  fontSize: 'var(--fs-body)',
+                  color: 'rgba(241,238,248,0.65)',
+                  fontFamily: 'var(--font-body)',
+                  lineHeight: '1.65',
+                  padding: '16px 18px',
+                  borderRadius: '12px',
+                  background: 'rgba(12,9,22,0.6)',
+                  border: '1px solid rgba(181,123,255,0.1)',
+                }}>
+                  {drawer.shows}
+                </p>
+              </>
+            ) : (
+              <>
+                {/* Snapshot — 3 cols */}
+                <div className="project-modal-snap-grid">
+                  {[
+                    { label: 'Role', value: drawer.snapshot.role },
+                    { label: 'Focus', value: drawer.snapshot.focus },
+                    { label: 'Stack', value: drawer.snapshot.stack },
+                  ].map(({ label, value }) => (
+                    <Card key={label}>
+                      <CardLabel>{label}</CardLabel>
+                      <p style={{
+                        fontSize: 'var(--fs-body)',
+                        color: 'rgba(241,238,248,0.82)',
+                        fontFamily: 'var(--font-body)',
+                        lineHeight: '1.4',
+                      }}>
+                        {value}
+                      </p>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Challenge / Solution — 2 cols */}
+                <div className="project-modal-2col">
+                  {[
+                    { label: 'Challenge', text: drawer.challenge },
+                    { label: 'Solution', text: drawer.solution },
+                  ].map(({ label, text }) => (
+                    <Card key={label} style={{ padding: '18px 20px' }}>
+                      <CardLabel>{label}</CardLabel>
+                      <p style={{
+                        fontSize: 'var(--fs-body)',
+                        color: 'rgba(241,238,248,0.7)',
+                        fontFamily: 'var(--font-body)',
+                        lineHeight: '1.55',
+                      }}>
+                        {text}
+                      </p>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Technical decisions — 2 cols */}
+                <SectionLabel>Technical Decisions</SectionLabel>
+                <div className="project-modal-2col">
+                  {drawer.decisions.map((d, i) => (
+                    <Card key={i} style={{ padding: '14px 18px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                      <span style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '0.65rem',
+                        fontWeight: '700',
+                        color: 'rgba(181,123,255,0.45)',
+                        paddingTop: '3px',
+                        flexShrink: 0,
+                        minWidth: '18px',
+                      }}>
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <p style={{
+                          fontSize: 'var(--fs-body)',
+                          fontWeight: '600',
+                          color: 'rgba(241,238,248,0.88)',
+                          fontFamily: 'var(--font-body)',
+                          marginBottom: '3px',
+                        }}>
+                          {d.title}
+                        </p>
+                        <p style={{
+                          fontSize: 'var(--fs-body)',
+                          color: 'rgba(241,238,248,0.55)',
+                          fontFamily: 'var(--font-body)',
+                          lineHeight: '1.5',
+                        }}>
+                          {d.text}
+                        </p>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Stack pills */}
+                <SectionLabel>Stack</SectionLabel>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '7px',
+                  marginBottom: '24px',
+                }}>
+                  {drawer.stack.map((tech) => (
+                    <span key={tech} style={{
+                      padding: '4px 11px',
+                      borderRadius: '999px',
+                      fontSize: 'var(--fs-label)',
+                      fontFamily: 'var(--font-body)',
+                      fontWeight: '500',
+                      background: 'rgba(16,16,18,0.92)',
+                      color: 'rgba(200,196,212,0.75)',
+                      border: '1px solid rgba(181,123,255,0.13)',
+                    }}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* What it shows */}
+                <SectionLabel>What it shows</SectionLabel>
+                <p style={{
+                  fontSize: 'var(--fs-body)',
+                  color: 'rgba(241,238,248,0.65)',
+                  fontFamily: 'var(--font-body)',
+                  lineHeight: '1.65',
+                  padding: '16px 18px',
+                  borderRadius: '12px',
+                  background: 'rgba(12,9,22,0.6)',
+                  border: '1px solid rgba(181,123,255,0.1)',
+                }}>
+                  {drawer.shows}
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>

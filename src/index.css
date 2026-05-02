@@ -342,3 +342,17 @@ img { display: block; max-width: 100%; }
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Design Works Gallery ──────────────────────────────── */
+.design-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .design-gallery {
+    grid-template-columns: 1fr;
+  }
+}

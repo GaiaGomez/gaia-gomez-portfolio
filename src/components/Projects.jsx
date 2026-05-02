@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { projects } from '../data/projects';
-import SelectedWorksCase from './SelectedWorksCase';
 import ProjectDrawer from './ProjectDrawer';
 
-function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
+function ProjectCard({ project, onOpenDrawer }) {
   const [hovered, setHovered] = useState(false);
   const [imgError, setImgError] = useState(false);
 
-  const isDesignWorks = project.title === 'Selected Design Works';
+  const hasLink = !!project.link;
   const showImage = project.image && !imgError;
 
   const imgArea = (
@@ -46,6 +45,28 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
     display: 'block',
   };
 
+  const arrowStyle = {
+    position: 'absolute',
+    bottom: '28px',
+    right: '28px',
+    width: '36px',
+    height: '36px',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: hovered ? 'rgba(181,123,255,0.12)' : 'rgba(255,255,255,0.04)',
+    border: `1px solid ${hovered ? 'rgba(181,123,255,0.32)' : 'rgba(255,255,255,0.08)'}`,
+    transition: 'all 0.25s',
+    transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
+  };
+
+  const arrowSvg = (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M3 11L11 3M11 3H5M11 3v6" stroke="#B57BFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -64,14 +85,14 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
       }}
     >
       {/* Image area */}
-      {isDesignWorks ? (
-        <div onClick={onOpenModal} style={{ ...imgWrapBase, cursor: 'none' }}>
-          {imgArea}
-        </div>
-      ) : (
+      {hasLink ? (
         <a href={project.link} target="_blank" rel="noopener noreferrer" style={imgWrapBase}>
           {imgArea}
         </a>
+      ) : (
+        <div onClick={onOpenDrawer} style={{ ...imgWrapBase, cursor: 'none' }}>
+          {imgArea}
+        </div>
       )}
 
       {/* Content */}
@@ -100,7 +121,7 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
       </div>
 
       {/* Details button — bottom left */}
-      {!isDesignWorks && (
+      {onOpenDrawer && (
         <button
           onClick={onOpenDrawer}
           style={{
@@ -126,67 +147,29 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
       )}
 
       {/* Arrow — bottom right */}
-      {isDesignWorks ? (
-        <div
-          onClick={onOpenModal}
-          style={{
-            position: 'absolute',
-            bottom: '28px',
-            right: '28px',
-            width: '36px',
-            height: '36px',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: hovered ? 'rgba(181,123,255,0.12)' : 'rgba(255,255,255,0.04)',
-            border: `1px solid ${hovered ? 'rgba(181,123,255,0.32)' : 'rgba(255,255,255,0.08)'}`,
-            transition: 'all 0.25s',
-            transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
-            cursor: 'none',
-          }}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 11L11 3M11 3H5M11 3v6" stroke="#B57BFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-      ) : (
+      {hasLink ? (
         <a
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            position: 'absolute',
-            bottom: '28px',
-            right: '28px',
-            width: '36px',
-            height: '36px',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: hovered ? 'rgba(181,123,255,0.12)' : 'rgba(255,255,255,0.04)',
-            border: `1px solid ${hovered ? 'rgba(181,123,255,0.32)' : 'rgba(255,255,255,0.08)'}`,
-            transition: 'all 0.25s',
-            transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
-          }}
+          style={arrowStyle}
         >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 11L11 3M11 3H5M11 3v6" stroke="#B57BFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          {arrowSvg}
         </a>
+      ) : (
+        <div onClick={onOpenDrawer} style={{ ...arrowStyle, cursor: 'none' }}>
+          {arrowSvg}
+        </div>
       )}
     </div>
   );
 }
 
 export default function Projects() {
-  const [showSelectedWorks, setShowSelectedWorks] = useState(false);
   const [activeDrawer, setActiveDrawer] = useState(null);
 
   return (
     <>
-      {showSelectedWorks && <SelectedWorksCase onClose={() => setShowSelectedWorks(false)} />}
       {activeDrawer && <ProjectDrawer project={activeDrawer} onClose={() => setActiveDrawer(null)} />}
 
       <section className="section" id="projects">
@@ -202,7 +185,6 @@ export default function Projects() {
               <ProjectCard
                 key={p.id}
                 project={p}
-                onOpenModal={p.title === 'Selected Design Works' ? () => setShowSelectedWorks(true) : undefined}
                 onOpenDrawer={p.drawer ? () => setActiveDrawer(p) : undefined}
               />
             ))}

@@ -85,5 +85,17 @@ export const projects = [
     description: "A curated collection of branding, editorial, social media and hospitality design projects created for freelance and professional clients.",
     link: null,
     image: "/projects/design-works.webp",
+    drawer: {
+      subtitle: "The design background behind the frontend decisions",
+      meta: "Graphic design · Brand systems · Visual direction",
+      overview: "A selection of professional graphic design work produced over the past 5 years. This background informs every frontend decision — from layout and spacing to typography and visual hierarchy — and is the reason the UI work in my dev projects doesn't rely on component libraries or preset themes.",
+      shows: "Design isn't a separate skill — it's what makes the difference between code that works and code that feels right. These are the years behind that eye.",
+      stack: ["Brand Identity", "Editorial Design", "Social Media", "Packaging", "Hospitality Design", "Visual Systems"],
+      gallery: [
+        "/projects/como-en-casa-case.webp",
+        "/projects/mistik-case.webp",
+        "/projects/design-works-case.webp",
+      ],
+    },
   },
 ];
