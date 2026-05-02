@@ -34,8 +34,8 @@ export default function ProjectDrawer({ project, onClose }) {
         style={{
           position: 'fixed',
           inset: 0,
-          background: 'rgba(8,6,14,0.55)',
-          backdropFilter: 'blur(3px)',
+          background: 'rgba(4,4,5,0.65)',
+          backdropFilter: 'blur(4px)',
           zIndex: 1000,
           animation: 'drawerOverlayIn 0.25s ease',
         }}
@@ -47,7 +47,7 @@ export default function ProjectDrawer({ project, onClose }) {
         right: 0,
         bottom: 0,
         width: 'min(520px, 100vw)',
-        borderLeft: '1px solid rgba(181,123,255,0.15)',
+        borderLeft: '1px solid rgba(255,255,255,0.07)',
         zIndex: 1001,
         display: 'flex',
         flexDirection: 'column',
@@ -58,15 +58,15 @@ export default function ProjectDrawer({ project, onClose }) {
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(160deg, rgba(14,10,28,0.98) 0%, rgba(8,5,18,0.99) 100%)',
+          background: 'linear-gradient(160deg, rgba(10,10,11,0.98) 0%, rgba(6,6,7,0.99) 100%)',
           zIndex: 1,
         }} />
 
         {/* Sticky header */}
         <div style={{
           padding: '26px 30px 20px',
-          background: 'rgba(7,4,16,0.5)',
-          borderBottom: '1px solid rgba(181,123,255,0.1)',
+          background: 'rgba(8,8,9,0.55)',
+          borderBottom: '1px solid rgba(255,255,255,0.07)',
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'space-between',
@@ -91,8 +91,8 @@ export default function ProjectDrawer({ project, onClose }) {
               width: '34px',
               height: '34px',
               borderRadius: '50%',
-              border: '1px solid rgba(181,123,255,0.18)',
-              background: 'rgba(181,123,255,0.06)',
+              border: '1px solid rgba(255,255,255,0.09)',
+              background: 'rgba(255,255,255,0.04)',
               color: 'rgba(241,238,248,0.55)',
               display: 'flex',
               alignItems: 'center',
@@ -147,9 +147,9 @@ export default function ProjectDrawer({ project, onClose }) {
               gap: '8px',
               padding: '9px 18px',
               borderRadius: '999px',
-              background: 'rgba(181,123,255,0.1)',
-              border: '1px solid rgba(181,123,255,0.26)',
-              color: '#c9a8ff',
+              background: 'rgba(18,18,20,0.92)',
+              border: '1px solid rgba(181,123,255,0.16)',
+              color: 'rgba(241,238,248,0.88)',
               fontSize: 'var(--fs-btn)',
               fontWeight: '600',
               fontFamily: 'var(--font-body)',
@@ -178,8 +178,8 @@ export default function ProjectDrawer({ project, onClose }) {
               <div key={label} style={{
                 padding: '14px',
                 borderRadius: '12px',
-                background: 'rgba(12,9,22,0.72)',
-                border: '1px solid rgba(181,123,255,0.1)',
+                background: 'rgba(14,14,16,0.78)',
+                border: '1px solid rgba(255,255,255,0.07)',
               }}>
                 <p style={{
                   fontSize: '0.65rem',
@@ -213,8 +213,8 @@ export default function ProjectDrawer({ project, onClose }) {
               <div key={label} style={{
                 padding: '16px',
                 borderRadius: '12px',
-                background: 'rgba(12,9,22,0.72)',
-                border: '1px solid rgba(181,123,255,0.1)',
+                background: 'rgba(14,14,16,0.78)',
+                border: '1px solid rgba(255,255,255,0.07)',
               }}>
                 <p style={{
                   fontSize: '0.65rem',
@@ -246,8 +246,8 @@ export default function ProjectDrawer({ project, onClose }) {
               <div key={i} style={{
                 padding: '14px 18px',
                 borderRadius: '12px',
-                background: 'rgba(12,9,22,0.72)',
-                border: '1px solid rgba(181,123,255,0.1)',
+                background: 'rgba(14,14,16,0.78)',
+                border: '1px solid rgba(255,255,255,0.07)',
                 display: 'flex',
                 gap: '14px',
                 alignItems: 'flex-start',
@@ -301,9 +301,9 @@ export default function ProjectDrawer({ project, onClose }) {
                 fontSize: 'var(--fs-label)',
                 fontFamily: 'var(--font-body)',
                 fontWeight: '500',
-                background: 'rgba(10,7,20,0.88)',
-                color: 'rgba(218,200,244,0.82)',
-                border: '1px solid rgba(181,123,255,0.17)',
+                background: 'rgba(16,16,18,0.92)',
+                color: 'rgba(200,196,212,0.78)',
+                border: '1px solid rgba(181,123,255,0.13)',
               }}>
                 {tech}
               </span>

@@ -26,9 +26,9 @@ export default function Navbar() {
     alignItems: 'center',
     justifyContent: 'space-between',
     transition: 'background 0.4s, border-color 0.4s',
-    background: scrolled ? 'rgba(8,6,14,0.85)' : 'transparent',
+    background: scrolled ? 'rgba(6,6,7,0.88)' : 'transparent',
     backdropFilter: scrolled ? 'blur(20px)' : 'none',
-    borderBottom: scrolled ? '1px solid rgba(181,123,255,0.08)' : '1px solid transparent',
+    borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : '1px solid transparent',
   };
 
   const logoStyle = {

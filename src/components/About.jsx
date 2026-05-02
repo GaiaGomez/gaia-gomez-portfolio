@@ -54,8 +54,8 @@ export default function About() {
                 <div key={f.label} style={{
                   padding: '24px',
                   borderRadius: '24px',
-                  background: 'rgba(15,12,26,0.8)',
-                  border: '1px solid rgba(181,123,255,0.12)',
+                  background: 'rgba(16,16,18,0.88)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                 }}>
                   <div style={{
                     fontFamily: "'Space Grotesk', sans-serif",
@@ -88,8 +88,8 @@ export default function About() {
                 className="btn"
                 style={{
                   minHeight: 'var(--btn-h)',
-                  background: 'rgba(15,12,26,0.75)',
-                  borderColor: 'rgba(181,123,255,0.22)',
+                  background: 'rgba(18,18,20,0.82)',
+                  borderColor: 'rgba(255,255,255,0.09)',
                   color: 'rgba(241,238,248,0.88)',
                 }}
               >
@@ -108,8 +108,8 @@ export default function About() {
               right: '-20px',
               bottom: '-20px',
               borderRadius: '24px',
-              background: 'linear-gradient(135deg, rgba(181,123,255,0.08), rgba(123,63,255,0.05))',
-              border: '1px solid rgba(181,123,255,0.1)',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01))',
+              border: '1px solid rgba(255,255,255,0.06)',
             }} />
 
             {/* Main card */}
@@ -117,8 +117,8 @@ export default function About() {
               position: 'relative',
               borderRadius: 'var(--radius-card)',
               padding: '32px',
-              background: 'rgba(15,12,26,0.9)',
-              border: '1px solid rgba(181,123,255,0.15)',
+              background: 'rgba(16,16,18,0.94)',
+              border: '1px solid rgba(255,255,255,0.09)',
               backdropFilter: 'blur(10px)',
             }}>
               {/* Avatar placeholder */}
@@ -126,7 +126,8 @@ export default function About() {
                 width: '96px',
                 height: '96px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, #7b3fff, #B57BFF)',
+                background: 'linear-gradient(135deg, #252528, #1e1e22)',
+                border: '1px solid rgba(181,123,255,0.2)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -169,7 +170,7 @@ export default function About() {
                   alignItems: 'center',
                   gap: '12px',
                   padding: '12px 0',
-                  borderBottom: '1px solid rgba(181,123,255,0.06)',
+                  borderBottom: '1px solid rgba(255,255,255,0.05)',
                 }}>
                   <span style={{ fontSize: '16px', lineHeight: 1 }}>{item.icon}</span>
                   <span style={{

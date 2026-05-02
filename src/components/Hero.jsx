@@ -52,29 +52,29 @@ export default function Hero() {
       alignItems: 'center',
       position: 'relative',
       overflow: 'hidden',
-      background: '#08060e',
+      background: '#090909',
     }}>
 
       {/* ── BG blobs ─────────────────────────────────── */}
       <div style={{
         position: 'absolute', top: '-15%', right: '-8%',
         width: '650px', height: '650px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(181,123,255,0.08) 0%, transparent 68%)',
-        filter: 'blur(56px)', pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(181,123,255,0.035) 0%, transparent 68%)',
+        filter: 'blur(72px)', pointerEvents: 'none',
       }} />
       <div style={{
         position: 'absolute', bottom: '5%', left: '-12%',
         width: '480px', height: '480px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(123,47,190,0.06) 0%, transparent 70%)',
-        filter: 'blur(70px)', pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(80,80,90,0.06) 0%, transparent 70%)',
+        filter: 'blur(80px)', pointerEvents: 'none',
       }} />
 
       {/* ── Subtle grid ──────────────────────────────── */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
         backgroundImage: `
-          linear-gradient(rgba(181,123,255,0.025) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(181,123,255,0.025) 1px, transparent 1px)
+          linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)
         `,
         backgroundSize: '80px 80px',
       }} />
@@ -89,9 +89,9 @@ export default function Hero() {
             left: chip.left, bottom: chip.bottom,
             padding: '10px 20px',
             borderRadius: '999px',
-            background: 'rgba(181,123,255,0.07)',
-            border: '1px solid rgba(181,123,255,0.22)',
-            color: '#c9a8ff',
+            background: 'rgba(16,16,18,0.88)',
+            border: '1px solid rgba(181,123,255,0.16)',
+            color: 'rgba(201,168,255,0.85)',
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: '13px',
             fontWeight: '500',
@@ -159,8 +159,8 @@ export default function Hero() {
             gap: '8px',
             padding: '7px 18px',
             borderRadius: '999px',
-            background: 'rgba(181,123,255,0.1)',
-            border: '1px solid rgba(181,123,255,0.28)',
+            background: 'rgba(16,16,18,0.88)',
+            border: '1px solid rgba(181,123,255,0.14)',
             marginBottom: '38px',
           }}>
             <span style={{
@@ -236,11 +236,11 @@ export default function Hero() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                background: 'rgba(15,12,26,0.88)',
+                background: 'rgba(18,18,20,0.92)',
                 color: '#f4f1fa',
                 fontFamily: "'DM Sans', sans-serif",
                 letterSpacing: '0.3px',
-                border: '1px solid rgba(181,123,255,0.28)',
+                border: '1px solid rgba(255,255,255,0.1)',
                 cursor: 'none',
                 transition: 'opacity var(--t-hover) var(--ease-standard), transform var(--t-hover) var(--ease-standard)',
                 boxShadow: '0 8px 22px rgba(0,0,0,0.35)',

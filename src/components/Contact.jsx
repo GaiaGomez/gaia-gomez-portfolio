@@ -27,14 +27,14 @@ export default function Contact() {
     width: '100%',
     padding: '16px 20px',
     borderRadius: '12px',
-    background: 'rgba(13,10,22,0.75)',
-    border: `1px solid ${focused === field ? 'rgba(181,123,255,0.34)' : 'rgba(181,123,255,0.14)'}`,
+    background: 'rgba(14,14,16,0.82)',
+    border: `1px solid ${focused === field ? 'rgba(181,123,255,0.28)' : 'rgba(255,255,255,0.08)'}`,
     color: '#f1eef8',
     fontFamily: "'DM Sans', sans-serif",
     fontSize: '15px',
     outline: 'none',
     transition: 'border-color 0.25s, box-shadow 0.25s',
-    boxShadow: focused === field ? '0 0 0 3px rgba(181,123,255,0.06)' : 'none',
+    boxShadow: focused === field ? '0 0 0 3px rgba(181,123,255,0.05)' : 'none',
     resize: 'none',
   });
 
@@ -45,7 +45,7 @@ export default function Contact() {
 
   return (
     <section className="section" id="contact" style={{
-      background: 'linear-gradient(180deg, transparent 0%, rgba(181,123,255,0.015) 100%)',
+      background: 'linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.008) 100%)',
     }}>
       <div className="container">
 
@@ -118,19 +118,19 @@ export default function Contact() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      background: 'rgba(13,10,22,0.8)',
-                      border: '1px solid rgba(181,123,255,0.14)',
+                      background: 'rgba(16,16,18,0.9)',
+                      border: '1px solid rgba(255,255,255,0.08)',
                       color: 'rgba(241,238,248,0.6)',
                       transition: 'all 0.25s',
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.background = 'rgba(181,123,255,0.08)';
-                      e.currentTarget.style.borderColor = 'rgba(181,123,255,0.28)';
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                      e.currentTarget.style.borderColor = 'rgba(181,123,255,0.22)';
                       e.currentTarget.style.color = '#B57BFF';
                     }}
                     onMouseLeave={e => {
-                      e.currentTarget.style.background = 'rgba(13,10,22,0.8)';
-                      e.currentTarget.style.borderColor = 'rgba(181,123,255,0.14)';
+                      e.currentTarget.style.background = 'rgba(16,16,18,0.9)';
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
                       e.currentTarget.style.color = 'rgba(241,238,248,0.6)';
                     }}
                   >
@@ -145,8 +145,8 @@ export default function Contact() {
           <div style={{
             padding: '32px',
             borderRadius: 'var(--radius-card)',
-            background: 'rgba(15,12,26,0.8)',
-            border: '1px solid rgba(181,123,255,0.12)',
+            background: 'rgba(16,16,18,0.9)',
+            border: '1px solid rgba(255,255,255,0.08)',
           }}>
             {sent ? (
               <div style={{ textAlign: 'center', padding: '40px 0' }}>
@@ -271,7 +271,7 @@ export default function Contact() {
         <div style={{
           marginTop: '100px',
           paddingTop: '32px',
-          borderTop: '1px solid rgba(181,123,255,0.08)',
+          borderTop: '1px solid rgba(255,255,255,0.06)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',

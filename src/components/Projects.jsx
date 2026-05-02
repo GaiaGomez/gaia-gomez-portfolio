@@ -32,7 +32,7 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
         position: 'absolute',
         bottom: 0, left: 0, right: 0,
         height: '64px',
-        background: 'linear-gradient(to bottom, transparent, rgba(15,12,26,0.92))',
+        background: 'linear-gradient(to bottom, transparent, rgba(10,10,12,0.95))',
         pointerEvents: 'none',
       }} />
     </>
@@ -42,7 +42,7 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
     height: '220px',
     overflow: 'hidden',
     position: 'relative',
-    background: 'linear-gradient(135deg, #12101f 0%, #0a0816 100%)',
+    background: 'linear-gradient(135deg, #111112 0%, #0a0a0c 100%)',
     display: 'block',
   };
 
@@ -54,12 +54,12 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
         position: 'relative',
         overflow: 'hidden',
         borderRadius: 'var(--radius-card)',
-        background: 'rgba(15,12,26,0.92)',
-        border: `1px solid ${hovered ? 'rgba(181,123,255,0.22)' : 'rgba(181,123,255,0.12)'}`,
+        background: 'rgba(16,16,18,0.94)',
+        border: `1px solid ${hovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.07)'}`,
         transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
         boxShadow: hovered
-          ? '0 20px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(181,123,255,0.12)'
-          : '0 4px 20px rgba(0,0,0,0.28)',
+          ? '0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.07)'
+          : '0 4px 20px rgba(0,0,0,0.32)',
         transition: 'transform var(--t-hover) var(--ease-standard), border-color var(--t-hover) var(--ease-standard), box-shadow var(--t-hover) var(--ease-standard)',
       }}
     >
@@ -112,8 +112,8 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
             gap: '5px',
             padding: '6px 13px',
             borderRadius: '999px',
-            background: 'rgba(15,12,26,0.85)',
-            border: '1px solid rgba(181,123,255,0.18)',
+            background: 'rgba(18,18,20,0.92)',
+            border: '1px solid rgba(255,255,255,0.09)',
             color: 'rgba(241,238,248,0.65)',
             fontFamily: 'var(--font-body)',
             fontSize: '0.76rem',
@@ -139,8 +139,8 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: hovered ? 'rgba(181,123,255,0.2)' : 'rgba(181,123,255,0.06)',
-            border: `1px solid ${hovered ? 'rgba(181,123,255,0.4)' : 'rgba(181,123,255,0.1)'}`,
+            background: hovered ? 'rgba(181,123,255,0.12)' : 'rgba(255,255,255,0.04)',
+            border: `1px solid ${hovered ? 'rgba(181,123,255,0.32)' : 'rgba(255,255,255,0.08)'}`,
             transition: 'all 0.25s',
             transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
             cursor: 'none',
@@ -165,8 +165,8 @@ function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: hovered ? 'rgba(181,123,255,0.2)' : 'rgba(181,123,255,0.06)',
-            border: `1px solid ${hovered ? 'rgba(181,123,255,0.4)' : 'rgba(181,123,255,0.1)'}`,
+            background: hovered ? 'rgba(181,123,255,0.12)' : 'rgba(255,255,255,0.04)',
+            border: `1px solid ${hovered ? 'rgba(181,123,255,0.32)' : 'rgba(255,255,255,0.08)'}`,
             transition: 'all 0.25s',
             transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
           }}

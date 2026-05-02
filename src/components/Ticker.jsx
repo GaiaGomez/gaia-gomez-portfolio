@@ -14,9 +14,9 @@ export default function Ticker() {
     <div style={{
       overflow: 'hidden',
       padding: '28px 0',
-      borderTop: '1px solid rgba(181,123,255,0.1)',
-      borderBottom: '1px solid rgba(181,123,255,0.1)',
-      background: 'rgba(181,123,255,0.03)',
+      borderTop: '1px solid rgba(255,255,255,0.06)',
+      borderBottom: '1px solid rgba(255,255,255,0.06)',
+      background: 'rgba(255,255,255,0.018)',
       position: 'relative',
     }}>
       {/* Fade masks */}
@@ -25,10 +25,10 @@ export default function Ticker() {
         inset: 0,
         background: `
           linear-gradient(90deg,
-            #08060e 0%,
+            #090909 0%,
             transparent 8%,
             transparent 92%,
-            #08060e 100%
+            #090909 100%
           )
         `,
         pointerEvents: 'none',
