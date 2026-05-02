@@ -1,26 +1,56 @@
 import { useState } from 'react';
 import { projects } from '../data/projects';
 import SelectedWorksCase from './SelectedWorksCase';
+import ProjectDrawer from './ProjectDrawer';
 
-function ProjectCard({ project, onClick }) {
+function ProjectCard({ project, onOpenModal, onOpenDrawer }) {
   const [hovered, setHovered] = useState(false);
   const [imgError, setImgError] = useState(false);
 
-  const isModal = project.title === 'Selected Design Works';
-  const Tag = isModal ? 'div' : 'a';
-  const linkProps = isModal
-    ? { onClick, style: { cursor: 'pointer' } }
-    : { href: project.link, target: '_blank', rel: 'noopener noreferrer' };
-
+  const isDesignWorks = project.title === 'Selected Design Works';
   const showImage = project.image && !imgError;
 
+  const imgArea = (
+    <>
+      {showImage && (
+        <img
+          src={project.image}
+          alt={project.title}
+          onError={() => setImgError(true)}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+            opacity: hovered ? 0.88 : 0.72,
+            transform: hovered ? 'scale(1.04)' : 'scale(1)',
+            transition: 'opacity 0.4s, transform 0.55s var(--ease-standard)',
+          }}
+        />
+      )}
+      <div style={{
+        position: 'absolute',
+        bottom: 0, left: 0, right: 0,
+        height: '64px',
+        background: 'linear-gradient(to bottom, transparent, rgba(15,12,26,0.92))',
+        pointerEvents: 'none',
+      }} />
+    </>
+  );
+
+  const imgWrapBase = {
+    height: '220px',
+    overflow: 'hidden',
+    position: 'relative',
+    background: 'linear-gradient(135deg, #12101f 0%, #0a0816 100%)',
+    display: 'block',
+  };
+
   return (
-    <Tag
-      {...linkProps}
+    <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        display: 'block',
         position: 'relative',
         overflow: 'hidden',
         borderRadius: 'var(--radius-card)',
@@ -30,45 +60,19 @@ function ProjectCard({ project, onClick }) {
         boxShadow: hovered
           ? '0 20px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(181,123,255,0.12)'
           : '0 4px 20px rgba(0,0,0,0.28)',
-        textDecoration: 'none',
-        color: 'inherit',
         transition: 'transform var(--t-hover) var(--ease-standard), border-color var(--t-hover) var(--ease-standard), box-shadow var(--t-hover) var(--ease-standard)',
       }}
     >
       {/* Image area */}
-      <div style={{
-        height: '220px',
-        overflow: 'hidden',
-        position: 'relative',
-        background: 'linear-gradient(135deg, #12101f 0%, #0a0816 100%)',
-      }}>
-        {showImage && (
-          <img
-            src={project.image}
-            alt={project.title}
-            onError={() => setImgError(true)}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-              opacity: hovered ? 0.88 : 0.72,
-              transform: hovered ? 'scale(1.04)' : 'scale(1)',
-              transition: 'opacity 0.4s, transform 0.55s var(--ease-standard)',
-            }}
-          />
-        )}
-        {/* Bottom fade into card */}
-        <div style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '64px',
-          background: 'linear-gradient(to bottom, transparent, rgba(15,12,26,0.92))',
-          pointerEvents: 'none',
-        }} />
-      </div>
+      {isDesignWorks ? (
+        <div onClick={onOpenModal} style={{ ...imgWrapBase, cursor: 'none' }}>
+          {imgArea}
+        </div>
+      ) : (
+        <a href={project.link} target="_blank" rel="noopener noreferrer" style={imgWrapBase}>
+          {imgArea}
+        </a>
+      )}
 
       {/* Content */}
       <div style={{ padding: '22px 28px 72px' }}>
@@ -95,49 +99,96 @@ function ProjectCard({ project, onClick }) {
         </p>
       </div>
 
-      {/* Year */}
-      <span style={{
-        position: 'absolute',
-        bottom: '37px',
-        left: '28px',
-        fontFamily: 'var(--font-body)',
-        fontSize: '12px',
-        color: 'rgba(232,224,245,0.28)',
-        letterSpacing: '0.4px',
-      }}>
-        {project.year}
-      </span>
+      {/* Details button — bottom left */}
+      {!isDesignWorks && (
+        <button
+          onClick={onOpenDrawer}
+          style={{
+            position: 'absolute',
+            bottom: '28px',
+            left: '28px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '5px',
+            padding: '6px 13px',
+            borderRadius: '999px',
+            background: 'rgba(15,12,26,0.85)',
+            border: '1px solid rgba(181,123,255,0.18)',
+            color: 'rgba(241,238,248,0.65)',
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.76rem',
+            fontWeight: '600',
+            letterSpacing: '0.3px',
+          }}
+        >
+          Details
+        </button>
+      )}
 
-      {/* Arrow */}
-      <div style={{
-        position: 'absolute',
-        bottom: '28px',
-        right: '28px',
-        width: '36px',
-        height: '36px',
-        borderRadius: '50%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: hovered ? 'rgba(181,123,255,0.2)' : 'rgba(181,123,255,0.06)',
-        border: `1px solid ${hovered ? 'rgba(181,123,255,0.4)' : 'rgba(181,123,255,0.1)'}`,
-        transition: 'all 0.25s',
-        transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
-      }}>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M3 11L11 3M11 3H5M11 3v6" stroke="#B57BFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </div>
-    </Tag>
+      {/* Arrow — bottom right */}
+      {isDesignWorks ? (
+        <div
+          onClick={onOpenModal}
+          style={{
+            position: 'absolute',
+            bottom: '28px',
+            right: '28px',
+            width: '36px',
+            height: '36px',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: hovered ? 'rgba(181,123,255,0.2)' : 'rgba(181,123,255,0.06)',
+            border: `1px solid ${hovered ? 'rgba(181,123,255,0.4)' : 'rgba(181,123,255,0.1)'}`,
+            transition: 'all 0.25s',
+            transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
+            cursor: 'none',
+          }}
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 11L11 3M11 3H5M11 3v6" stroke="#B57BFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      ) : (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            position: 'absolute',
+            bottom: '28px',
+            right: '28px',
+            width: '36px',
+            height: '36px',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: hovered ? 'rgba(181,123,255,0.2)' : 'rgba(181,123,255,0.06)',
+            border: `1px solid ${hovered ? 'rgba(181,123,255,0.4)' : 'rgba(181,123,255,0.1)'}`,
+            transition: 'all 0.25s',
+            transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
+          }}
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 11L11 3M11 3H5M11 3v6" stroke="#B57BFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+      )}
+    </div>
   );
 }
 
 export default function Projects() {
   const [showSelectedWorks, setShowSelectedWorks] = useState(false);
+  const [activeDrawer, setActiveDrawer] = useState(null);
 
   return (
     <>
       {showSelectedWorks && <SelectedWorksCase onClose={() => setShowSelectedWorks(false)} />}
+      {activeDrawer && <ProjectDrawer project={activeDrawer} onClose={() => setActiveDrawer(null)} />}
+
       <section className="section" id="projects">
         <div className="container">
           <p className="section-label">Selected Work</p>
@@ -151,9 +202,8 @@ export default function Projects() {
               <ProjectCard
                 key={p.id}
                 project={p}
-                onClick={
-                  p.title === 'Selected Design Works' ? () => setShowSelectedWorks(true) : undefined
-                }
+                onOpenModal={p.title === 'Selected Design Works' ? () => setShowSelectedWorks(true) : undefined}
+                onOpenDrawer={p.drawer ? () => setActiveDrawer(p) : undefined}
               />
             ))}
           </div>
