@@ -218,9 +218,19 @@ img { display: block; max-width: 100%; }
   color: var(--accent2);
 }
 
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
 @media (max-width: 900px) {
   .section { padding: var(--section-py-mobile) 0; }
   .container { padding: 0 20px; }
   .btn { min-height: var(--btn-h-mobile); }
   .ui-card { padding: var(--card-pad-mobile); }
+}
+
+@media (max-width: 600px) {
+  .projects-grid { grid-template-columns: 1fr; }
 }

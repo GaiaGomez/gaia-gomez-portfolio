@@ -2,18 +2,9 @@ import { useState } from 'react';
 import { projects } from '../data/projects';
 import SelectedWorksCase from './SelectedWorksCase';
 
-const filters = ['All', 'Clinical Operations App', 'Personal Finance App', 'Personal Website', 'Brand & Visual Design'];
-
-const categoryColors = {
-  'Clinical Operations App': { bg: 'rgba(93,181,255,0.08)', border: 'rgba(93,181,255,0.25)', text: '#5db5ff' },
-  'Personal Finance App':    { bg: 'rgba(255,181,93,0.08)', border: 'rgba(255,181,93,0.25)', text: '#ffb55d' },
-  'Personal Website':        { bg: 'rgba(161,255,168,0.08)', border: 'rgba(161,255,168,0.25)', text: '#92e598' },
-  'Brand & Visual Design':   { bg: 'rgba(181,123,255,0.1)', border: 'rgba(181,123,255,0.25)', text: '#B57BFF' },
-};
-
 function ProjectCard({ project, onClick }) {
   const [hovered, setHovered] = useState(false);
-  const c = categoryColors[project.category];
+  const [imgError, setImgError] = useState(false);
 
   const isModal = project.title === 'Selected Design Works';
   const Tag = isModal ? 'div' : 'a';
@@ -21,136 +12,107 @@ function ProjectCard({ project, onClick }) {
     ? { onClick, style: { cursor: 'pointer' } }
     : { href: project.link };
 
+  const showImage = project.image && !imgError;
+
   return (
     <Tag
       {...linkProps}
-      className="project-card ui-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         display: 'block',
         position: 'relative',
-        background: hovered
-          ? 'rgba(22,17,33,0.88)'
-          : 'rgba(15,12,26,0.8)',
-        border: `1px solid ${hovered ? 'rgba(181,123,255,0.2)' : 'rgba(181,123,255,0.12)'}`,
         overflow: 'hidden',
-        transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
+        borderRadius: 'var(--radius-card)',
+        background: 'rgba(15,12,26,0.92)',
+        border: `1px solid ${hovered ? 'rgba(181,123,255,0.22)' : 'rgba(181,123,255,0.12)'}`,
+        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
         boxShadow: hovered
-          ? '0 20px 60px rgba(0,0,0,0.38), 0 0 0 1px rgba(181,123,255,0.12)'
-          : '0 4px 20px rgba(0,0,0,0.3)',
+          ? '0 20px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(181,123,255,0.12)'
+          : '0 4px 20px rgba(0,0,0,0.28)',
         textDecoration: 'none',
         color: 'inherit',
+        transition: 'transform var(--t-hover) var(--ease-standard), border-color var(--t-hover) var(--ease-standard), box-shadow var(--t-hover) var(--ease-standard)',
       }}
     >
-      {/* Glow top-right */}
+      {/* Image area */}
       <div style={{
-        position: 'absolute',
-        top: '-30px',
-        right: '-30px',
-        width: '120px',
-        height: '120px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(181,123,255,0.15) 0%, transparent 70%)',
-        opacity: hovered ? 1 : 0,
-        transition: 'opacity 0.35s',
-        pointerEvents: 'none',
-      }} />
-
-      {/* Header row */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
-        <span style={{
-          display: 'inline-block',
-          padding: '5px 14px',
-          borderRadius: '999px',
-          background: c.bg,
-          border: `1px solid ${c.border}`,
-          color: c.text,
-          fontSize: 'var(--fs-label)',
-          fontFamily: "'DM Sans', sans-serif",
-          fontWeight: '500',
-          letterSpacing: '0.8px',
-          textTransform: 'uppercase',
-        }}>
-          {project.category}
-        </span>
-        <span style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: '13px',
-          color: 'rgba(232,224,245,0.3)',
-        }}>
-          {project.year}
-        </span>
+        height: '220px',
+        overflow: 'hidden',
+        position: 'relative',
+        background: 'linear-gradient(135deg, #12101f 0%, #0a0816 100%)',
+      }}>
+        {showImage && (
+          <img
+            src={project.image}
+            alt={project.title}
+            onError={() => setImgError(true)}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+              opacity: hovered ? 0.88 : 0.72,
+              transform: hovered ? 'scale(1.04)' : 'scale(1)',
+              transition: 'opacity 0.4s, transform 0.55s var(--ease-standard)',
+            }}
+          />
+        )}
+        {/* Bottom fade into card */}
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '64px',
+          background: 'linear-gradient(to bottom, transparent, rgba(15,12,26,0.92))',
+          pointerEvents: 'none',
+        }} />
       </div>
 
-      {/* Title */}
-      <h3 style={{
-        fontFamily: "'Space Grotesk', sans-serif",
-        fontSize: 'var(--fs-card-title)',
-        fontWeight: '600',
-        color: hovered ? '#f1eef8' : 'rgba(241,238,248,0.92)',
-        marginBottom: '12px',
-        transition: 'color 0.25s',
-        letterSpacing: '-0.3px',
-        lineHeight: '1.3',
-      }}>
-        {project.title}
-      </h3>
-
-      {/* Description */}
-      <p style={{
-        fontFamily: "'DM Sans', sans-serif",
-        fontSize: 'var(--fs-body)',
-        color: 'rgba(241,238,248,0.55)',
-        lineHeight: '1.65',
-        marginBottom: '28px',
-        fontWeight: '300',
-      }}>
-        {project.description}
-      </p>
-
-      {/* Tags */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-        {project.tags.map(tag => (
-          <span key={tag} className="tag">{tag}</span>
-        ))}
+      {/* Content */}
+      <div style={{ padding: '22px 28px 72px' }}>
+        <h3 style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'var(--fs-card-title)',
+          fontWeight: '600',
+          color: hovered ? '#f1eef8' : 'rgba(241,238,248,0.92)',
+          marginBottom: '10px',
+          letterSpacing: '-0.3px',
+          lineHeight: '1.3',
+          transition: 'color 0.25s',
+        }}>
+          {project.title}
+        </h3>
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: 'var(--fs-body)',
+          color: 'rgba(241,238,248,0.5)',
+          lineHeight: '1.65',
+          fontWeight: '300',
+        }}>
+          {project.description}
+        </p>
       </div>
 
-      {/* Links */}
-      {(project.liveDemo || project.github) && (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '20px' }}>
-          {project.liveDemo && (
-            <a
-              href={project.liveDemo}
-              target="_blank"
-              rel="noreferrer"
-              onClick={e => e.stopPropagation()}
-              className="ui-pill-link"
-              style={{ color: '#c9a8ff', textDecoration: 'none' }}
-            >
-              Live Demo
-            </a>
-          )}
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-              onClick={e => e.stopPropagation()}
-              className="ui-pill-link"
-              style={{ textDecoration: 'none' }}
-            >
-              GitHub
-            </a>
-          )}
-        </div>
-      )}
+      {/* Year */}
+      <span style={{
+        position: 'absolute',
+        bottom: '37px',
+        left: '28px',
+        fontFamily: 'var(--font-body)',
+        fontSize: '12px',
+        color: 'rgba(232,224,245,0.28)',
+        letterSpacing: '0.4px',
+      }}>
+        {project.year}
+      </span>
 
-      {/* Arrow link */}
+      {/* Arrow */}
       <div style={{
         position: 'absolute',
-        bottom: '32px',
-        right: '32px',
+        bottom: '28px',
+        right: '28px',
         width: '36px',
         height: '36px',
         borderRadius: '50%',
@@ -171,72 +133,32 @@ function ProjectCard({ project, onClick }) {
 }
 
 export default function Projects() {
-  const [active, setActive] = useState('All');
   const [showSelectedWorks, setShowSelectedWorks] = useState(false);
-
-  const filtered = active === 'All'
-    ? projects
-    : projects.filter(p => p.category === active);
 
   return (
     <>
-    {showSelectedWorks && <SelectedWorksCase onClose={() => setShowSelectedWorks(false)} />}
-    <section className="section" id="projects">
-      <div className="container">
-
-        <p className="section-label">Selected Work</p>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '28px', marginBottom: '56px' }}>
-          <h2 className="section-title" style={{ marginBottom: 0 }}>
+      {showSelectedWorks && <SelectedWorksCase onClose={() => setShowSelectedWorks(false)} />}
+      <section className="section" id="projects">
+        <div className="container">
+          <p className="section-label">Selected Work</p>
+          <h2 className="section-title" style={{ marginBottom: '56px' }}>
             Projects that<br />
             <span style={{ color: '#f1eef8' }}>matter</span>
           </h2>
 
-          {/* Filter buttons */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            {filters.map(f => (
-              <button
-                key={f}
-                className="filter-btn"
-                onClick={() => setActive(f)}
-                style={{
-                  padding: '9px 22px',
-                  borderRadius: '999px',
-                  border: `1px solid ${active === f ? '#B57BFF' : 'rgba(181,123,255,0.15)'}`,
-                  background: active === f ? 'rgba(181,123,255,0.15)' : 'transparent',
-                  color: active === f ? '#B57BFF' : 'rgba(232,224,245,0.45)',
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 'var(--fs-btn)',
-                  fontWeight: '600',
-                  cursor: 'none',
-                  transition: 'all 0.25s',
-                  letterSpacing: '0.3px',
-                }}
-              >
-                {f}
-              </button>
+          <div className="projects-grid">
+            {projects.map(p => (
+              <ProjectCard
+                key={p.id}
+                project={p}
+                onClick={
+                  p.title === 'Selected Design Works' ? () => setShowSelectedWorks(true) : undefined
+                }
+              />
             ))}
           </div>
         </div>
-
-        {/* Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-          gap: '24px',
-        }}>
-          {filtered.map(p => (
-            <ProjectCard
-              key={p.id}
-              project={p}
-              onClick={
-                p.title === 'Selected Design Works' ? () => setShowSelectedWorks(true) :
-                undefined
-              }
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 }
