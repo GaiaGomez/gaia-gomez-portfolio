@@ -62,8 +62,8 @@ export default function ProjectDrawer({ project, onClose }) {
             backgroundImage: `url(${project.image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'blur(22px)',
-            transform: 'scale(1.08)',
+            filter: 'blur(14px)',
+            transform: 'scale(1.04)',
             zIndex: 0,
           }} />
         ) : null}
@@ -73,7 +73,7 @@ export default function ProjectDrawer({ project, onClose }) {
           position: 'absolute',
           inset: 0,
           background: project.image
-            ? 'rgba(7,4,16,0.84)'
+            ? 'rgba(7,4,16,0.76)'
             : 'linear-gradient(160deg, rgba(14,10,28,0.98) 0%, rgba(8,5,18,0.99) 100%)',
           zIndex: 1,
         }} />
