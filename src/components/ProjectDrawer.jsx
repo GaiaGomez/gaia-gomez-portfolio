@@ -54,27 +54,11 @@ export default function ProjectDrawer({ project, onClose }) {
         animation: 'drawerSlideIn 0.3s cubic-bezier(0.22,0.61,0.36,1)',
         overflow: 'hidden',
       }}>
-        {/* Blurred image background layer */}
-        {project.image ? (
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `url(${project.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'blur(14px)',
-            transform: 'scale(1.04)',
-            zIndex: 0,
-          }} />
-        ) : null}
-
-        {/* Dark overlay */}
+        {/* Dark background */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: project.image
-            ? 'rgba(7,4,16,0.76)'
-            : 'linear-gradient(160deg, rgba(14,10,28,0.98) 0%, rgba(8,5,18,0.99) 100%)',
+          background: 'linear-gradient(160deg, rgba(14,10,28,0.98) 0%, rgba(8,5,18,0.99) 100%)',
           zIndex: 1,
         }} />
 
