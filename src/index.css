@@ -366,6 +366,29 @@ img { display: block; max-width: 100%; }
   }
 }
 
+/* ── Scroll Reveal ─────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.68s var(--ease-standard) both;
+}
+
+.fade-in {
+  animation: fadeIn 0.85s var(--ease-standard) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up, .fade-in { animation: none; }
+}
+
 /* ── Design Works Gallery ──────────────────────────────── */
 .design-gallery {
   display: grid;

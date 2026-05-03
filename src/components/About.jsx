@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useReveal } from '../hooks/useReveal';
 
 const vibeCards = [
   { phrase: 'In my build era', sub: 'Learning by doing' },
@@ -64,6 +65,9 @@ const bodyText = {
 
 export default function About() {
   const [openSection, setOpenSection] = useState(null);
+  const [bioRef, bioVisible] = useReveal();
+  const [vibeRef, vibeVisible] = useReveal();
+  const [accordionRef, accordionVisible] = useReveal();
 
   const toggle = (id) => setOpenSection(prev => prev === id ? null : id);
 
@@ -72,7 +76,16 @@ export default function About() {
       <div className="container">
 
         {/* 1. Hero bio */}
-        <div style={{ maxWidth: '720px', marginBottom: 'clamp(56px, 8vw, 96px)' }}>
+        <div
+          ref={bioRef}
+          style={{
+            maxWidth: '720px',
+            marginBottom: 'clamp(56px, 8vw, 96px)',
+            opacity: bioVisible ? 1 : 0,
+            transform: bioVisible ? 'translateY(0)' : 'translateY(22px)',
+            transition: 'opacity 0.65s var(--ease-standard), transform 0.65s var(--ease-standard)',
+          }}
+        >
           <p className="section-label">About me</p>
           <h1 style={{
             fontFamily: "'Space Grotesk', sans-serif",
@@ -107,9 +120,21 @@ export default function About() {
         </div>
 
         {/* 2. Vibe cards grid */}
-        <div className="vibe-grid" style={{ marginBottom: 'clamp(56px, 8vw, 96px)' }}>
-          {vibeCards.map(card => (
-            <div key={card.phrase} className="ui-card vibe-card">
+        <div
+          ref={vibeRef}
+          className="vibe-grid"
+          style={{ marginBottom: 'clamp(56px, 8vw, 96px)' }}
+        >
+          {vibeCards.map((card, i) => (
+            <div
+              key={card.phrase}
+              className="ui-card vibe-card"
+              style={{
+                opacity: vibeVisible ? 1 : 0,
+                transform: vibeVisible ? 'translateY(0)' : 'translateY(22px)',
+                transition: `opacity 0.6s var(--ease-standard) ${i * 0.1}s, transform 0.6s var(--ease-standard) ${i * 0.1}s`,
+              }}
+            >
               <div style={{
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: 'clamp(1.3rem, 2.2vw, 1.9rem)',
@@ -132,7 +157,15 @@ export default function About() {
         </div>
 
         {/* 3. Accordion sections */}
-        <div style={{ marginBottom: 'clamp(56px, 8vw, 96px)' }}>
+        <div
+          ref={accordionRef}
+          style={{
+            marginBottom: 'clamp(56px, 8vw, 96px)',
+            opacity: accordionVisible ? 1 : 0,
+            transform: accordionVisible ? 'translateY(0)' : 'translateY(22px)',
+            transition: 'opacity 0.65s var(--ease-standard) 0.1s, transform 0.65s var(--ease-standard) 0.1s',
+          }}
+        >
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
             {accordionSections.map(section => {
               const isOpen = openSection === section.id;

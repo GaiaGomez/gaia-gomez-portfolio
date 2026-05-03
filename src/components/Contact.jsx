@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useReveal } from '../hooks/useReveal';
 
 const socials = [
   { label: 'GitHub', href: 'https://github.com/GaiaGomez', icon: (
@@ -19,9 +20,11 @@ const socials = [
 ];
 
 export default function Contact() {
-  const [form, setForm]     = useState({ name: '', email: '', message: '' });
-  const [sent, setSent]     = useState(false);
+  const [form, setForm]       = useState({ name: '', email: '', message: '' });
+  const [sent, setSent]       = useState(false);
   const [focused, setFocused] = useState('');
+  const [leftRef, leftVisible]   = useReveal();
+  const [rightRef, rightVisible] = useReveal();
 
   const inputStyle = (field) => ({
     width: '100%',
@@ -53,7 +56,14 @@ export default function Contact() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
 
           {/* Left */}
-          <div>
+          <div
+            ref={leftRef}
+            style={{
+              opacity: leftVisible ? 1 : 0,
+              transform: leftVisible ? 'translateY(0)' : 'translateY(22px)',
+              transition: 'opacity 0.65s var(--ease-standard), transform 0.65s var(--ease-standard)',
+            }}
+          >
             <h2 className="section-title">
               Let's build<br />
               something <span style={{ color: '#f1eef8' }}>great</span>
@@ -142,12 +152,18 @@ export default function Contact() {
           </div>
 
           {/* Right: form */}
-          <div style={{
-            padding: '32px',
-            borderRadius: 'var(--radius-card)',
-            background: 'rgba(16,16,18,0.9)',
-            border: '1px solid rgba(255,255,255,0.08)',
-          }}>
+          <div
+            ref={rightRef}
+            style={{
+              padding: '32px',
+              borderRadius: 'var(--radius-card)',
+              background: 'rgba(16,16,18,0.9)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              opacity: rightVisible ? 1 : 0,
+              transform: rightVisible ? 'translateY(0)' : 'translateY(22px)',
+              transition: 'opacity 0.65s var(--ease-standard) 0.12s, transform 0.65s var(--ease-standard) 0.12s',
+            }}
+          >
             {sent ? (
               <div style={{ textAlign: 'center', padding: '40px 0' }}>
                 <div style={{

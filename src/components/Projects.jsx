@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { projects } from '../data/projects';
 import ProjectDrawer from './ProjectDrawer';
+import { useReveal } from '../hooks/useReveal';
 
 function ProjectCard({ project, onOpenDrawer }) {
   const [hovered, setHovered] = useState(false);
@@ -21,9 +22,9 @@ function ProjectCard({ project, onOpenDrawer }) {
             height: '100%',
             objectFit: 'cover',
             display: 'block',
-            opacity: hovered ? 0.88 : 0.72,
-            transform: hovered ? 'scale(1.04)' : 'scale(1)',
-            transition: 'opacity 0.4s, transform 0.55s var(--ease-standard)',
+            opacity: hovered ? 0.92 : 0.72,
+            transform: hovered ? 'scale(1.05)' : 'scale(1)',
+            transition: 'opacity 0.45s, transform 0.6s var(--ease-standard)',
           }}
         />
       )}
@@ -55,9 +56,9 @@ function ProjectCard({ project, onOpenDrawer }) {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: hovered ? 'rgba(181,123,255,0.12)' : 'rgba(255,255,255,0.04)',
-    border: `1px solid ${hovered ? 'rgba(181,123,255,0.32)' : 'rgba(255,255,255,0.08)'}`,
-    transition: 'all 0.25s',
+    background: hovered ? 'rgba(181,123,255,0.14)' : 'rgba(255,255,255,0.04)',
+    border: `1px solid ${hovered ? 'rgba(181,123,255,0.4)' : 'rgba(255,255,255,0.08)'}`,
+    transition: 'all 0.28s var(--ease-standard)',
     transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
   };
 
@@ -69,6 +70,7 @@ function ProjectCard({ project, onOpenDrawer }) {
 
   return (
     <div
+      className="project-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -76,10 +78,10 @@ function ProjectCard({ project, onOpenDrawer }) {
         overflow: 'hidden',
         borderRadius: 'var(--radius-card)',
         background: 'rgba(16,16,18,0.94)',
-        border: `1px solid ${hovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.07)'}`,
-        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
+        border: `1px solid ${hovered ? 'rgba(181,123,255,0.28)' : 'rgba(255,255,255,0.07)'}`,
+        transform: hovered ? 'translateY(-4px) scale(1.02)' : 'translateY(0) scale(1)',
         boxShadow: hovered
-          ? '0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.07)'
+          ? '0 24px 56px rgba(0,0,0,0.52), 0 0 0 1px rgba(181,123,255,0.08), 0 0 40px rgba(181,123,255,0.06)'
           : '0 4px 20px rgba(0,0,0,0.32)',
         transition: 'transform var(--t-hover) var(--ease-standard), border-color var(--t-hover) var(--ease-standard), box-shadow var(--t-hover) var(--ease-standard)',
       }}
@@ -167,6 +169,8 @@ function ProjectCard({ project, onOpenDrawer }) {
 
 export default function Projects() {
   const [activeDrawer, setActiveDrawer] = useState(null);
+  const [headerRef, headerVisible] = useReveal();
+  const [gridRef, gridVisible] = useReveal();
 
   return (
     <>
@@ -174,21 +178,43 @@ export default function Projects() {
 
       <section className="section" id="projects">
         <div className="container">
-          <p className="section-label">Selected Work</p>
-          <h2 className="section-title" style={{ marginBottom: '56px' }}>
-            Projects that<br />
-            <span style={{ color: '#f1eef8' }}>matter</span>
-          </h2>
 
-          <div className="projects-grid">
-            {projects.map(p => (
-              <ProjectCard
+          {/* Section header with reveal */}
+          <div
+            ref={headerRef}
+            style={{
+              opacity: headerVisible ? 1 : 0,
+              transform: headerVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'opacity 0.65s var(--ease-standard), transform 0.65s var(--ease-standard)',
+              marginBottom: '56px',
+            }}
+          >
+            <p className="section-label">Selected Work</p>
+            <h2 className="section-title" style={{ marginBottom: 0 }}>
+              Projects that<br />
+              <span style={{ color: '#f1eef8' }}>matter</span>
+            </h2>
+          </div>
+
+          {/* Grid with staggered card reveals */}
+          <div className="projects-grid" ref={gridRef}>
+            {projects.map((p, i) => (
+              <div
                 key={p.id}
-                project={p}
-                onOpenDrawer={p.drawer ? () => setActiveDrawer(p) : undefined}
-              />
+                style={{
+                  opacity: gridVisible ? 1 : 0,
+                  transform: gridVisible ? 'translateY(0)' : 'translateY(26px)',
+                  transition: `opacity 0.62s var(--ease-standard) ${i * 0.09}s, transform 0.62s var(--ease-standard) ${i * 0.09}s`,
+                }}
+              >
+                <ProjectCard
+                  project={p}
+                  onOpenDrawer={p.drawer ? () => setActiveDrawer(p) : undefined}
+                />
+              </div>
             ))}
           </div>
+
         </div>
       </section>
     </>

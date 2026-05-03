@@ -152,114 +152,118 @@ export default function Hero() {
       <div className="container hero-content-wrap" style={{ paddingTop: '86px', paddingLeft: '34px', marginLeft: 0, maxWidth: 'none', position: 'relative', zIndex: 2 }}>
         <div style={{ maxWidth: '760px' }}>
 
-          {/* 1. Badge */}
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '7px 18px',
-            borderRadius: '999px',
-            background: 'rgba(16,16,18,0.88)',
-            border: '1px solid rgba(181,123,255,0.14)',
-            marginBottom: '38px',
-          }}>
-            <span style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '13px',
-              color: '#c9a8ff',
-              letterSpacing: '0.3px',
-              fontWeight: '400',
+          {/* Group 1: Badge + Name */}
+          <div className="fade-in-up" style={{ animationDelay: '0.05s' }}>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '7px 18px',
+              borderRadius: '999px',
+              background: 'rgba(16,16,18,0.88)',
+              border: '1px solid rgba(181,123,255,0.14)',
+              marginBottom: '38px',
             }}>
-              Hello, i'm        
-            </span>
-          </div>
-
-          {/* 2. Name */}
-          <h1 style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: 'clamp(5rem, 11vw, 8.2rem)',
-            fontWeight: '700',
-            lineHeight: '0.9',
-            letterSpacing: '-2px',
-            marginBottom: '14px',
-          }}>
-            <span style={{ display: 'block', color: '#f7f5fb' }}>Gaia</span>
-          </h1>
-
-          {/* 3. Typewriter */}
-          <div style={{
-            marginBottom: '6px',
-            minHeight: '36px',
-            display: 'flex',
-            alignItems: 'center',
-            width: '100%',
-            maxWidth: '820px',
-          }}>
-            <span style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: 'clamp(1.3rem, 2.4vw, 2.1rem)',
-              fontWeight: '600',
-              color: '#9f64f5',
-              letterSpacing: '-0.3px',
-            }}>
-              {displayed}
               <span style={{
-                opacity: showCursor ? 1 : 0,
-                color: '#B57BFF',
-                marginLeft: '2px',
-                fontWeight: '300',
-                transition: 'opacity 0.1s',
-              }}>|</span>
-            </span>
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '13px',
+                color: '#c9a8ff',
+                letterSpacing: '0.3px',
+                fontWeight: '400',
+              }}>
+                Hello, i'm
+              </span>
+            </div>
+
+            <h1 style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 'clamp(5rem, 11vw, 8.2rem)',
+              fontWeight: '700',
+              lineHeight: '0.9',
+              letterSpacing: '-2px',
+              marginBottom: '14px',
+            }}>
+              <span style={{ display: 'block', color: '#f7f5fb' }}>Gaia</span>
+            </h1>
           </div>
 
-          {/* 4. Subtitle */}
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 'clamp(1.8rem, 2.8vw, 3rem)',
-            color: '#f1edf8',
-            lineHeight: '1.2',
-            marginBottom: '42px',
-            fontWeight: '600',
-            width: '100%',
-            maxWidth: '820px',
-          }}>
-            Glad you're here.
-          </p>
+          {/* Group 2: Typewriter + Subtitle */}
+          <div className="fade-in-up" style={{ animationDelay: '0.22s' }}>
+            <div style={{
+              marginBottom: '6px',
+              minHeight: '36px',
+              display: 'flex',
+              alignItems: 'center',
+              width: '100%',
+              maxWidth: '820px',
+            }}>
+              <span style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 'clamp(1.3rem, 2.4vw, 2.1rem)',
+                fontWeight: '600',
+                color: '#9f64f5',
+                letterSpacing: '-0.3px',
+              }}>
+                {displayed}
+                <span style={{
+                  opacity: showCursor ? 1 : 0,
+                  color: '#B57BFF',
+                  marginLeft: '2px',
+                  fontWeight: '300',
+                  transition: 'opacity 0.1s',
+                }}>|</span>
+              </span>
+            </div>
 
-          {/* 5. Buttons */}
-          <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-            <a
-              href="#projects"
-              className="btn btn-primary"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'rgba(18,18,20,0.92)',
-                color: '#f4f1fa',
-                fontFamily: "'DM Sans', sans-serif",
-                letterSpacing: '0.3px',
-                border: '1px solid rgba(255,255,255,0.1)',
-                cursor: 'none',
-                transition: 'opacity var(--t-hover) var(--ease-standard), transform var(--t-hover) var(--ease-standard)',
-                boxShadow: '0 8px 22px rgba(0,0,0,0.35)',
-                textDecoration: 'none',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-              onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
-            >
-              View projects
-              <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
+            <p style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 'clamp(1.8rem, 2.8vw, 3rem)',
+              color: '#f1edf8',
+              lineHeight: '1.2',
+              marginBottom: '42px',
+              fontWeight: '600',
+              width: '100%',
+              maxWidth: '820px',
+            }}>
+              Glad you're here.
+            </p>
+          </div>
+
+          {/* Group 3: Buttons */}
+          <div className="fade-in-up" style={{ animationDelay: '0.38s' }}>
+            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+              <a
+                href="#projects"
+                className="btn btn-primary"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'rgba(18,18,20,0.92)',
+                  color: '#f4f1fa',
+                  fontFamily: "'DM Sans', sans-serif",
+                  letterSpacing: '0.3px',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  cursor: 'none',
+                  transition: 'opacity var(--t-hover) var(--ease-standard), transform var(--t-hover) var(--ease-standard)',
+                  boxShadow: '0 8px 22px rgba(0,0,0,0.35)',
+                  textDecoration: 'none',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              >
+                View projects
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <img
-        className="hero-portrait"
+        className="hero-portrait fade-in"
         src="/gaia-portrait-cutout.webp"
         alt="Gaia portrait"
         style={{
@@ -275,6 +279,7 @@ export default function Hero() {
           pointerEvents: 'none',
           userSelect: 'none',
           filter: 'drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45))',
+          animationDelay: '0.15s',
         }}
       />
 
