@@ -3,7 +3,7 @@ import { projects } from '../data/projects';
 import ProjectDrawer from './ProjectDrawer';
 import { useReveal } from '../hooks/useReveal';
 
-function EditorialProjectRow({ project, onOpenDrawer, index }) {
+function EditorialProjectRow({ project, onOpenDrawer }) {
   const [ref, visible] = useReveal();
 
   const metaTags = project.drawer?.meta ? project.drawer.meta.split(' · ') : [];
@@ -14,70 +14,65 @@ function EditorialProjectRow({ project, onOpenDrawer, index }) {
     : [];
 
   const hasLink = !!project.link;
-  // DOM order is always image first so mobile stacks image → text.
-  // On desktop, odd rows flip via CSS .wrapper--flip.
-  const flipOnDesktop = index % 2 !== 0;
-
-  const imageCol = (
-    <div
-      className="column background-image"
-      style={{ backgroundImage: project.image ? `url(${project.image})` : 'none' }}
-    />
-  );
-
-  const contentCol = (
-    <div className="column content-column">
-      <div className="editorial-divider" />
-
-      {metaTags.length > 0 && (
-        <div className="editorial-meta">
-          {metaTags.map((tag, i) => (
-            <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
-              {i > 0 && <span className="editorial-meta-dot">·</span>}
-              <span className="editorial-meta-tag">{tag}</span>
-            </span>
-          ))}
-        </div>
-      )}
-
-      <h3 className="editorial-title">{project.title}</h3>
-      <p className="editorial-desc">{project.description}</p>
-
-      <div className="editorial-bottom">
-        {stackItems.length > 0 && (
-          <p className="editorial-stack">{stackItems.join(' · ')}</p>
-        )}
-        <div className="editorial-actions">
-          {onOpenDrawer && (
-            <button onClick={onOpenDrawer} className="project-feature-btn">
-              Details
-            </button>
-          )}
-          {hasLink && (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-feature-btn project-feature-btn--primary"
-            >
-              Open project
-              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-                <path d="M2 9L9 2M9 2H4M9 2V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <div
       ref={ref}
-      className={`wrapper${visible ? ' is-revealed' : ''}${flipOnDesktop ? ' wrapper--flip' : ''}`}
+      className={`wrapper${visible ? ' is-revealed' : ''}`}
     >
-      {imageCol}
-      {contentCol}
+      {/* Image layer — parallax on desktop */}
+      <div
+        className="wrapper__bg"
+        style={{ backgroundImage: project.image ? `url(${project.image})` : 'none' }}
+      />
+
+      {/* Gradient: strong at bottom, fades softly upward */}
+      <div className="wrapper__gradient" aria-hidden="true" />
+
+      {/* Content anchored to bottom */}
+      <div className="wrapper__content">
+        <div className="editorial-divider" />
+
+        {metaTags.length > 0 && (
+          <div className="editorial-meta">
+            {metaTags.map((tag, i) => (
+              <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                {i > 0 && <span className="editorial-meta-dot">·</span>}
+                <span className="editorial-meta-tag">{tag}</span>
+              </span>
+            ))}
+          </div>
+        )}
+
+        <h3 className="editorial-title">{project.title}</h3>
+        <p className="editorial-desc">{project.description}</p>
+
+        <div className="editorial-bottom">
+          {stackItems.length > 0 && (
+            <p className="editorial-stack">{stackItems.join(' · ')}</p>
+          )}
+          <div className="editorial-actions">
+            {onOpenDrawer && (
+              <button onClick={onOpenDrawer} className="project-feature-btn">
+                Details
+              </button>
+            )}
+            {hasLink && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-feature-btn project-feature-btn--primary"
+              >
+                Open project
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                  <path d="M2 9L9 2M9 2H4M9 2V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -112,11 +107,10 @@ export default function Projects() {
         </div>
 
         <div className="projects-editorial-list">
-          {projects.map((p, i) => (
+          {projects.map((p) => (
             <EditorialProjectRow
               key={p.id}
               project={p}
-              index={i}
               onOpenDrawer={p.drawer ? () => setActiveDrawer(p) : undefined}
             />
           ))}
