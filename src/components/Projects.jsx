@@ -36,9 +36,9 @@ function ProjectFeatureCard({ project, onOpenDrawer }) {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            filter: hovered ? 'grayscale(80%) blur(5px)' : 'grayscale(100%) blur(8px)',
-            transform: hovered ? 'scale(1.09)' : 'scale(1.06)',
-            opacity: 0.88,
+            filter: hovered ? 'grayscale(90%) blur(3px)' : 'grayscale(100%) blur(4px)',
+            transform: hovered ? 'scale(1.08)' : 'scale(1.05)',
+            opacity: hovered ? 0.92 : 0.82,
             transition: 'filter 0.8s ease, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
             zIndex: 0,
           }}
@@ -57,33 +57,47 @@ function ProjectFeatureCard({ project, onOpenDrawer }) {
         }}
       />
 
-      {/* Layer 3: bottom vignette gradient */}
+      {/* Layer 3: multi-directional vignette */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           zIndex: 2,
-          background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.22) 48%, transparent 72%)',
+          background: [
+            'linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, transparent 38%)',
+            'linear-gradient(to right,  rgba(0,0,0,0.52) 0%, transparent 30%)',
+            'linear-gradient(to left,   rgba(0,0,0,0.52) 0%, transparent 30%)',
+            'linear-gradient(to top,    rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.18) 52%, transparent 72%)',
+          ].join(', '),
           pointerEvents: 'none',
         }}
       />
 
       {/* Content — anchored to bottom */}
       <div className="project-feature-content">
+
+        {/* Divider */}
+        <div style={{
+          width: '100%',
+          height: '1px',
+          background: 'rgba(255,255,255,0.1)',
+          marginBottom: '22px',
+        }} />
+
         {/* Meta row */}
         {metaTags.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', marginBottom: '14px' }}>
             {metaTags.map((tag, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
                 {i > 0 && (
-                  <span style={{ margin: '0 10px', color: 'rgba(255,255,255,0.2)', fontSize: '0.65rem' }}>·</span>
+                  <span style={{ margin: '0 10px', color: 'rgba(255,255,255,0.18)', fontSize: '0.65rem' }}>·</span>
                 )}
                 <span style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: '0.67rem',
                   fontWeight: '500',
-                  color: 'rgba(255,255,255,0.38)',
+                  color: 'rgba(255,255,255,0.36)',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                 }}>
@@ -104,38 +118,28 @@ function ProjectFeatureCard({ project, onOpenDrawer }) {
           {project.description}
         </p>
 
-        {/* Bottom row: stack tags + CTA */}
+        {/* Bottom row: editorial stack text + CTA */}
         <div className="project-feature-bottom">
-          {/* Stack tags */}
-          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-            {stackItems.map((s, i) => (
-              <span
-                key={i}
-                style={{
-                  padding: '4px 10px',
-                  borderRadius: '4px',
-                  border: '1px solid rgba(255,255,255,0.11)',
-                  color: 'rgba(255,255,255,0.38)',
-                  fontSize: '0.68rem',
-                  fontFamily: 'var(--font-body)',
-                  fontWeight: '500',
-                  letterSpacing: '0.02em',
-                  background: 'rgba(255,255,255,0.03)',
-                  backdropFilter: 'blur(4px)',
-                }}
-              >
-                {s}
-              </span>
-            ))}
-          </div>
+          {/* Stack — editorial inline text */}
+          {stackItems.length > 0 && (
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.67rem',
+              fontWeight: '600',
+              color: 'rgba(255,255,255,0.32)',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              lineHeight: '1',
+              margin: 0,
+            }}>
+              {stackItems.join(' · ')}
+            </p>
+          )}
 
           {/* CTA buttons */}
           <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexShrink: 0 }}>
             {onOpenDrawer && (
-              <button
-                onClick={onOpenDrawer}
-                className="project-feature-btn"
-              >
+              <button onClick={onOpenDrawer} className="project-feature-btn">
                 Details
               </button>
             )}
