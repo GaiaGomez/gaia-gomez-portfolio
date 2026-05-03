@@ -91,8 +91,8 @@ export default function Hero() {
             padding: '10px 20px',
             borderRadius: '999px',
             background: 'rgba(16,16,18,0.88)',
-            border: '1px solid rgba(181,123,255,0.16)',
-            color: 'rgba(201,168,255,0.85)',
+            border: '1px solid rgba(255,255,255,0.14)',
+            color: 'rgba(255,255,255,0.88)',
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: '13px',
             fontWeight: '500',
@@ -128,7 +128,7 @@ export default function Hero() {
             fontSize="10"
             fontWeight="300"
             letterSpacing="4.0"
-            fill="#B57BFF"
+            fill="#FFFFFF"
             opacity="0.75"
           >
             <textPath href="#circlePath">LET'S  MAKE  COOL  THINGS </textPath>
