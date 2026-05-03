@@ -269,17 +269,17 @@ export default function Hero() {
   alt="Gaia portrait"
   style={{
     position: 'absolute',
-    bottom: '-14px',
-    left: '56%',
+    bottom: '-24px',
+    left: '54%',
     transform: 'translateX(-50%)',
-    height: '86vh',
-    maxHeight: '940px',
+    height: '92vh',
+    maxHeight: '1040px',
     width: 'auto',
     objectFit: 'contain',
     zIndex: 1,
     pointerEvents: 'none',
     userSelect: 'none',
-    filter: 'drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45))',
+    filter: 'brightness(1.18) contrast(1.08) drop-shadow(0 24px 42px rgba(0,0,0,0.72)) drop-shadow(0 0 28px rgba(255,255,255,0.08))',
     animationDelay: '0.15s',
   }}
 />
