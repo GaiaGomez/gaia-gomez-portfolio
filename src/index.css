@@ -402,3 +402,60 @@ img { display: block; max-width: 100%; }
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Responsive utilities ──────────────────────────────── */
+
+/* Touch devices: restore cursor + prevent iOS input zoom */
+@media (hover: none) and (pointer: coarse) {
+  body { cursor: auto !important; }
+  a, button, [role="button"] { cursor: pointer !important; }
+  input, textarea, select { font-size: max(16px, 1em) !important; }
+}
+
+/* ── Navbar hamburger ──────────────────────────────────── */
+.nav-hamburger { display: none; }
+
+@media (max-width: 768px) {
+  .nav-desktop-links { display: none !important; }
+  .nav-hamburger     { display: flex !important; }
+  /* Tighter navbar padding */
+  .nav-inner { padding-left: 20px !important; padding-right: 20px !important; }
+}
+
+/* ── Contact grid ──────────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ── Hero ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-chip        { display: none !important; }
+  .hero-spin-circle { display: none !important; }
+}
+
+/* ── Project modal extra breakpoints ──────────────────── */
+@media (max-width: 400px) {
+  .project-modal-snap-grid { grid-template-columns: 1fr !important; }
+  .project-modal-header    { padding: 16px !important; }
+  .project-modal-body      { padding: 16px 16px 36px !important; }
+}
+
+/* ── Section title letter-spacing on mobile ────────────── */
+@media (max-width: 600px) {
+  .section-title { letter-spacing: -0.5px; }
+}
+
+/* ── Vibe card hover disabled on touch ─────────────────── */
+@media (hover: none) {
+  .ui-card:hover { transform: none; box-shadow: none; }
+}

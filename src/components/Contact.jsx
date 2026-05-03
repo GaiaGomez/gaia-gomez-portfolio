@@ -53,7 +53,7 @@ export default function Contact() {
       <div className="container">
 
         <p className="section-label">Contact</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
+        <div className="contact-grid">
 
           {/* Left */}
           <div

@@ -167,8 +167,8 @@ export default function ProjectDrawer({ project, onClose }) {
               <button
                 onClick={onClose}
                 style={{
-                  width: '36px',
-                  height: '36px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '50%',
                   border: '1px solid rgba(255,255,255,0.09)',
                   background: 'rgba(255,255,255,0.04)',
@@ -177,7 +177,8 @@ export default function ProjectDrawer({ project, onClose }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0,
-                  cursor: 'none',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s, color 0.2s',
                 }}
               >
                 <svg width="13" height="13" viewBox="0 0 14 14" fill="none">

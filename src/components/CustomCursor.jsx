@@ -8,7 +8,15 @@ export default function CustomCursor() {
   const raf      = useRef(null);
   const [variant, setVariant] = useState('default'); // default | project | link
 
+  // Only render on fine-pointer devices (mouse/trackpad, not touch)
+  const [hasPointer, setHasPointer] = useState(false);
   useEffect(() => {
+    setHasPointer(window.matchMedia('(pointer: fine)').matches);
+  }, []);
+
+  useEffect(() => {
+    if (!hasPointer) return;
+
     const onMove = (e) => {
       pos.current = { x: e.clientX, y: e.clientY };
     };
@@ -61,7 +69,9 @@ export default function CustomCursor() {
       observer.disconnect();
       cancelAnimationFrame(raf.current);
     };
-  }, []);
+  }, [hasPointer]);
+
+  if (!hasPointer) return null;
 
   const dotStyle = {
     position: 'fixed',
@@ -73,11 +83,7 @@ export default function CustomCursor() {
     pointerEvents: 'none',
     zIndex: 99999,
     transition: 'background 0.25s, width 0.2s, height 0.2s, top 0.2s, left 0.2s',
-    background: variant === 'project'
-      ? '#B57BFF'
-      : variant === 'link'
-      ? '#fff'
-      : '#B57BFF',
+    background: '#B57BFF',
     willChange: 'transform',
   };
 

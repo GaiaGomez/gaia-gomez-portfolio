@@ -83,6 +83,7 @@ export default function Hero() {
       {chips.map(chip => (
         <div
           key={chip.label}
+          className="hero-chip"
           style={{
             position: 'absolute',
             top: chip.top, right: chip.right,
@@ -108,7 +109,7 @@ export default function Hero() {
       ))}
 
       {/* ── Spinning circle (right side) ─────────────── */}
-      <div style={{
+      <div className="hero-spin-circle" style={{
         position: 'absolute',
         right: '17%',
         top: '40%',
@@ -298,11 +299,11 @@ export default function Hero() {
           50%  { background-position: 100% 50%; }
           100% { background-position: 0%   50%; }
         }
+
         .hero-content-wrap {
           padding-right: clamp(24px, 6vw, 88px);
         }
 
-        /* Reserved area for upcoming side video on large screens */
         @media (min-width: 1200px) {
           .hero-content-wrap {
             padding-right: clamp(210px, 22vw, 350px);
@@ -310,27 +311,35 @@ export default function Hero() {
         }
 
         @media (max-width: 1024px) {
+          .hero-portrait    { height: 60vh !important; left: 65% !important; }
           .hero-content-wrap {
             position: relative;
             z-index: 3;
-          }
-
-          .hero-portrait {
-            height: 62vh !important;
-            left: 64% !important;
-          }
-
-          .hero-content-wrap {
             padding-right: 24px;
             padding-left: 24px !important;
           }
         }
 
-        @media (max-width: 640px) {
+        /* Tablet + mobile: portrait fades to atmosphere */
+        @media (max-width: 768px) {
           .hero-portrait {
+            animation: none !important;
+            opacity: 0.25 !important;
+            left: auto !important;
+            right: -20px !important;
+            transform: none !important;
             height: 52vh !important;
-            left: 68% !important;
+            z-index: 0 !important;
           }
+          .hero-content-wrap {
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+          }
+        }
+
+        /* Small phones: hide portrait entirely */
+        @media (max-width: 480px) {
+          .hero-portrait { display: none !important; }
         }
       `}</style>
     </section>
