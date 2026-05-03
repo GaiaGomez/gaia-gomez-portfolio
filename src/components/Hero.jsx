@@ -58,7 +58,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{
+    <section ref={sectionRef} className="hero-section" style={{
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
@@ -98,6 +98,7 @@ export default function Hero() {
         <div
           key={chip.label}
           className="hero-chip"
+          data-chip={chip.label.toLowerCase()}
           style={{
             position: 'absolute',
             top: chip.top, right: chip.right,
@@ -334,26 +335,66 @@ export default function Hero() {
           }
         }
 
-        /* Tablet + mobile: portrait fades to atmosphere */
+        /* ── Mobile: stack text → portrait → skills ─────── */
         @media (max-width: 768px) {
-          .hero-portrait {
-            animation: none !important;
-            opacity: 0.25 !important;
-            left: auto !important;
-            right: -20px !important;
-            transform: none !important;
-            height: 52vh !important;
-            z-index: 0 !important;
+          .hero-section {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            justify-content: flex-start !important;
+            min-height: auto !important;
+            padding-bottom: 44px;
           }
           .hero-content-wrap {
+            width: 100% !important;
             padding-left: 24px !important;
             padding-right: 24px !important;
           }
+          .hero-portrait {
+            position: relative !important;
+            bottom: auto !important;
+            left: auto !important;
+            transform: none !important;
+            width: 88% !important;
+            height: auto !important;
+            max-height: 42vh !important;
+            display: block !important;
+            align-self: center !important;
+            margin: 12px auto 0 !important;
+            opacity: 1 !important;
+            z-index: 2 !important;
+            animation: none !important;
+          }
+          .hero-spin-circle { display: none !important; }
+          /* Hide verbose chips, keep 3 simplified skills */
+          .hero-chip[data-chip="code"],
+          .hero-chip[data-chip="architecture"] { display: none !important; }
+          .hero-chip {
+            font-size: 0.72rem !important;
+            padding: 7px 14px !important;
+            animation: none !important;
+          }
+          /* Float 3 skills over portrait bottom area */
+          .hero-chip[data-chip="product"] {
+            top: auto !important; left: auto !important;
+            right: 20px !important; bottom: 108px !important;
+          }
+          .hero-chip[data-chip="design"] {
+            top: auto !important; left: auto !important;
+            right: 20px !important; bottom: 64px !important;
+          }
+          .hero-chip[data-chip="ai"] {
+            top: auto !important; left: auto !important;
+            right: 20px !important; bottom: 20px !important;
+          }
         }
 
-        /* Small phones: hide portrait entirely */
+        /* ── Small phones ────────────────────────────────── */
         @media (max-width: 480px) {
-          .hero-portrait { display: none !important; }
+          .hero-portrait {
+            width: 96% !important;
+            max-height: 38vh !important;
+          }
+          .hero-chip { display: none !important; }
         }
       `}</style>
     </section>

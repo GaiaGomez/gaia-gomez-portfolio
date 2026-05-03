@@ -433,15 +433,51 @@ img { display: block; max-width: 100%; }
   .btn { min-height: var(--btn-h-mobile); }
   .ui-card { padding: var(--card-pad-mobile); }
 
-  .wrapper { min-height: 480px; }
-  .wrapper__bg { background-attachment: scroll; }
-  .wrapper__content { padding: 36px 32px; }
+  /* Stack: image on top, content below with solid background */
+  .wrapper {
+    min-height: unset;
+    overflow: visible;
+  }
+
+  /* Image becomes a regular block element */
+  .wrapper__bg {
+    position: relative;
+    height: 320px;
+    background-attachment: scroll;
+    /* opacity reveal still works via is-revealed */
+  }
+
+  /* Limit gradient to the image area only */
+  .wrapper__gradient {
+    height: 320px;
+    inset: 0 0 auto 0;
+    background: linear-gradient(to top,
+      rgba(0,0,0,0.72) 0%,
+      rgba(0,0,0,0.18) 55%,
+      transparent 100%
+    );
+  }
+
+  /* Content: solid background, below image, no overlay */
+  .wrapper__content {
+    position: relative;
+    bottom: auto;
+    background: #050505;
+    padding: 36px 28px;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 @media (max-width: 600px) {
-  .wrapper { min-height: 380px; }
+  .wrapper__bg { height: 260px; }
   .wrapper__content { padding: 28px 20px; }
-  .editorial-title { letter-spacing: -1.2px; }
+  .editorial-title {
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
+    letter-spacing: -1.2px;
+  }
+  .editorial-desc { font-size: 0.9rem; }
   .editorial-bottom { flex-direction: column; align-items: flex-start; }
   .project-feature-btn { width: 100%; justify-content: center; }
 }
