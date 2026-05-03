@@ -36,7 +36,7 @@ function ProjectFeatureCard({ project, onOpenDrawer }) {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            filter: hovered ? 'grayscale(90%) blur(3px)' : 'grayscale(100%) blur(4px)',
+            filter: hovered ? 'grayscale(90%) blur(1px)' : 'grayscale(100%) blur(2px)',
             transform: hovered ? 'scale(1.08)' : 'scale(1.05)',
             opacity: hovered ? 0.92 : 0.82,
             transition: 'filter 0.8s ease, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)',

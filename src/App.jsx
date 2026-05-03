@@ -27,7 +27,7 @@ export default function App() {
       pos.y += (mouse.y - pos.y) * 0.07;
       if (glowRef.current) {
         glowRef.current.style.background =
-          `radial-gradient(650px at ${pos.x}px ${pos.y}px, rgba(181,123,255,0.08), transparent 70%)`;
+          `radial-gradient(650px at ${pos.x}px ${pos.y}px, rgba(255,255,255,0.03), transparent 70%)`;
       }
       raf = requestAnimationFrame(tick);
     };

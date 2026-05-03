@@ -6,7 +6,7 @@ const SectionLabel = ({ children }) => (
     fontWeight: '600',
     letterSpacing: '2px',
     textTransform: 'uppercase',
-    color: 'rgba(181,123,255,0.7)',
+    color: 'rgba(255,255,255,0.38)',
     marginBottom: '10px',
     fontFamily: 'var(--font-body)',
   }}>
@@ -32,7 +32,7 @@ const CardLabel = ({ children }) => (
     fontWeight: '600',
     letterSpacing: '1.8px',
     textTransform: 'uppercase',
-    color: 'rgba(181,123,255,0.65)',
+    color: 'rgba(255,255,255,0.32)',
     marginBottom: '5px',
     fontFamily: 'var(--font-body)',
   }}>
@@ -100,7 +100,7 @@ export default function ProjectDrawer({ project, onClose }) {
           style={{
             background: 'rgba(12,11,15,0.98)',
             border: '1px solid rgba(255,255,255,0.09)',
-            boxShadow: '0 40px 100px rgba(0,0,0,0.75), 0 0 0 1px rgba(181,123,255,0.05)',
+            boxShadow: '0 40px 100px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.04)',
           }}
         >
           {/* Header */}
@@ -129,7 +129,7 @@ export default function ProjectDrawer({ project, onClose }) {
               <p style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'var(--fs-label)',
-                color: 'rgba(181,123,255,0.7)',
+                color: 'rgba(255,255,255,0.4)',
                 letterSpacing: '0.2px',
               }}>
                 {drawer.meta}
@@ -149,7 +149,7 @@ export default function ProjectDrawer({ project, onClose }) {
                     padding: '8px 16px',
                     borderRadius: '999px',
                     background: 'rgba(18,18,20,0.92)',
-                    border: '1px solid rgba(181,123,255,0.2)',
+                    border: '1px solid rgba(255,255,255,0.14)',
                     color: 'rgba(241,238,248,0.88)',
                     fontSize: 'var(--fs-btn)',
                     fontWeight: '600',
@@ -202,8 +202,8 @@ export default function ProjectDrawer({ project, onClose }) {
                   lineHeight: '1.65',
                   padding: '16px 18px',
                   borderRadius: '12px',
-                  background: 'rgba(12,9,22,0.6)',
-                  border: '1px solid rgba(181,123,255,0.1)',
+                  background: 'rgba(14,14,16,0.65)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                   marginBottom: '24px',
                 }}>
                   {drawer.overview}
@@ -238,7 +238,7 @@ export default function ProjectDrawer({ project, onClose }) {
                       fontWeight: '500',
                       background: 'rgba(16,16,18,0.92)',
                       color: 'rgba(200,196,212,0.75)',
-                      border: '1px solid rgba(181,123,255,0.13)',
+                      border: '1px solid rgba(255,255,255,0.09)',
                     }}>
                       {item}
                     </span>
@@ -254,8 +254,8 @@ export default function ProjectDrawer({ project, onClose }) {
                   lineHeight: '1.65',
                   padding: '16px 18px',
                   borderRadius: '12px',
-                  background: 'rgba(12,9,22,0.6)',
-                  border: '1px solid rgba(181,123,255,0.1)',
+                  background: 'rgba(14,14,16,0.65)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                 }}>
                   {drawer.shows}
                 </p>
@@ -312,7 +312,7 @@ export default function ProjectDrawer({ project, onClose }) {
                         fontFamily: 'var(--font-display)',
                         fontSize: '0.65rem',
                         fontWeight: '700',
-                        color: 'rgba(181,123,255,0.45)',
+                        color: 'rgba(255,255,255,0.28)',
                         paddingTop: '3px',
                         flexShrink: 0,
                         minWidth: '18px',
@@ -359,7 +359,7 @@ export default function ProjectDrawer({ project, onClose }) {
                       fontWeight: '500',
                       background: 'rgba(16,16,18,0.92)',
                       color: 'rgba(200,196,212,0.75)',
-                      border: '1px solid rgba(181,123,255,0.13)',
+                      border: '1px solid rgba(255,255,255,0.09)',
                     }}>
                       {tech}
                     </span>
@@ -375,8 +375,8 @@ export default function ProjectDrawer({ project, onClose }) {
                   lineHeight: '1.65',
                   padding: '16px 18px',
                   borderRadius: '12px',
-                  background: 'rgba(12,9,22,0.6)',
-                  border: '1px solid rgba(181,123,255,0.1)',
+                  background: 'rgba(14,14,16,0.65)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                 }}>
                   {drawer.shows}
                 </p>

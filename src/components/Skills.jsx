@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-const VIOLET   = "#B97FFF";
-const VIOLET_L = "#E0AAFF";
-const VIOLET_D = "#7B2FBE";
+const VIOLET   = "rgba(255,255,255,0.55)";
+const VIOLET_L = "rgba(255,255,255,0.88)";
+const VIOLET_D = "rgba(255,255,255,0.38)";
 const MUTED    = "#7a6e8a";
 const TEXT     = "#ede8f5";
 
@@ -71,7 +71,7 @@ export default function Skills() {
         textTransform: "uppercase",
         marginBottom: 10,
       }}>
-  <span style={{ width: 24, height: 1, background: "#B97FFF", display: "inline-block", marginRight: 8, verticalAlign: "middle" }} />
+  <span style={{ width: 24, height: 1, background: VIOLET, display: "inline-block", marginRight: 8, verticalAlign: "middle" }} />
   My Stack
 </p>
 
@@ -85,11 +85,7 @@ export default function Skills() {
         marginBottom: 16,
       }}>
         What I bring<br />
-        <span style={{
-          background: `linear-gradient(135deg, ${VIOLET_L}, ${VIOLET})`,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }}>to the table</span>
+        <span style={{ color: 'rgba(255,255,255,0.88)' }}>to the table</span>
       </h2>
 
       <p style={{ color: MUTED, fontSize: 15, marginBottom: 64, maxWidth: 480 }}>

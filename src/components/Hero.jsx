@@ -59,7 +59,7 @@ export default function Hero() {
       <div style={{
         position: 'absolute', top: '-15%', right: '-8%',
         width: '650px', height: '650px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(181,123,255,0.035) 0%, transparent 68%)',
+        background: 'radial-gradient(circle, rgba(255,255,255,0.022) 0%, transparent 68%)',
         filter: 'blur(72px)', pointerEvents: 'none',
       }} />
       <div style={{
@@ -142,7 +142,7 @@ export default function Hero() {
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: '18px',
-          color: '#B57BFF',
+          color: 'rgba(255,255,255,0.7)',
           opacity: 0.9,
         }}>
           ✦
@@ -162,13 +162,13 @@ export default function Hero() {
               padding: '7px 18px',
               borderRadius: '999px',
               background: 'rgba(16,16,18,0.88)',
-              border: '1px solid rgba(181,123,255,0.14)',
+              border: '1px solid rgba(255,255,255,0.09)',
               marginBottom: '38px',
             }}>
               <span style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: '13px',
-                color: '#c9a8ff',
+                color: 'rgba(255,255,255,0.55)',
                 letterSpacing: '0.3px',
                 fontWeight: '400',
               }}>
@@ -202,13 +202,13 @@ export default function Hero() {
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: 'clamp(1.3rem, 2.4vw, 2.1rem)',
                 fontWeight: '600',
-                color: '#9f64f5',
+                color: 'rgba(255,255,255,0.82)',
                 letterSpacing: '-0.3px',
               }}>
                 {displayed}
                 <span style={{
                   opacity: showCursor ? 1 : 0,
-                  color: '#B57BFF',
+                  color: 'rgba(255,255,255,0.45)',
                   marginLeft: '2px',
                   fontWeight: '300',
                   transition: 'opacity 0.1s',

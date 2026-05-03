@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const NAV_SECTIONS = ['Overview', 'Approach', 'Work Samples', 'Skills Applied', 'Result'];
 
-const ACCENT = '#B57BFF';
+const ACCENT = 'rgba(255,255,255,0.72)';
 const BG = '#090909';
 const SURFACE = '#101012';
 const TEXT = '#ede8f5';
@@ -125,7 +125,7 @@ export default function SelectedWorksCase({ onClose }) {
                   padding: '4px 10px',
                   borderRadius: 999,
                   background: 'rgba(16,16,18,0.9)',
-                  border: '1px solid rgba(181,123,255,0.14)',
+                  border: '1px solid rgba(255,255,255,0.1)',
                   color: ACCENT,
                   fontSize: 10,
                   fontFamily: "'DM Sans', sans-serif",
@@ -284,7 +284,7 @@ export default function SelectedWorksCase({ onClose }) {
                         padding: '2px 8px',
                         borderRadius: 999,
                         background: 'rgba(255,255,255,0.04)',
-                        border: '1px solid rgba(181,123,255,0.2)',
+                        border: '1px solid rgba(255,255,255,0.12)',
                         color: ACCENT,
                         fontSize: 10,
                         fontFamily: "'DM Sans', sans-serif",

@@ -84,7 +84,7 @@ export default function Navbar() {
             width: '7px',
             height: '7px',
             borderRadius: '50%',
-            background: '#B57BFF',
+            background: '#ffffff',
             marginLeft: '1px',
             verticalAlign: 'super',
           }} />
@@ -112,7 +112,7 @@ export default function Navbar() {
                   transition: 'color 0.2s',
                   letterSpacing: '0.2px',
                 }}
-                onMouseEnter={e => e.target.style.color = '#B57BFF'}
+                onMouseEnter={e => e.target.style.color = '#ffffff'}
                 onMouseLeave={e => e.target.style.color = 'rgba(241,238,248,0.72)'}
               >
                 {l.label}
@@ -192,7 +192,7 @@ export default function Navbar() {
                 transition: 'color 0.2s',
                 animation: `fadeInUp 0.4s var(--ease-standard) ${i * 0.07}s both`,
               }}
-              onTouchStart={e => e.currentTarget.style.color = '#B57BFF'}
+              onTouchStart={e => e.currentTarget.style.color = '#ffffff'}
               onTouchEnd={e => e.currentTarget.style.color = 'rgba(241,238,248,0.88)'}
             >
               {l.label}

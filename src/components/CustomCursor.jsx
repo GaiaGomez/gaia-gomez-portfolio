@@ -83,7 +83,7 @@ export default function CustomCursor() {
     pointerEvents: 'none',
     zIndex: 99999,
     transition: 'background 0.25s, width 0.2s, height 0.2s, top 0.2s, left 0.2s',
-    background: '#B57BFF',
+    background: '#ffffff',
     willChange: 'transform',
   };
 
@@ -94,12 +94,12 @@ export default function CustomCursor() {
     borderRadius: '50%',
     transition: 'width 0.25s, height 0.25s, top 0.25s, left 0.25s, border-color 0.25s, opacity 0.25s',
     border: `1.5px solid ${
-      variant === 'project' ? 'rgba(181,123,255,0.65)'
+      variant === 'project' ? 'rgba(255,255,255,0.55)'
       : variant === 'link'   ? 'rgba(255,255,255,0.6)'
-      : 'rgba(181,123,255,0.5)'
+      : 'rgba(255,255,255,0.35)'
     }`,
     background: variant === 'project'
-      ? 'rgba(181,123,255,0.08)'
+      ? 'rgba(255,255,255,0.05)'
       : variant === 'link'
       ? 'rgba(255,255,255,0.04)'
       : 'transparent',

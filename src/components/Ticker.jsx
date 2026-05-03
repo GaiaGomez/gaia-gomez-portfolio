@@ -52,7 +52,7 @@ export default function Ticker() {
             fontWeight: '500',
             letterSpacing: '1.5px',
             textTransform: 'uppercase',
-            color: i % 3 === 0 ? '#B57BFF' : 'rgba(232,224,245,0.35)',
+            color: i % 3 === 0 ? 'rgba(255,255,255,0.78)' : 'rgba(255,255,255,0.28)',
             whiteSpace: 'nowrap',
           }}>
             {item}
@@ -61,7 +61,7 @@ export default function Ticker() {
               width: '4px',
               height: '4px',
               borderRadius: '50%',
-              background: 'rgba(181,123,255,0.4)',
+              background: 'rgba(255,255,255,0.18)',
               flexShrink: 0,
             }} />
           </span>

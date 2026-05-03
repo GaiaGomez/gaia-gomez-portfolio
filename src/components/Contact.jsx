@@ -31,13 +31,13 @@ export default function Contact() {
     padding: '16px 20px',
     borderRadius: '12px',
     background: 'rgba(14,14,16,0.82)',
-    border: `1px solid ${focused === field ? 'rgba(181,123,255,0.28)' : 'rgba(255,255,255,0.08)'}`,
+    border: `1px solid ${focused === field ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.08)'}`,
     color: '#f1eef8',
     fontFamily: "'DM Sans', sans-serif",
     fontSize: '15px',
     outline: 'none',
     transition: 'border-color 0.25s, box-shadow 0.25s',
-    boxShadow: focused === field ? '0 0 0 3px rgba(181,123,255,0.05)' : 'none',
+    boxShadow: focused === field ? '0 0 0 3px rgba(255,255,255,0.04)' : 'none',
     resize: 'none',
   });
 
@@ -89,17 +89,17 @@ export default function Contact() {
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: '18px',
               fontWeight: '500',
-              color: '#B57BFF',
-              borderBottom: '1px solid rgba(181,123,255,0.3)',
+              color: 'rgba(255,255,255,0.88)',
+              borderBottom: '1px solid rgba(255,255,255,0.2)',
               paddingBottom: '4px',
-              transition: 'border-color 0.2s',
+              transition: 'border-color 0.2s, color 0.2s',
             }}
-            onMouseEnter={e => e.currentTarget.style.borderColor = '#B57BFF'}
-            onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(181,123,255,0.3)'}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; e.currentTarget.style.color = '#ffffff'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = 'rgba(255,255,255,0.88)'; }}
             >
               gaiavaninago@gmail.com
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 13L13 3M13 3H7M13 3v6" stroke="#B57BFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 13L13 3M13 3H7M13 3v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
 
@@ -135,8 +135,8 @@ export default function Contact() {
                     }}
                     onMouseEnter={e => {
                       e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                      e.currentTarget.style.borderColor = 'rgba(181,123,255,0.22)';
-                      e.currentTarget.style.color = '#B57BFF';
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.22)';
+                      e.currentTarget.style.color = '#ffffff';
                     }}
                     onMouseLeave={e => {
                       e.currentTarget.style.background = 'rgba(16,16,18,0.9)';
@@ -300,7 +300,7 @@ export default function Contact() {
             fontWeight: '700',
             color: 'rgba(241,238,248,0.76)',
           }}>
-            GG<span style={{ color: '#B57BFF' }}>.</span>
+            GG<span style={{ color: '#ffffff' }}>.</span>
           </span>
           <span style={{
             fontFamily: "'DM Sans', sans-serif",

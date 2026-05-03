@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 
 const NAV_SECTIONS = ['Overview', 'Challenge', 'Process', 'Visual Identity', 'Deliverables', 'Result'];
 
-const ACCENT = '#B57BFF';
-const BG = '#08060e';
-const SURFACE = '#0f0b1a';
+const ACCENT = 'rgba(255,255,255,0.72)';
+const BG = '#080808';
+const SURFACE = '#111113';
 const TEXT = '#ede8f5';
 const MUTED = 'rgba(237,232,245,0.45)';
-const BORDER = 'rgba(181,123,255,0.1)';
+const BORDER = 'rgba(255,255,255,0.09)';
 
 export default function MistikCase({ onClose }) {
   const [active, setActive] = useState('Overview');
@@ -60,7 +60,7 @@ export default function MistikCase({ onClose }) {
           overflow: 'hidden',
           transform: visible ? 'translateY(0)' : 'translateY(32px)',
           transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1)',
-          boxShadow: '0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(181,123,255,0.08)',
+          boxShadow: '0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)',
         }}
       >
         {/* Sidebar */}
@@ -104,7 +104,7 @@ export default function MistikCase({ onClose }) {
                   width: '100%',
                   textAlign: 'left',
                   padding: '10px 24px',
-                  background: active === s ? 'rgba(181,123,255,0.1)' : 'transparent',
+                  background: active === s ? 'rgba(255,255,255,0.07)' : 'transparent',
                   borderLeft: `2px solid ${active === s ? ACCENT : 'transparent'}`,
                   border: 'none',
                   color: active === s ? TEXT : MUTED,
@@ -125,8 +125,8 @@ export default function MistikCase({ onClose }) {
                 <span key={t} style={{
                   padding: '4px 10px',
                   borderRadius: 999,
-                  background: 'rgba(181,123,255,0.08)',
-                  border: `1px solid rgba(181,123,255,0.2)`,
+                  background: 'rgba(255,255,255,0.05)',
+                  border: `1px solid rgba(255,255,255,0.12)`,
                   color: ACCENT,
                   fontSize: 10,
                   fontFamily: "'DM Sans', sans-serif",
@@ -154,7 +154,7 @@ export default function MistikCase({ onClose }) {
               width: 36,
               height: 36,
               borderRadius: '50%',
-              background: 'rgba(181,123,255,0.08)',
+              background: 'rgba(255,255,255,0.05)',
               border: `1px solid ${BORDER}`,
               color: MUTED,
               display: 'flex',
@@ -164,8 +164,8 @@ export default function MistikCase({ onClose }) {
               marginBottom: 16,
               transition: 'all 0.2s',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(181,123,255,0.18)'; e.currentTarget.style.color = TEXT; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(181,123,255,0.08)'; e.currentTarget.style.color = MUTED; }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = TEXT; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = MUTED; }}
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
@@ -377,5 +377,5 @@ function Section({ id, title, children, onVisible }) {
 }
 
 function Divider() {
-  return <div style={{ height: 1, background: 'rgba(181,123,255,0.08)', marginBottom: 48 }} />;
+  return <div style={{ height: 1, background: 'rgba(255,255,255,0.05)', marginBottom: 48 }} />;
 }
