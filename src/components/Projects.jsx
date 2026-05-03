@@ -24,7 +24,7 @@ function ProjectFeatureCard({ project, onOpenDrawer }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Background image */}
+      {/* Layer 1: blurred grayscale image */}
       {showImage && (
         <img
           src={project.image}
@@ -36,23 +36,36 @@ function ProjectFeatureCard({ project, onOpenDrawer }) {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            filter: hovered ? 'grayscale(65%)' : 'grayscale(100%)',
-            transform: hovered ? 'scale(1.04)' : 'scale(1)',
-            transition: 'filter 0.75s ease, transform 0.95s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            filter: hovered ? 'grayscale(80%) blur(5px)' : 'grayscale(100%) blur(8px)',
+            transform: hovered ? 'scale(1.09)' : 'scale(1.06)',
+            opacity: 0.88,
+            transition: 'filter 0.8s ease, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            zIndex: 0,
           }}
         />
       )}
 
-      {/* Dark gradient overlay */}
+      {/* Layer 2: flat dark overlay */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
-          background: hovered
-            ? 'linear-gradient(to top, rgba(0,0,0,0.84) 0%, rgba(0,0,0,0.36) 55%, rgba(0,0,0,0.10) 100%)'
-            : 'linear-gradient(to top, rgba(0,0,0,0.93) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.22) 100%)',
-          transition: 'background 0.75s ease',
+          zIndex: 1,
+          background: hovered ? 'rgba(0,0,0,0.34)' : 'rgba(0,0,0,0.44)',
+          transition: 'background 0.8s ease',
+        }}
+      />
+
+      {/* Layer 3: bottom vignette gradient */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 2,
+          background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.22) 48%, transparent 72%)',
+          pointerEvents: 'none',
         }}
       />
 
@@ -133,7 +146,7 @@ function ProjectFeatureCard({ project, onOpenDrawer }) {
                 rel="noopener noreferrer"
                 className="project-feature-btn project-feature-btn--primary"
               >
-                View case study
+                Open project
                 <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
                   <path d="M2 9L9 2M9 2H4M9 2V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
