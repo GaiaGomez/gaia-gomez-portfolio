@@ -69,7 +69,7 @@ export default function Navbar() {
       }}>
         <a href="#" onClick={close} style={{
           fontFamily: "'Space Grotesk', sans-serif",
-          fontSize: '27px',
+          fontSize: '24px',
           fontWeight: '700',
           color: '#e8e0f5',
           letterSpacing: '-0.5px',
@@ -106,7 +106,7 @@ export default function Navbar() {
                 className="nav-link"
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: '14px',
+                  fontSize: 'var(--text-meta)',
                   fontWeight: '400',
                   color: 'rgba(241,238,248,0.72)',
                   transition: 'color 0.2s',

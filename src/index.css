@@ -15,13 +15,22 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'DM Sans', sans-serif;
 
-  --fs-hero-name: clamp(4.5rem, 10vw, 9rem);
-  --fs-hero-role: clamp(1.5rem, 3vw, 2.5rem);
-  --fs-section-title: clamp(2.2rem, 4vw, 4rem);
-  --fs-card-title: clamp(1.1rem, 1.8vw, 1.35rem);
-  --fs-body: clamp(1rem, 1.2vw, 1.1rem);
-  --fs-label: clamp(0.72rem, 1vw, 0.8rem);
-  --fs-btn: 0.92rem;
+  /* ── Type scale ──────────────────────────────────── */
+  --text-meta:          0.75rem;
+  --text-body:          1rem;
+  --text-body-lg:       clamp(1.05rem, 1.4vw, 1.25rem);
+  --text-card-title:    clamp(2.4rem, 4vw, 3.8rem);
+  --text-section-title: clamp(3rem, 5vw, 4.6rem);
+  --text-hero-title:    clamp(4.4rem, 8vw, 6.8rem);
+
+  /* Legacy aliases — kept for backward compat */
+  --fs-hero-name:     var(--text-hero-title);
+  --fs-hero-role:     clamp(1.1rem, 1.8vw, 1.5rem);
+  --fs-section-title: var(--text-section-title);
+  --fs-card-title:    clamp(1rem, 1.4vw, 1.15rem);
+  --fs-body:          var(--text-body-lg);
+  --fs-label:         var(--text-meta);
+  --fs-btn:           0.875rem;
 
   --radius-pill: 999px;
   --radius-card: 24px;
@@ -267,17 +276,17 @@ img { display: block; max-width: 100%; }
 
 .project-feature-title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 5vw, 66px);
+  font-size: var(--text-card-title);
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 10px;
-  letter-spacing: -2px;
+  letter-spacing: -1.5px;
   line-height: 1.02;
 }
 
 .project-feature-desc {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.15vw, 0.975rem);
+  font-size: var(--text-body);
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.68;
   font-weight: 300;

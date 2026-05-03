@@ -77,7 +77,7 @@ export default function Skills() {
 
       <h2 style={{
         fontFamily: "'Space Grotesk', sans-serif",
-        fontSize: "clamp(40px, 6vw, 72px)",
+        fontSize: "var(--text-section-title)",
         fontWeight: 700,
         letterSpacing: -2,
         color: TEXT,
@@ -88,7 +88,7 @@ export default function Skills() {
         <span style={{ color: 'rgba(255,255,255,0.88)' }}>to the table</span>
       </h2>
 
-      <p style={{ color: MUTED, fontSize: 15, marginBottom: 64, maxWidth: 480 }}>
+      <p style={{ color: MUTED, fontSize: 'var(--text-body)', marginBottom: 64, maxWidth: 480, fontFamily: "'DM Sans', sans-serif" }}>
         Every skill here has a late night behind it.
       </p>
 
