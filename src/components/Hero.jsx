@@ -270,7 +270,7 @@ export default function Hero() {
   style={{
     position: 'absolute',
     bottom: '-14px',
-    left: '58%',
+    left: '56%',
     transform: 'translateX(-50%)',
     height: '86vh',
     maxHeight: '940px',
