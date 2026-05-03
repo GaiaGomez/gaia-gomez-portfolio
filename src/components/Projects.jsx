@@ -3,166 +3,145 @@ import { projects } from '../data/projects';
 import ProjectDrawer from './ProjectDrawer';
 import { useReveal } from '../hooks/useReveal';
 
-function ProjectCard({ project, onOpenDrawer }) {
+function ProjectFeatureCard({ project, onOpenDrawer }) {
   const [hovered, setHovered] = useState(false);
   const [imgError, setImgError] = useState(false);
 
   const hasLink = !!project.link;
   const showImage = project.image && !imgError;
 
-  const imgArea = (
-    <>
+  const metaTags = project.drawer?.meta ? project.drawer.meta.split(' · ') : [];
+
+  const stackItems = project.drawer?.snapshot?.stack
+    ? project.drawer.snapshot.stack.split(' · ').slice(0, 4)
+    : Array.isArray(project.drawer?.stack)
+    ? project.drawer.stack.slice(0, 4)
+    : [];
+
+  return (
+    <div
+      className="project-feature-card"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Background image */}
       {showImage && (
         <img
           src={project.image}
           alt={project.title}
           onError={() => setImgError(true)}
           style={{
+            position: 'absolute',
+            inset: 0,
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            display: 'block',
-            opacity: hovered ? 0.92 : 0.72,
-            transform: hovered ? 'scale(1.05)' : 'scale(1)',
-            transition: 'opacity 0.45s, transform 0.6s var(--ease-standard)',
+            filter: hovered ? 'grayscale(65%)' : 'grayscale(100%)',
+            transform: hovered ? 'scale(1.04)' : 'scale(1)',
+            transition: 'filter 0.75s ease, transform 0.95s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           }}
         />
       )}
-      <div style={{
-        position: 'absolute',
-        bottom: 0, left: 0, right: 0,
-        height: '64px',
-        background: 'linear-gradient(to bottom, transparent, rgba(10,10,12,0.95))',
-        pointerEvents: 'none',
-      }} />
-    </>
-  );
 
-  const imgWrapBase = {
-    height: '220px',
-    overflow: 'hidden',
-    position: 'relative',
-    background: 'linear-gradient(135deg, #111112 0%, #0a0a0c 100%)',
-    display: 'block',
-  };
+      {/* Dark gradient overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: hovered
+            ? 'linear-gradient(to top, rgba(0,0,0,0.84) 0%, rgba(0,0,0,0.36) 55%, rgba(0,0,0,0.10) 100%)'
+            : 'linear-gradient(to top, rgba(0,0,0,0.93) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.22) 100%)',
+          transition: 'background 0.75s ease',
+        }}
+      />
 
-  const arrowStyle = {
-    position: 'absolute',
-    bottom: '28px',
-    right: '28px',
-    width: '36px',
-    height: '36px',
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    background: hovered ? 'rgba(181,123,255,0.14)' : 'rgba(255,255,255,0.04)',
-    border: `1px solid ${hovered ? 'rgba(181,123,255,0.4)' : 'rgba(255,255,255,0.08)'}`,
-    transition: 'all 0.28s var(--ease-standard)',
-    transform: hovered ? 'rotate(-45deg)' : 'rotate(0deg)',
-  };
+      {/* Content — anchored to bottom */}
+      <div className="project-feature-content">
+        {/* Meta row */}
+        {metaTags.length > 0 && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', marginBottom: '14px' }}>
+            {metaTags.map((tag, i) => (
+              <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                {i > 0 && (
+                  <span style={{ margin: '0 10px', color: 'rgba(255,255,255,0.2)', fontSize: '0.65rem' }}>·</span>
+                )}
+                <span style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.67rem',
+                  fontWeight: '500',
+                  color: 'rgba(255,255,255,0.38)',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                }}>
+                  {tag}
+                </span>
+              </span>
+            ))}
+          </div>
+        )}
 
-  const arrowSvg = (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M3 11L11 3M11 3H5M11 3v6" stroke="#B57BFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  );
-
-  return (
-    <div
-      className="project-card"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        position: 'relative',
-        overflow: 'hidden',
-        borderRadius: 'var(--radius-card)',
-        background: 'rgba(16,16,18,0.94)',
-        border: `1px solid ${hovered ? 'rgba(181,123,255,0.28)' : 'rgba(255,255,255,0.07)'}`,
-        transform: hovered ? 'translateY(-4px) scale(1.02)' : 'translateY(0) scale(1)',
-        boxShadow: hovered
-          ? '0 24px 56px rgba(0,0,0,0.52), 0 0 0 1px rgba(181,123,255,0.08), 0 0 40px rgba(181,123,255,0.06)'
-          : '0 4px 20px rgba(0,0,0,0.32)',
-        transition: 'transform var(--t-hover) var(--ease-standard), border-color var(--t-hover) var(--ease-standard), box-shadow var(--t-hover) var(--ease-standard)',
-      }}
-    >
-      {/* Image area */}
-      {hasLink ? (
-        <a href={project.link} target="_blank" rel="noopener noreferrer" style={imgWrapBase}>
-          {imgArea}
-        </a>
-      ) : (
-        <div onClick={onOpenDrawer} style={{ ...imgWrapBase, cursor: 'none' }}>
-          {imgArea}
-        </div>
-      )}
-
-      {/* Content */}
-      <div style={{ padding: '22px 28px 72px' }}>
-        <h3 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'var(--fs-card-title)',
-          fontWeight: '600',
-          color: hovered ? '#f1eef8' : 'rgba(241,238,248,0.92)',
-          marginBottom: '10px',
-          letterSpacing: '-0.3px',
-          lineHeight: '1.3',
-          transition: 'color 0.25s',
-        }}>
+        {/* Title */}
+        <h3 className="project-feature-title">
           {project.title}
         </h3>
-        <p style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: 'var(--fs-body)',
-          color: 'rgba(241,238,248,0.5)',
-          lineHeight: '1.65',
-          fontWeight: '300',
-        }}>
+
+        {/* Description */}
+        <p className="project-feature-desc">
           {project.description}
         </p>
-      </div>
 
-      {/* Details button — bottom left */}
-      {onOpenDrawer && (
-        <button
-          onClick={onOpenDrawer}
-          style={{
-            position: 'absolute',
-            bottom: '28px',
-            left: '28px',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '5px',
-            padding: '6px 13px',
-            borderRadius: '999px',
-            background: 'rgba(18,18,20,0.92)',
-            border: '1px solid rgba(255,255,255,0.09)',
-            color: 'rgba(241,238,248,0.65)',
-            fontFamily: 'var(--font-body)',
-            fontSize: '0.76rem',
-            fontWeight: '600',
-            letterSpacing: '0.3px',
-          }}
-        >
-          Details
-        </button>
-      )}
+        {/* Bottom row: stack tags + CTA */}
+        <div className="project-feature-bottom">
+          {/* Stack tags */}
+          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+            {stackItems.map((s, i) => (
+              <span
+                key={i}
+                style={{
+                  padding: '4px 10px',
+                  borderRadius: '4px',
+                  border: '1px solid rgba(255,255,255,0.11)',
+                  color: 'rgba(255,255,255,0.38)',
+                  fontSize: '0.68rem',
+                  fontFamily: 'var(--font-body)',
+                  fontWeight: '500',
+                  letterSpacing: '0.02em',
+                  background: 'rgba(255,255,255,0.03)',
+                  backdropFilter: 'blur(4px)',
+                }}
+              >
+                {s}
+              </span>
+            ))}
+          </div>
 
-      {/* Arrow — bottom right */}
-      {hasLink ? (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={arrowStyle}
-        >
-          {arrowSvg}
-        </a>
-      ) : (
-        <div onClick={onOpenDrawer} style={{ ...arrowStyle, cursor: 'none' }}>
-          {arrowSvg}
+          {/* CTA buttons */}
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexShrink: 0 }}>
+            {onOpenDrawer && (
+              <button
+                onClick={onOpenDrawer}
+                className="project-feature-btn"
+              >
+                Details
+              </button>
+            )}
+            {hasLink && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-feature-btn project-feature-btn--primary"
+              >
+                View case study
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                  <path d="M2 9L9 2M9 2H4M9 2V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
@@ -170,16 +149,18 @@ function ProjectCard({ project, onOpenDrawer }) {
 export default function Projects() {
   const [activeDrawer, setActiveDrawer] = useState(null);
   const [headerRef, headerVisible] = useReveal();
-  const [gridRef, gridVisible] = useReveal();
+  const [listRef, listVisible] = useReveal();
 
   return (
     <>
-      {activeDrawer && <ProjectDrawer project={activeDrawer} onClose={() => setActiveDrawer(null)} />}
+      {activeDrawer && (
+        <ProjectDrawer project={activeDrawer} onClose={() => setActiveDrawer(null)} />
+      )}
 
       <section className="section" id="projects">
         <div className="container">
 
-          {/* Section header with reveal */}
+          {/* Section header */}
           <div
             ref={headerRef}
             style={{
@@ -196,18 +177,18 @@ export default function Projects() {
             </h2>
           </div>
 
-          {/* Grid with staggered card reveals */}
-          <div className="projects-grid" ref={gridRef}>
+          {/* Feature cards — vertical stack */}
+          <div ref={listRef} className="project-feature-list">
             {projects.map((p, i) => (
               <div
                 key={p.id}
                 style={{
-                  opacity: gridVisible ? 1 : 0,
-                  transform: gridVisible ? 'translateY(0)' : 'translateY(26px)',
-                  transition: `opacity 0.62s var(--ease-standard) ${i * 0.09}s, transform 0.62s var(--ease-standard) ${i * 0.09}s`,
+                  opacity: listVisible ? 1 : 0,
+                  transform: listVisible ? 'translateY(0)' : 'translateY(32px)',
+                  transition: `opacity 0.7s var(--ease-standard) ${i * 0.12}s, transform 0.7s var(--ease-standard) ${i * 0.12}s`,
                 }}
               >
-                <ProjectCard
+                <ProjectFeatureCard
                   project={p}
                   onOpenDrawer={p.drawer ? () => setActiveDrawer(p) : undefined}
                 />
