@@ -264,25 +264,25 @@ export default function Hero() {
       </div>
 
       <img
-        className="hero-portrait fade-in"
-        src="/gaia-portrait-cutout.webp"
-        alt="Gaia portrait"
-        style={{
-          position: 'absolute',
-          bottom: '-6px',
-          left: '57%',
-          transform: 'translateX(-50%)',
-          height: '73vh',
-          maxHeight: '780px',
-          width: 'auto',
-          objectFit: 'contain',
-          zIndex: 1,
-          pointerEvents: 'none',
-          userSelect: 'none',
-          filter: 'drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45))',
-          animationDelay: '0.15s',
-        }}
-      />
+  className="hero-portrait fade-in"
+  src="/gaia-portrait-cutout.webp"
+  alt="Gaia portrait"
+  style={{
+    position: 'absolute',
+    bottom: '-14px',
+    left: '60%',
+    transform: 'translateX(-50%)',
+    height: '86vh',
+    maxHeight: '940px',
+    width: 'auto',
+    objectFit: 'contain',
+    zIndex: 1,
+    pointerEvents: 'none',
+    userSelect: 'none',
+    filter: 'drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45))',
+    animationDelay: '0.15s',
+  }}
+/>
 
       {/* ── Keyframes ────────────────────────────────── */}
       <style>{`
@@ -311,7 +311,7 @@ export default function Hero() {
         }
 
         @media (max-width: 1024px) {
-          .hero-portrait    { height: 60vh !important; left: 65% !important; }
+          .hero-portrait { height: 68vh !important; left: 66% !important; }
           .hero-content-wrap {
             position: relative;
             z-index: 3;
