@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const roles = [
   'Software Engineer + Designer',
@@ -17,6 +17,18 @@ export default function Hero() {
   const [roleIdx,    setRoleIdx]    = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
+  const sectionRef = useRef(null);
+
+  // Scroll-based scale: 1 → 0.96 over one viewport height
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const onScroll = () => {
+      const scale = Math.max(0.96, Math.min(1, 1 - (window.scrollY / window.innerHeight) * 0.04));
+      if (sectionRef.current) sectionRef.current.style.transform = `scale(${scale})`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Typewriter
   useEffect(() => {
@@ -46,13 +58,15 @@ export default function Hero() {
   }, []);
 
   return (
-    <section style={{
+    <section ref={sectionRef} style={{
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
       position: 'relative',
       overflow: 'hidden',
       background: '#090909',
+      transformOrigin: 'top center',
+      willChange: 'transform',
     }}>
 
       {/* ── BG blobs ─────────────────────────────────── */}
@@ -221,7 +235,7 @@ export default function Hero() {
               fontSize: 'clamp(1.4rem, 2.2vw, 2.4rem)',
               color: '#f1edf8',
               lineHeight: '1.2',
-              marginBottom: '42px',
+              marginBottom: '38px',
               fontWeight: '600',
               width: '100%',
               maxWidth: '820px',
