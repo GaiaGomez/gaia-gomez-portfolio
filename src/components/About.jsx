@@ -124,7 +124,7 @@ export default function About() {
           <div className="about-portrait-wrap">
             <div className="about-portrait-glow" />
             <img
-              src="/gaia-portrait-cutout.webp"
+              src="/gaia-about-portrait.webp"
               alt="Gaia Gómez"
               className="about-portrait"
             />
