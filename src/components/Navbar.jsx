@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 const links = [
-  { label: 'Projects', href: '#projects' },
   { label: 'About me', href: '#about' },
+  { label: 'Projects', href: '#projects' },
 ];
 
 function HamburgerIcon({ open }) {
