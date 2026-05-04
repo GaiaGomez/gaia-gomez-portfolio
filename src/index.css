@@ -702,7 +702,6 @@ img { display: block; max-width: 100%; }
   width: 100%;
   max-width: 360px;
   height: auto;
-  filter: grayscale(100%);
   display: block;
 }
 
