@@ -58,8 +58,8 @@ export default function App() {
 
       <main>
         <Hero />
-        <Projects />
         <About />
+        <Projects />
         <Contact />
       </main>
     </>
