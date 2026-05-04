@@ -106,17 +106,17 @@ export default function About() {
               color: 'var(--accent)',
               marginBottom: '32px',
             }}>
-              Software engineer with a design background
+              Software engineer, designer by history, curious human by default.
             </p>
 
             <p style={{ ...bodyText, marginBottom: '16px' }}>
-              Software engineer (final semester) with 5+ years in graphic design — branding, packaging, digital systems, the whole thing. Currently building full stack applications and figuring out how AI fits into everything.
+              I’m in my final semester of Software Engineering, with 5+ years in graphic design. I’ve spent years making things look good, now I’m obsessed with making them work well too.
             </p>
             <p style={{ ...bodyText, marginBottom: '16px' }}>
-              I have a curious brain, a design-aware mindset and a genuine obsession with learning how things work. I like building digital experiences that make sense, feel good to use and keep getting better through iteration.
+              I build full stack digital products with a design brain, a curious mind and a very real need to understand how everything works.
             </p>
             <p style={bodyText}>
-              I'm fully in it: learning, testing, improving and trying things until they click. My design background adds an extra layer of clarity and user sensitivity to the way I build.
+              I like clear interfaces, smart systems, tiny details, good structure and products that feel nice to use. Currently exploring how AI, design and software can work together and having way too much fun testing things until they click.
             </p>
           </div>
 
