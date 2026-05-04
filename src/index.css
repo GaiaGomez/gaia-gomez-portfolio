@@ -590,6 +590,71 @@ img { display: block; max-width: 100%; }
   }
 }
 
+/* ── About — Hero layout ───────────────────────────────── */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: clamp(56px, 8vw, 96px);
+}
+
+.about-portrait-wrap {
+  position: relative;
+  padding-top: 38px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about-portrait-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -44%);
+  width: 85%;
+  height: 75%;
+  background: radial-gradient(ellipse at 50% 30%, rgba(200, 200, 212, 0.13) 0%, transparent 66%);
+  filter: blur(56px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-portrait {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  filter: grayscale(100%);
+  display: block;
+}
+
+@media (max-width: 960px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-portrait-wrap {
+    padding-top: 0;
+    max-height: 400px;
+    overflow: hidden;
+  }
+
+  .about-portrait {
+    max-width: 280px;
+    object-fit: cover;
+    object-position: top center;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-portrait-wrap {
+    display: none;
+  }
+}
+
 /* ── About — Vibe cards grid ───────────────────────────── */
 .vibe-grid {
   display: grid;

@@ -75,48 +75,60 @@ export default function About() {
     <section className="section" id="about">
       <div className="container">
 
-        {/* 1. Hero bio */}
+        {/* 1. Hero bio with portrait */}
         <div
           ref={bioRef}
+          className="about-hero"
           style={{
-            maxWidth: '720px',
-            marginBottom: 'clamp(56px, 8vw, 96px)',
             opacity: bioVisible ? 1 : 0,
             transform: bioVisible ? 'translateY(0)' : 'translateY(22px)',
             transition: 'opacity 0.65s var(--ease-standard), transform 0.65s var(--ease-standard)',
           }}
         >
-          <p className="section-label">About me</p>
-          <h1 style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: 'var(--fs-section-title)',
-            fontWeight: '700',
-            color: 'var(--text)',
-            lineHeight: 1.08,
-            letterSpacing: '-1px',
-            marginBottom: '10px',
-          }}>
-            Gaia Gómez
-          </h1>
-          <p style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: 'var(--fs-card-title)',
-            fontWeight: '500',
-            color: 'var(--accent)',
-            marginBottom: '32px',
-          }}>
-            Software engineer with a design background
-          </p>
+          {/* Text — left */}
+          <div>
+            <p className="section-label">About me</p>
+            <h1 style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 'var(--fs-section-title)',
+              fontWeight: '700',
+              color: 'var(--text)',
+              lineHeight: 1.08,
+              letterSpacing: '-1px',
+              marginBottom: '10px',
+            }}>
+              Gaia Gómez
+            </h1>
+            <p style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 'var(--fs-card-title)',
+              fontWeight: '500',
+              color: 'var(--accent)',
+              marginBottom: '32px',
+            }}>
+              Software engineer with a design background
+            </p>
 
-          <p style={{ ...bodyText, marginBottom: '16px' }}>
-            Software engineer (final semester) with 5+ years in graphic design — branding, packaging, digital systems, the whole thing. Currently building full stack applications and figuring out how AI fits into everything.
-          </p>
-          <p style={{ ...bodyText, marginBottom: '16px' }}>
-            I have a curious brain, a design-aware mindset and a genuine obsession with learning how things work. I like building digital experiences that make sense, feel good to use and keep getting better through iteration.
-          </p>
-          <p style={bodyText}>
-            I'm fully in it: learning, testing, improving and trying things until they click. My design background adds an extra layer of clarity and user sensitivity to the way I build.
-          </p>
+            <p style={{ ...bodyText, marginBottom: '16px' }}>
+              Software engineer (final semester) with 5+ years in graphic design — branding, packaging, digital systems, the whole thing. Currently building full stack applications and figuring out how AI fits into everything.
+            </p>
+            <p style={{ ...bodyText, marginBottom: '16px' }}>
+              I have a curious brain, a design-aware mindset and a genuine obsession with learning how things work. I like building digital experiences that make sense, feel good to use and keep getting better through iteration.
+            </p>
+            <p style={bodyText}>
+              I'm fully in it: learning, testing, improving and trying things until they click. My design background adds an extra layer of clarity and user sensitivity to the way I build.
+            </p>
+          </div>
+
+          {/* Portrait — right */}
+          <div className="about-portrait-wrap">
+            <div className="about-portrait-glow" />
+            <img
+              src="/gaia-portrait-cutout.webp"
+              alt="Gaia Gómez"
+              className="about-portrait"
+            />
+          </div>
         </div>
 
         {/* 2. Vibe cards grid */}
