@@ -1,34 +1,34 @@
-# Gaia Gomez — Portfolio
+# Gaia Gómez — Portfolio
 
-Personal portfolio showcasing software, design, and product work. Built from scratch with a custom visual system.
+Design and software engineering portfolio. Built from scratch as a working example of hybrid product thinking — deliberate visual system, frontend architecture and responsive UI without relying on component libraries or CSS frameworks.
 
-**Live site:** [gaiagomezportfolio.vercel.app](https://gaiagomezportfolio.vercel.app/)
+**Live:** [gaiagomez.com](https://gaiagomez.com)
 
 ## Stack
 
 - **React 19** + **Vite 7**
-- CSS (custom, no framework)
+- Custom CSS — no UI framework
 - Deployed on **Vercel**
 
-## Structure
+## Features
 
-```
-src/
-├── components/     # Section and page components
-├── data/           # Projects and skills data
-├── assets/         # Static assets
-├── App.jsx
-└── main.jsx
-```
+- Animated hero with motion interactions and scroll-driven layout
+- Dark editorial project layout — full-bleed cinematic rows on desktop
+- Mobile project cards — image, content and buttons unified as a single card with staggered scroll reveal
+- Project detail modals with case study structure
+- Scroll reveal via Intersection Observer with `prefers-reduced-motion` support
+- Custom visual system: type scale, color tokens, spacing rhythm
+- Fully responsive across desktop, tablet and mobile
+- WebP-optimized assets
 
 ## Projects featured
 
 | Project | Description |
 |---|---|
-| **Lumi** | Web app for psychologists to manage appointments, patients, and session notes |
-| **Fynt** | Financial organizer for tracking data and making clearer decisions |
+| **Lumi** | Clinical ops platform for independent psychology practices |
+| **Fynt** | Personal finance dashboard — SSR, optimistic UX, testing pipeline |
 | **Gaia Portfolio** | This site |
-| **Selected Design Works** | Branding, editorial, and hospitality design projects (2021–2025) |
+| **Selected Design Works** | Brand, editorial, hospitality and packaging design (2021–2025) |
 
 ## Getting started
 
@@ -41,5 +41,5 @@ npm run dev
 |---|---|
 | `npm run dev` | Start dev server |
 | `npm run build` | Production build |
-| `npm run preview` | Preview production build |
+| `npm run preview` | Preview build |
 | `npm run lint` | Run ESLint |
