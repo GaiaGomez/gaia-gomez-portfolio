@@ -885,3 +885,45 @@ img { display: block; max-width: 100%; }
 @media (hover: none) {
   .ui-card:hover { transform: none; box-shadow: none; }
 }
+.skills-sticker-section {
+  width: 100%;
+  padding: 70px 24px 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-sticker {
+  width: min(420px, 78vw);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 38px rgba(0, 0, 0, 0.32));
+  animation: stickerFloat 5s ease-in-out infinite;
+}
+
+@keyframes stickerFloat {
+  0% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(1deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-sticker-section {
+    padding: 52px 20px 42px;
+  }
+
+  .skills-sticker {
+    width: min(300px, 84vw);
+  }
+}
