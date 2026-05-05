@@ -12,7 +12,7 @@ function EditorialProjectRow({ project, onOpenDrawer }) {
     : Array.isArray(project.drawer?.stack)
     ? project.drawer.stack.slice(0, 4)
     : [];
-
+wep
   const hasLink = !!project.link;
 
   return (
