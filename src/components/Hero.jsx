@@ -284,9 +284,9 @@ export default function Hero() {
   alt="Gaia portrait"
   style={{
     position: 'absolute',
-    top: '52%',
+    top: '56%',
     bottom: 'auto',
-    left: '54%',
+    left: '51%',
     transform: 'translate(-50%, -50%)',
     height: '82vh',
     maxHeight: '920px',
