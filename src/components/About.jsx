@@ -4,22 +4,22 @@ import { useReveal } from '../hooks/useReveal';
 const vibeCards = [
   {
     phrase: 'In my build era',
-    display: <>In my <span style={{ color: 'var(--color-olive)' }}>build</span> era</>,
+    display: <>In my <span style={{ color: 'var(--color-lavender)' }}>build</span> era</>,
     sub: 'Learning by doing',
   },
   {
     phrase: 'New tools',
-    display: <><span style={{ color: 'var(--color-blue)' }}>New</span> tools</>,
+    display: <><span style={{ color: 'var(--color-lavender)' }}>New</span> tools</>,
     sub: 'No fear',
   },
   {
     phrase: 'Detail obsessed',
-    display: <>Detail <span style={{ color: 'var(--color-olive)' }}>obsessed</span></>,
+    display: <>Detail <span style={{ color: 'var(--color-lavender)' }}>obsessed</span></>,
     sub: 'In a good way',
   },
   {
     phrase: 'Code + taste',
-    display: <><span style={{ color: 'var(--color-olive)' }}>Code</span> <span style={{ color: 'rgba(241,238,248,0.3)' }}>+</span> <span style={{ color: 'var(--color-blue)' }}>taste</span></>,
+    display: <><span style={{ color: 'var(--color-cream)' }}>Code</span> <span style={{ color: 'rgba(243,233,216,0.3)' }}>+</span> <span style={{ color: 'var(--color-lavender)' }}>taste</span></>,
     sub: 'Best combo honestly',
   },
 ];
@@ -74,7 +74,7 @@ const accordionSections = [
 const bodyText = {
   fontFamily: "'DM Sans', sans-serif",
   fontSize: 'var(--fs-body)',
-  color: 'rgba(241,238,248,0.62)',
+  color: 'rgba(243,233,216,0.62)',
   lineHeight: '1.75',
   fontWeight: '300',
 };
@@ -122,17 +122,17 @@ export default function About() {
               color: 'var(--accent)',
               marginBottom: '32px',
             }}>
-              <span style={{ color: 'var(--color-blue)' }}>Software engineer</span>, <span style={{ color: 'var(--color-lavender)' }}>designer</span> by history, curious human by default.
+              <span style={{ color: 'var(--color-lavender)' }}>Software engineer</span>, <span style={{ color: 'var(--color-lavender)' }}>designer</span> by history, curious human by default.
             </p>
 
             <p style={{ ...bodyText, marginBottom: '16px' }}>
-              I'm in my final semester of Software Engineering, with 5+ years in graphic design. I've spent years making things <span style={{ color: 'var(--color-pink)' }}>look good</span>, now I'm obsessed with making them work well too.
+              I'm in my final semester of Software Engineering, with 5+ years in graphic design. I've spent years making things <span style={{ color: 'var(--color-lavender)' }}>look good</span>, now I'm obsessed with making them work well too.
             </p>
             <p style={{ ...bodyText, marginBottom: '16px' }}>
-              I build full stack digital products with a <span style={{ color: 'var(--color-lavender)' }}>design brain</span>, a curious mind and a very real need to understand how everything works.
+              I build full stack digital products with a <span style={{ color: 'var(--color-cream)' }}>design brain</span>, a curious mind and a very real need to understand how everything works.
             </p>
             <p style={bodyText}>
-              I like clear interfaces, smart systems, tiny details, good structure and products that feel nice to use. Currently exploring how <span style={{ color: 'var(--color-blue)' }}>AI</span>, design and software can work together and having way too much fun testing things until they click.
+              I like clear interfaces, smart systems, tiny details, good structure and products that feel nice to use. Currently exploring how <span style={{ color: 'var(--color-lavender)' }}>AI</span>, design and software can work together and having way too much fun testing things until they click.
             </p>
           </div>
 
@@ -287,7 +287,7 @@ export default function About() {
                                     <span style={{
                                       fontFamily: "'DM Sans', sans-serif",
                                       fontSize: '0.9rem',
-                                      color: 'var(--color-blue)',
+                                      color: 'var(--color-lavender)',
                                       fontWeight: '500',
                                       opacity: 0.85,
                                     }}>
@@ -297,7 +297,7 @@ export default function About() {
                                   <span style={{
                                     fontFamily: "'DM Sans', sans-serif",
                                     fontSize: 'var(--fs-label)',
-                                    color: 'var(--color-olive)',
+                                    color: 'var(--color-lavender)',
                                     whiteSpace: 'nowrap',
                                     opacity: 0.75,
                                   }}>
@@ -361,7 +361,7 @@ export default function About() {
                                 <span style={{
                                   fontFamily: "'DM Sans', sans-serif",
                                   fontSize: 'var(--fs-label)',
-                                  color: 'var(--color-olive)',
+                                  color: 'var(--color-lavender)',
                                   whiteSpace: 'nowrap',
                                   opacity: 0.75,
                                 }}>

@@ -40,7 +40,7 @@ function EditorialProjectRow({ project, onOpenDrawer }) {
                 {i > 0 && <span className="editorial-meta-dot">·</span>}
                 <span
                   className="editorial-meta-tag"
-                  style={{ color: i % 2 === 0 ? 'rgba(137,142,70,0.82)' : 'rgba(128,176,232,0.75)' }}
+                  style={{ color: 'rgba(168,145,196,0.72)' }}
                 >{tag}</span>
               </span>
             ))}
@@ -56,7 +56,7 @@ function EditorialProjectRow({ project, onOpenDrawer }) {
               {stackItems.map((item, i) => (
                 <span key={item}>
                   {i > 0 && <span style={{ opacity: 0.45 }}> · </span>}
-                  <span style={{ color: i % 2 === 0 ? 'rgba(137,142,70,0.58)' : 'rgba(128,176,232,0.55)' }}>{item}</span>
+                  <span style={{ color: 'rgba(168,145,196,0.55)' }}>{item}</span>
                 </span>
               ))}
             </p>

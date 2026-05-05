@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-const MUTED = "#7a6e8a";
-const TEXT  = "#ede8f5";
+const MUTED = "rgba(243, 233, 216, 0.38)";
+const TEXT  = "#F3E9D8";
 
 const CATEGORY_COLORS = {
-  Engineering:   { label: "#80B0E8", barFrom: "rgba(128,176,232,0.28)", barTo: "rgba(128,176,232,0.75)" },
-  Design:        { label: "#D1CAEA", barFrom: "rgba(209,202,234,0.28)", barTo: "rgba(209,202,234,0.82)" },
-  "AI & Workflow": { label: "#898E46", barFrom: "rgba(137,142,70,0.28)", barTo: "rgba(137,142,70,0.72)" },
+  Engineering:     { label: "#A891C4", barFrom: "rgba(168,145,196,0.2)", barTo: "rgba(168,145,196,0.65)" },
+  Design:          { label: "#A891C4", barFrom: "rgba(168,145,196,0.2)", barTo: "rgba(168,145,196,0.65)" },
+  "AI & Workflow": { label: "#A891C4", barFrom: "rgba(168,145,196,0.2)", barTo: "rgba(168,145,196,0.65)" },
 };
 
 const skillGroups = [

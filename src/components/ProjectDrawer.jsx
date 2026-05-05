@@ -6,7 +6,7 @@ const SectionLabel = ({ children }) => (
     fontWeight: '600',
     letterSpacing: '2px',
     textTransform: 'uppercase',
-    color: 'var(--color-olive)',
+    color: 'var(--color-lavender)',
     marginBottom: '10px',
     fontFamily: 'var(--font-body)',
   }}>
@@ -135,7 +135,7 @@ export default function ProjectDrawer({ project, onClose }) {
                 {drawer.meta.split(' · ').map((part, i) => (
                   <span key={i}>
                     {i > 0 && <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 4px' }}>·</span>}
-                    <span style={{ color: i % 2 === 0 ? 'rgba(137,142,70,0.75)' : 'rgba(128,176,232,0.7)' }}>{part}</span>
+                    <span style={{ color: 'rgba(168,145,196,0.72)' }}>{part}</span>
                   </span>
                 ))}
               </p>
@@ -154,7 +154,7 @@ export default function ProjectDrawer({ project, onClose }) {
                     background: 'none',
                     border: 'none',
                     padding: '4px 0',
-                    color: 'var(--color-blue)',
+                    color: 'var(--color-cream)',
                     fontSize: 'var(--fs-btn)',
                     fontWeight: '600',
                     fontFamily: 'var(--font-body)',
@@ -170,7 +170,7 @@ export default function ProjectDrawer({ project, onClose }) {
                     if (svg) svg.style.transform = 'translate(2px,-2px)';
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.color = 'var(--color-blue)';
+                    e.currentTarget.style.color = 'var(--color-cream)';
                     e.currentTarget.style.gap = '6px';
                     const svg = e.currentTarget.querySelector('svg');
                     if (svg) svg.style.transform = 'none';
@@ -254,9 +254,9 @@ export default function ProjectDrawer({ project, onClose }) {
                       fontSize: 'var(--fs-label)',
                       fontFamily: 'var(--font-body)',
                       fontWeight: '500',
-                      background: i % 2 === 0 ? 'rgba(209,202,234,0.06)' : 'rgba(128,176,232,0.06)',
-                      color: i % 2 === 0 ? 'var(--color-lavender)' : 'var(--color-blue)',
-                      border: `1px solid ${i % 2 === 0 ? 'rgba(209,202,234,0.14)' : 'rgba(128,176,232,0.14)'}`,
+                      background: 'rgba(168,145,196,0.07)',
+                      color: 'var(--color-lavender)',
+                      border: '1px solid rgba(168,145,196,0.18)',
                     }}>
                       {item}
                     </span>
@@ -375,9 +375,9 @@ export default function ProjectDrawer({ project, onClose }) {
                       fontSize: 'var(--fs-label)',
                       fontFamily: 'var(--font-body)',
                       fontWeight: '500',
-                      background: i % 2 === 0 ? 'rgba(209,202,234,0.06)' : 'rgba(128,176,232,0.06)',
-                      color: i % 2 === 0 ? 'var(--color-lavender)' : 'var(--color-blue)',
-                      border: `1px solid ${i % 2 === 0 ? 'rgba(209,202,234,0.14)' : 'rgba(128,176,232,0.14)'}`,
+                      background: 'rgba(168,145,196,0.07)',
+                      color: 'var(--color-lavender)',
+                      border: '1px solid rgba(168,145,196,0.18)',
                     }}>
                       {tech}
                     </span>

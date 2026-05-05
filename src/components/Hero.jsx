@@ -5,11 +5,11 @@ const roles = [
 ];
 
 const chips = [
-  { label: 'Product', top: '20%', right: '10%', left: 'auto', bottom: 'auto', delay: '0s',   color: '#D1CAEA' },
-  { label: 'Code', top: '43%', right: '3.5%', left: 'auto', bottom: 'auto', delay: '0.6s',  color: '#898E46' },
-  { label: 'Architecture', top: '67%', right: '10%', left: 'auto', bottom: 'auto', delay: '0.9s', color: '#898E46' },
-  { label: 'Design', top: 'auto', right: '10%', left: 'auto', bottom: '12%', delay: '1.2s', color: '#FFC0C0' },
-  { label: 'AI', top: '24%', right: '33%', left: 'auto', bottom: 'auto', delay: '0.4s',    color: '#80B0E8' },
+  { label: 'Product', top: '20%', right: '10%', left: 'auto', bottom: 'auto', delay: '0s',   color: '#A891C4' },
+  { label: 'Code', top: '43%', right: '3.5%', left: 'auto', bottom: 'auto', delay: '0.6s',  color: '#A891C4' },
+  { label: 'Architecture', top: '67%', right: '10%', left: 'auto', bottom: 'auto', delay: '0.9s', color: '#A891C4' },
+  { label: 'Design', top: 'auto', right: '10%', left: 'auto', bottom: '12%', delay: '1.2s', color: '#A891C4' },
+  { label: 'AI', top: '24%', right: '33%', left: 'auto', bottom: 'auto', delay: '0.4s',    color: '#A891C4' },
 ];
 
 export default function Hero() {
@@ -143,7 +143,7 @@ export default function Hero() {
             fontSize="10"
             fontWeight="300"
             letterSpacing="4.0"
-            fill="#D1CAEA"
+            fill="#A891C4"
             opacity="0.7"
           >
             <textPath href="#circlePath">LET'S  MAKE  COOL  THINGS </textPath>
@@ -157,7 +157,7 @@ export default function Hero() {
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: '18px',
-          color: '#D1CAEA',
+          color: '#A891C4',
           opacity: 0.85,
         }}>
           ✦
@@ -199,7 +199,7 @@ export default function Hero() {
               letterSpacing: '-2px',
               marginBottom: '14px',
             }}>
-              <span style={{ display: 'block', color: '#f7f5fb' }}>Gaia</span>
+              <span style={{ display: 'block', color: '#F3E9D8' }}>Gaia</span>
             </h1>
           </div>
 
@@ -234,7 +234,7 @@ export default function Hero() {
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 'clamp(1.4rem, 2.2vw, 2.4rem)',
-              color: '#f1edf8',
+              color: '#F3E9D8',
               lineHeight: '1.2',
               marginBottom: '38px',
               fontWeight: '600',

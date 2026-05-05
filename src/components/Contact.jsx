@@ -31,13 +31,13 @@ export default function Contact() {
     padding: '16px 20px',
     borderRadius: '12px',
     background: 'rgba(14,14,16,0.82)',
-    border: `1px solid ${focused === field ? 'rgba(128,176,232,0.35)' : 'rgba(255,255,255,0.08)'}`,
+    border: `1px solid ${focused === field ? 'rgba(168,145,196,0.4)' : 'rgba(255,255,255,0.08)'}`,
     color: '#f1eef8',
     fontFamily: "'DM Sans', sans-serif",
     fontSize: '15px',
     outline: 'none',
     transition: 'border-color 0.25s, box-shadow 0.25s',
-    boxShadow: focused === field ? '0 0 0 3px rgba(128,176,232,0.06)' : 'none',
+    boxShadow: focused === field ? '0 0 0 3px rgba(168,145,196,0.08)' : 'none',
     resize: 'none',
   });
 
@@ -71,7 +71,7 @@ export default function Contact() {
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 'var(--fs-body)',
-              color: 'rgba(241,238,248,0.58)',
+              color: 'rgba(243,233,216,0.58)',
               lineHeight: '1.7',
               marginBottom: '48px',
               fontWeight: '300',
@@ -89,13 +89,13 @@ export default function Contact() {
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: '18px',
               fontWeight: '500',
-              color: 'rgba(255,255,255,0.88)',
-              borderBottom: '1px solid rgba(255,255,255,0.2)',
+              color: 'var(--color-cream)',
+              borderBottom: '1px solid rgba(243,233,216,0.25)',
               paddingBottom: '4px',
               transition: 'border-color 0.2s, color 0.2s',
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(128,176,232,0.45)'; e.currentTarget.style.color = 'var(--color-blue)'; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = 'rgba(255,255,255,0.88)'; }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(168,145,196,0.4)'; e.currentTarget.style.color = 'var(--color-lavender)'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(243,233,216,0.25)'; e.currentTarget.style.color = 'var(--color-cream)'; }}
             >
               gaiavaninago@gmail.com
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -110,7 +110,7 @@ export default function Contact() {
                 fontSize: '12px',
                 letterSpacing: '2px',
                 textTransform: 'uppercase',
-                color: 'rgba(232,224,245,0.3)',
+                color: 'rgba(243,233,216,0.28)',
                 marginBottom: '16px',
               }}>
                 Find me on
@@ -130,18 +130,18 @@ export default function Contact() {
                       justifyContent: 'center',
                       background: 'rgba(16,16,18,0.9)',
                       border: '1px solid rgba(255,255,255,0.08)',
-                      color: 'rgba(241,238,248,0.6)',
+                      color: 'rgba(243,233,216,0.6)',
                       transition: 'all 0.25s',
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.background = 'rgba(128,176,232,0.06)';
-                      e.currentTarget.style.borderColor = 'rgba(128,176,232,0.28)';
-                      e.currentTarget.style.color = 'var(--color-blue)';
+                      e.currentTarget.style.background = 'rgba(168,145,196,0.07)';
+                      e.currentTarget.style.borderColor = 'rgba(168,145,196,0.28)';
+                      e.currentTarget.style.color = 'var(--color-lavender)';
                     }}
                     onMouseLeave={e => {
                       e.currentTarget.style.background = 'rgba(16,16,18,0.9)';
                       e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
-                      e.currentTarget.style.color = 'rgba(241,238,248,0.6)';
+                      e.currentTarget.style.color = 'rgba(243,233,216,0.6)';
                     }}
                   >
                     {s.icon}
@@ -192,7 +192,7 @@ export default function Contact() {
                 <p style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: '14px',
-                  color: 'rgba(232,224,245,0.45)',
+                  color: 'rgba(243,233,216,0.45)',
                 }}>
                   I'll get back to you soon.
                 </p>
@@ -206,7 +206,7 @@ export default function Contact() {
                     fontSize: 'var(--fs-label)',
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
-                    color: 'rgba(209,202,234,0.55)',
+                    color: 'rgba(168,145,196,0.6)',
                     marginBottom: '8px',
                   }}>
                     Name
@@ -229,7 +229,7 @@ export default function Contact() {
                     fontSize: 'var(--fs-label)',
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
-                    color: 'rgba(128,176,232,0.55)',
+                    color: 'rgba(168,145,196,0.6)',
                     marginBottom: '8px',
                   }}>
                     Email
@@ -252,7 +252,7 @@ export default function Contact() {
                     fontSize: 'var(--fs-label)',
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
-                    color: 'rgba(137,142,70,0.65)',
+                    color: 'rgba(168,145,196,0.6)',
                     marginBottom: '8px',
                   }}>
                     Message
@@ -277,19 +277,28 @@ export default function Contact() {
                     justifyContent: 'center',
                     gap: '8px',
                     marginTop: '12px',
-                    padding: '12px 0',
-                    background: 'none',
-                    border: 'none',
-                    color: 'var(--color-coral)',
+                    padding: '11px 24px',
+                    background: 'transparent',
+                    border: '1px solid rgba(243,233,216,0.5)',
+                    borderRadius: '999px',
+                    color: 'var(--color-cream)',
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: 'var(--fs-btn)',
                     fontWeight: '600',
                     letterSpacing: '0.4px',
                     cursor: 'none',
-                    transition: 'color 0.22s',
+                    transition: 'border-color 0.22s, color 0.22s, box-shadow 0.22s',
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-pink)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-coral)'; }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = 'var(--color-lavender)';
+                    e.currentTarget.style.color = 'var(--color-lavender)';
+                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(168,145,196,0.1)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = 'rgba(243,233,216,0.5)';
+                    e.currentTarget.style.color = 'var(--color-cream)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
                 >
                   Send message
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
@@ -316,14 +325,14 @@ export default function Contact() {
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: '18px',
             fontWeight: '700',
-            color: 'rgba(241,238,248,0.76)',
+            color: 'rgba(243,233,216,0.76)',
           }}>
             GG<span style={{ color: 'var(--color-coral)' }}>.</span>
           </span>
           <span style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: '13px',
-            color: 'rgba(232,224,245,0.2)',
+            color: 'rgba(243,233,216,0.18)',
           }}>
             © 2026 Gaia Gómez. Built by me.
           </span>
