@@ -59,8 +59,6 @@ export default function App() {
       <main>
         <Hero />
         <About />
-        <Projects />
-
         <section className="skills-sticker-section">
           <img
             className="skills-sticker"
@@ -68,7 +66,7 @@ export default function App() {
             alt="Skills sticker bag"
           />
         </section>
-
+        <Projects />
         <Contact />
       </main>
     </>
