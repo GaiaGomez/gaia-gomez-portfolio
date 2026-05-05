@@ -31,13 +31,13 @@ export default function Contact() {
     padding: '16px 20px',
     borderRadius: '12px',
     background: 'rgba(14,14,16,0.82)',
-    border: `1px solid ${focused === field ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.08)'}`,
+    border: `1px solid ${focused === field ? 'rgba(128,176,232,0.35)' : 'rgba(255,255,255,0.08)'}`,
     color: '#f1eef8',
     fontFamily: "'DM Sans', sans-serif",
     fontSize: '15px',
     outline: 'none',
     transition: 'border-color 0.25s, box-shadow 0.25s',
-    boxShadow: focused === field ? '0 0 0 3px rgba(255,255,255,0.04)' : 'none',
+    boxShadow: focused === field ? '0 0 0 3px rgba(128,176,232,0.06)' : 'none',
     resize: 'none',
   });
 
@@ -66,7 +66,7 @@ export default function Contact() {
           >
             <h2 className="section-title">
               Let's build<br />
-              something <span style={{ color: '#f1eef8' }}>great</span>
+              something <span style={{ color: 'var(--color-coral)' }}>great</span>
             </h2>
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
@@ -94,7 +94,7 @@ export default function Contact() {
               paddingBottom: '4px',
               transition: 'border-color 0.2s, color 0.2s',
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; e.currentTarget.style.color = '#ffffff'; }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(128,176,232,0.45)'; e.currentTarget.style.color = 'var(--color-blue)'; }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = 'rgba(255,255,255,0.88)'; }}
             >
               gaiavaninago@gmail.com
@@ -134,9 +134,9 @@ export default function Contact() {
                       transition: 'all 0.25s',
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.22)';
-                      e.currentTarget.style.color = '#ffffff';
+                      e.currentTarget.style.background = 'rgba(128,176,232,0.06)';
+                      e.currentTarget.style.borderColor = 'rgba(128,176,232,0.28)';
+                      e.currentTarget.style.color = 'var(--color-blue)';
                     }}
                     onMouseLeave={e => {
                       e.currentTarget.style.background = 'rgba(16,16,18,0.9)';
@@ -270,11 +270,29 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="btn btn-primary"
-                  style={{ width: '100%', justifyContent: 'center', marginTop: '8px', position: 'relative', minHeight: 'var(--btn-h)' }}
+                  style={{
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    marginTop: '12px',
+                    padding: '12px 0',
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--color-coral)',
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 'var(--fs-btn)',
+                    fontWeight: '600',
+                    letterSpacing: '0.4px',
+                    cursor: 'none',
+                    transition: 'color 0.22s',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-pink)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-coral)'; }}
                 >
-                  <span style={{ position: 'relative', zIndex: 1 }}>Send message</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ position: 'relative', zIndex: 1 }}>
+                  Send message
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
                     <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>

@@ -5,11 +5,11 @@ const roles = [
 ];
 
 const chips = [
-  { label: 'Product', top: '20%', right: '10%', left: 'auto', bottom: 'auto', delay: '0s' },
-  { label: 'Code', top: '43%', right: '3.5%', left: 'auto', bottom: 'auto', delay: '0.6s' },
-  { label: 'Architecture', top: '67%', right: '10%', left: 'auto', bottom: 'auto', delay: '0.9s' },
-  { label: 'Design', top: 'auto', right: '10%', left: 'auto', bottom: '12%', delay: '1.2s' },
-  { label: 'AI', top: '24%', right: '33%', left: 'auto', bottom: 'auto', delay: '0.4s' },
+  { label: 'Product', top: '20%', right: '10%', left: 'auto', bottom: 'auto', delay: '0s',   color: '#D1CAEA' },
+  { label: 'Code', top: '43%', right: '3.5%', left: 'auto', bottom: 'auto', delay: '0.6s',  color: '#898E46' },
+  { label: 'Architecture', top: '67%', right: '10%', left: 'auto', bottom: 'auto', delay: '0.9s', color: '#898E46' },
+  { label: 'Design', top: 'auto', right: '10%', left: 'auto', bottom: '12%', delay: '1.2s', color: '#FFC0C0' },
+  { label: 'AI', top: '24%', right: '33%', left: 'auto', bottom: 'auto', delay: '0.4s',    color: '#80B0E8' },
 ];
 
 export default function Hero() {
@@ -106,8 +106,8 @@ export default function Hero() {
             padding: '10px 20px',
             borderRadius: '999px',
             background: 'rgba(16,16,18,0.88)',
-            border: '1px solid rgba(255,255,255,0.14)',
-            color: 'rgba(255,255,255,0.88)',
+            border: `1px solid ${chip.color}28`,
+            color: chip.color,
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: 'var(--text-meta)',
             fontWeight: '500',
@@ -143,8 +143,8 @@ export default function Hero() {
             fontSize="10"
             fontWeight="300"
             letterSpacing="4.0"
-            fill="#FFFFFF"
-            opacity="0.75"
+            fill="#D1CAEA"
+            opacity="0.7"
           >
             <textPath href="#circlePath">LET'S  MAKE  COOL  THINGS </textPath>
           </text>
@@ -157,8 +157,8 @@ export default function Hero() {
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: '18px',
-          color: 'rgba(255,255,255,0.7)',
-          opacity: 0.9,
+          color: '#D1CAEA',
+          opacity: 0.85,
         }}>
           ✦
         </div>
@@ -251,22 +251,7 @@ export default function Hero() {
               <a
                 href="#projects"
                 className="btn btn-primary"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: 'rgba(18,18,20,0.92)',
-                  color: '#f4f1fa',
-                  fontFamily: "'DM Sans', sans-serif",
-                  letterSpacing: '0.3px',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  cursor: 'none',
-                  transition: 'opacity var(--t-hover) var(--ease-standard), transform var(--t-hover) var(--ease-standard)',
-                  boxShadow: '0 8px 22px rgba(0,0,0,0.35)',
-                  textDecoration: 'none',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                style={{ cursor: 'none', textDecoration: 'none' }}
               >
                 View projects
                 <svg width="15" height="15" viewBox="0 0 16 16" fill="none">

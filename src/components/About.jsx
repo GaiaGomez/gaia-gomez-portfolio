@@ -106,17 +106,17 @@ export default function About() {
               color: 'var(--accent)',
               marginBottom: '32px',
             }}>
-              Software engineer, designer by history, curious human by default.
+              <span style={{ color: 'var(--color-blue)' }}>Software engineer</span>, <span style={{ color: 'var(--color-lavender)' }}>designer</span> by history, curious human by default.
             </p>
 
             <p style={{ ...bodyText, marginBottom: '16px' }}>
-              I’m in my final semester of Software Engineering, with 5+ years in graphic design. I’ve spent years making things look good, now I’m obsessed with making them work well too.
+              I'm in my final semester of Software Engineering, with 5+ years in graphic design. I've spent years making things <span style={{ color: 'var(--color-pink)' }}>look good</span>, now I'm obsessed with making them work well too.
             </p>
             <p style={{ ...bodyText, marginBottom: '16px' }}>
-              I build full stack digital products with a design brain, a curious mind and a very real need to understand how everything works.
+              I build full stack digital products with a <span style={{ color: 'var(--color-lavender)' }}>design brain</span>, a curious mind and a very real need to understand how everything works.
             </p>
             <p style={bodyText}>
-              I like clear interfaces, smart systems, tiny details, good structure and products that feel nice to use. Currently exploring how AI, design and software can work together and having way too much fun testing things until they click.
+              I like clear interfaces, smart systems, tiny details, good structure and products that feel nice to use. Currently exploring how <span style={{ color: 'var(--color-blue)' }}>AI</span>, design and software can work together and having way too much fun testing things until they click.
             </p>
           </div>
 
@@ -261,9 +261,10 @@ export default function About() {
                                       {item.role}
                                     </span>
                                     <span style={{
-                                      color: 'var(--accent)',
+                                      color: 'var(--color-lavender)',
                                       margin: '0 6px',
                                       fontSize: '0.9rem',
+                                      opacity: 0.65,
                                     }}>
                                       —
                                     </span>
@@ -279,8 +280,9 @@ export default function About() {
                                   <span style={{
                                     fontFamily: "'DM Sans', sans-serif",
                                     fontSize: 'var(--fs-label)',
-                                    color: 'var(--muted)',
+                                    color: 'var(--color-olive)',
                                     whiteSpace: 'nowrap',
+                                    opacity: 0.75,
                                   }}>
                                     {item.period}
                                   </span>
@@ -341,8 +343,9 @@ export default function About() {
                                 <span style={{
                                   fontFamily: "'DM Sans', sans-serif",
                                   fontSize: 'var(--fs-label)',
-                                  color: 'var(--muted)',
+                                  color: 'var(--color-olive)',
                                   whiteSpace: 'nowrap',
+                                  opacity: 0.75,
                                 }}>
                                   {item.period}
                                 </span>

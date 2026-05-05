@@ -101,7 +101,7 @@ export default function Projects() {
             <p className="section-label">Selected Work</p>
             <h2 className="section-title" style={{ marginBottom: 0 }}>
               Projects that<br />
-              <span style={{ color: '#f1eef8' }}>matter</span>
+              <span style={{ color: 'var(--color-pink)' }}>matter</span>
             </h2>
           </div>
         </div>
