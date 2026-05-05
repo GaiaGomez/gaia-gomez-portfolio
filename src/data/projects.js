@@ -85,7 +85,7 @@ export const projects = [
     title: "Selected Design Works",
     description: "A curated collection of branding, editorial, social media and hospitality design projects created for freelance and professional clients.",
     link: null,
-    image: '/projects/designwork.webp',
+    image: '/projects/selectedworks.webp',
     drawer: {
       subtitle: "The design background behind the frontend decisions",
       meta: "Graphic design · Brand systems · Visual direction",
