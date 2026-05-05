@@ -60,6 +60,15 @@ export default function App() {
         <Hero />
         <About />
         <Projects />
+
+        <section className="skills-sticker-section">
+          <img
+            className="skills-sticker"
+            src="/center-sticker.png"
+            alt="Skills sticker bag"
+          />
+        </section>
+
         <Contact />
       </main>
     </>
