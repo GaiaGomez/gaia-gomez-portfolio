@@ -8,12 +8,12 @@ function EditorialProjectRow({ project, onOpenDrawer }) {
 
   const metaTags = project.drawer?.meta ? project.drawer.meta.split(' · ') : [];
   const stackItems = project.drawer?.snapshot?.stack
-    ? project.drawer.snapshot.stack.split(' · ').slice(0, 4)
-    : Array.isArray(project.drawer?.stack)
-    ? project.drawer.stack.slice(0, 4)
-    : [];
-wep
-  const hasLink = !!project.link;
+  ? project.drawer.snapshot.stack.split(' · ').slice(0, 4)
+  : Array.isArray(project.drawer?.stack)
+  ? project.drawer.stack.slice(0, 4)
+  : [];
+
+const hasLink = !!project.link;
 
   return (
     <div
