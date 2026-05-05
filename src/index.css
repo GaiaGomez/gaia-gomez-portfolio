@@ -295,15 +295,18 @@ img { display: block; max-width: 100%; }
   z-index: 1;
   background:
     linear-gradient(to top,
-      rgba(0,0,0,0.97) 0%,
-      rgba(0,0,0,0.80) 18%,
-      rgba(0,0,0,0.45) 42%,
-      rgba(0,0,0,0.12) 68%,
+    rgba(0,0,0,0.98) 0%,
+    rgba(0,0,0,0.92) 24%,
+    rgba(0,0,0,0.72) 48%,
+    rgba(0,0,0,0.34) 74%,
+    rgba(0,0,0,0.08) 100%
       transparent 100%
     ),
     linear-gradient(to right,
-      rgba(0,0,0,0.38) 0%,
-      transparent 55%
+      rgba(0,0,0,0.92) 0%,
+      rgba(0,0,0,0.76) 24%,
+      rgba(0,0,0,0.42) 52%,
+      transparent 78%
     );
   pointer-events: none;
 }
