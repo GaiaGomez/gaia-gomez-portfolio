@@ -123,7 +123,9 @@ export default function Navbar() {
             <a
               href="#contact"
               className="btn btn-outline nav-link"
-              style={{ minHeight: 'var(--btn-h)', padding: '0 24px', fontSize: 'var(--fs-btn)' }}
+              style={{ fontSize: 'var(--fs-btn)', color: 'var(--color-lavender)' }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-blue)'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-lavender)'; }}
             >
               Say hi ✦
             </a>
@@ -204,11 +206,13 @@ export default function Navbar() {
             className="btn btn-outline"
             style={{
               marginTop: '24px',
-              minHeight: '56px',
-              padding: '0 40px',
-              fontSize: '1rem',
+              fontSize: '1.1rem',
               animation: 'fadeInUp 0.4s var(--ease-standard) 0.16s both',
+              color: 'var(--color-lavender)',
+              letterSpacing: '0.3px',
             }}
+            onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-blue)'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-lavender)'; }}
           >
             Say hi ✦
           </a>

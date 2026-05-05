@@ -38,7 +38,10 @@ function EditorialProjectRow({ project, onOpenDrawer }) {
             {metaTags.map((tag, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
                 {i > 0 && <span className="editorial-meta-dot">·</span>}
-                <span className="editorial-meta-tag">{tag}</span>
+                <span
+                  className="editorial-meta-tag"
+                  style={{ color: i % 2 === 0 ? 'rgba(137,142,70,0.82)' : 'rgba(128,176,232,0.75)' }}
+                >{tag}</span>
               </span>
             ))}
           </div>
@@ -49,7 +52,14 @@ function EditorialProjectRow({ project, onOpenDrawer }) {
 
         <div className="editorial-bottom">
           {stackItems.length > 0 && (
-            <p className="editorial-stack">{stackItems.join(' · ')}</p>
+            <p className="editorial-stack">
+              {stackItems.map((item, i) => (
+                <span key={item}>
+                  {i > 0 && <span style={{ opacity: 0.45 }}> · </span>}
+                  <span style={{ color: i % 2 === 0 ? 'rgba(137,142,70,0.58)' : 'rgba(128,176,232,0.55)' }}>{item}</span>
+                </span>
+              ))}
+            </p>
           )}
           <div className="editorial-actions">
             {onOpenDrawer && (

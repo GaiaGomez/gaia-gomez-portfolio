@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-const VIOLET   = "rgba(255,255,255,0.55)";
-const VIOLET_L = "rgba(255,255,255,0.88)";
-const VIOLET_D = "rgba(255,255,255,0.38)";
-const MUTED    = "#7a6e8a";
-const TEXT     = "#ede8f5";
+const MUTED = "#7a6e8a";
+const TEXT  = "#ede8f5";
+
+const CATEGORY_COLORS = {
+  Engineering:   { label: "#80B0E8", barFrom: "rgba(128,176,232,0.28)", barTo: "rgba(128,176,232,0.75)" },
+  Design:        { label: "#D1CAEA", barFrom: "rgba(209,202,234,0.28)", barTo: "rgba(209,202,234,0.82)" },
+  "AI & Workflow": { label: "#898E46", barFrom: "rgba(137,142,70,0.28)", barTo: "rgba(137,142,70,0.72)" },
+};
 
 const skillGroups = [
   {
@@ -67,13 +70,16 @@ export default function Skills() {
         fontFamily: "'Space Grotesk', sans-serif",
         fontSize: 11,
         letterSpacing: 3,
-        color: VIOLET,
+        color: "var(--color-lavender)",
         textTransform: "uppercase",
         marginBottom: 10,
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
       }}>
-  <span style={{ width: 24, height: 1, background: VIOLET, display: "inline-block", marginRight: 8, verticalAlign: "middle" }} />
-  My Stack
-</p>
+        <span style={{ width: 24, height: 1, background: "var(--color-lavender)", display: "inline-block", opacity: 0.6 }} />
+        My Stack
+      </p>
 
       <h2 style={{
         fontFamily: "'Space Grotesk', sans-serif",
@@ -97,20 +103,22 @@ export default function Skills() {
         gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
         gap: 48,
       }}>
-        {skillGroups.map((group) => (
+        {skillGroups.map((group) => {
+          const cc = CATEGORY_COLORS[group.category] || { label: "rgba(255,255,255,0.55)", barFrom: "rgba(255,255,255,0.28)", barTo: "rgba(255,255,255,0.75)" };
+          return (
           <div key={group.category}>
             <p style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: 11,
               letterSpacing: 3,
-              color: VIOLET,
+              color: cc.label,
               textTransform: "uppercase",
               marginBottom: 24,
               display: "flex",
               alignItems: "center",
               gap: 8,
             }}>
-              <span style={{ width: 24, height: 1, background: VIOLET, display: "inline-block" }} />
+              <span style={{ width: 24, height: 1, background: cc.label, display: "inline-block", opacity: 0.55 }} />
               {group.category}
             </p>
 
@@ -133,7 +141,7 @@ export default function Skills() {
                   <div style={{
                     height: "100%",
                     width: visible ? `${sk.level}%` : "0%",
-                    background: `linear-gradient(90deg, ${VIOLET_D}, ${VIOLET_L})`,
+                    background: `linear-gradient(90deg, ${cc.barFrom}, ${cc.barTo})`,
                     borderRadius: 2,
                     transition: `width 1.2s ease ${i * 0.08}s`,
                   }} />
@@ -141,7 +149,8 @@ export default function Skills() {
               </div>
             ))}
           </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

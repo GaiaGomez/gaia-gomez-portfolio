@@ -2,10 +2,26 @@ import { useState } from 'react';
 import { useReveal } from '../hooks/useReveal';
 
 const vibeCards = [
-  { phrase: 'In my build era', sub: 'Learning by doing' },
-  { phrase: 'New tools', sub: 'No fear' },
-  { phrase: 'Detail obsessed', sub: 'In a good way' },
-  { phrase: 'Code + taste', sub: 'Best combo honestly' },
+  {
+    phrase: 'In my build era',
+    display: <>In my <span style={{ color: 'var(--color-olive)' }}>build</span> era</>,
+    sub: 'Learning by doing',
+  },
+  {
+    phrase: 'New tools',
+    display: <><span style={{ color: 'var(--color-blue)' }}>New</span> tools</>,
+    sub: 'No fear',
+  },
+  {
+    phrase: 'Detail obsessed',
+    display: <>Detail <span style={{ color: 'var(--color-olive)' }}>obsessed</span></>,
+    sub: 'In a good way',
+  },
+  {
+    phrase: 'Code + taste',
+    display: <><span style={{ color: 'var(--color-olive)' }}>Code</span> <span style={{ color: 'rgba(241,238,248,0.3)' }}>+</span> <span style={{ color: 'var(--color-blue)' }}>taste</span></>,
+    sub: 'Best combo honestly',
+  },
 ];
 
 const experienceItems = [
@@ -155,7 +171,7 @@ export default function About() {
                 lineHeight: 1.15,
                 marginBottom: '8px',
               }}>
-                {card.phrase}
+                {card.display}
               </div>
               <div style={{
                 fontFamily: "'DM Sans', sans-serif",
@@ -271,8 +287,9 @@ export default function About() {
                                     <span style={{
                                       fontFamily: "'DM Sans', sans-serif",
                                       fontSize: '0.9rem',
-                                      color: 'var(--text)',
+                                      color: 'var(--color-blue)',
                                       fontWeight: '500',
+                                      opacity: 0.85,
                                     }}>
                                       {item.company}
                                     </span>
@@ -335,7 +352,8 @@ export default function About() {
                                   <div style={{
                                     fontFamily: "'DM Sans', sans-serif",
                                     fontSize: '0.88rem',
-                                    color: 'var(--muted)',
+                                    color: 'var(--color-lavender)',
+                                    opacity: 0.75,
                                   }}>
                                     {item.institution}
                                   </div>

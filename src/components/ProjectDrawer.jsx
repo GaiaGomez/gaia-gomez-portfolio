@@ -6,7 +6,7 @@ const SectionLabel = ({ children }) => (
     fontWeight: '600',
     letterSpacing: '2px',
     textTransform: 'uppercase',
-    color: 'rgba(255,255,255,0.38)',
+    color: 'var(--color-olive)',
     marginBottom: '10px',
     fontFamily: 'var(--font-body)',
   }}>
@@ -32,9 +32,10 @@ const CardLabel = ({ children }) => (
     fontWeight: '600',
     letterSpacing: '1.8px',
     textTransform: 'uppercase',
-    color: 'rgba(255,255,255,0.32)',
+    color: 'var(--color-lavender)',
     marginBottom: '5px',
     fontFamily: 'var(--font-body)',
+    opacity: 0.75,
   }}>
     {children}
   </p>
@@ -129,10 +130,14 @@ export default function ProjectDrawer({ project, onClose }) {
               <p style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'var(--fs-label)',
-                color: 'rgba(255,255,255,0.4)',
                 letterSpacing: '0.2px',
               }}>
-                {drawer.meta}
+                {drawer.meta.split(' · ').map((part, i) => (
+                  <span key={i}>
+                    {i > 0 && <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 4px' }}>·</span>}
+                    <span style={{ color: i % 2 === 0 ? 'rgba(137,142,70,0.75)' : 'rgba(128,176,232,0.7)' }}>{part}</span>
+                  </span>
+                ))}
               </p>
             </div>
 
@@ -145,21 +150,34 @@ export default function ProjectDrawer({ project, onClose }) {
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '7px',
-                    padding: '8px 16px',
-                    borderRadius: '999px',
-                    background: 'rgba(18,18,20,0.92)',
-                    border: '1px solid rgba(255,255,255,0.14)',
-                    color: 'rgba(241,238,248,0.88)',
+                    gap: '6px',
+                    background: 'none',
+                    border: 'none',
+                    padding: '4px 0',
+                    color: 'var(--color-blue)',
                     fontSize: 'var(--fs-btn)',
                     fontWeight: '600',
                     fontFamily: 'var(--font-body)',
                     textDecoration: 'none',
                     whiteSpace: 'nowrap',
+                    cursor: 'none',
+                    transition: 'color 0.22s, gap 0.22s',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.color = 'var(--color-lavender)';
+                    e.currentTarget.style.gap = '10px';
+                    const svg = e.currentTarget.querySelector('svg');
+                    if (svg) svg.style.transform = 'translate(2px,-2px)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.color = 'var(--color-blue)';
+                    e.currentTarget.style.gap = '6px';
+                    const svg = e.currentTarget.querySelector('svg');
+                    if (svg) svg.style.transform = 'none';
                   }}
                 >
                   Open project
-                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none">
+                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, transition: 'transform 0.22s' }}>
                     <path d="M3 11L11 3M11 3H5M11 3v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </a>
@@ -229,16 +247,16 @@ export default function ProjectDrawer({ project, onClose }) {
                   gap: '7px',
                   marginBottom: '24px',
                 }}>
-                  {drawer.stack.map((item) => (
+                  {drawer.stack.map((item, i) => (
                     <span key={item} style={{
                       padding: '4px 11px',
                       borderRadius: '999px',
                       fontSize: 'var(--fs-label)',
                       fontFamily: 'var(--font-body)',
                       fontWeight: '500',
-                      background: 'rgba(16,16,18,0.92)',
-                      color: 'rgba(200,196,212,0.75)',
-                      border: '1px solid rgba(255,255,255,0.09)',
+                      background: i % 2 === 0 ? 'rgba(209,202,234,0.06)' : 'rgba(128,176,232,0.06)',
+                      color: i % 2 === 0 ? 'var(--color-lavender)' : 'var(--color-blue)',
+                      border: `1px solid ${i % 2 === 0 ? 'rgba(209,202,234,0.14)' : 'rgba(128,176,232,0.14)'}`,
                     }}>
                       {item}
                     </span>
@@ -312,7 +330,7 @@ export default function ProjectDrawer({ project, onClose }) {
                         fontFamily: 'var(--font-display)',
                         fontSize: '0.65rem',
                         fontWeight: '700',
-                        color: 'rgba(255,255,255,0.28)',
+                        color: 'var(--color-coral)',
                         paddingTop: '3px',
                         flexShrink: 0,
                         minWidth: '18px',
@@ -350,16 +368,16 @@ export default function ProjectDrawer({ project, onClose }) {
                   gap: '7px',
                   marginBottom: '24px',
                 }}>
-                  {drawer.stack.map((tech) => (
+                  {drawer.stack.map((tech, i) => (
                     <span key={tech} style={{
                       padding: '4px 11px',
                       borderRadius: '999px',
                       fontSize: 'var(--fs-label)',
                       fontFamily: 'var(--font-body)',
                       fontWeight: '500',
-                      background: 'rgba(16,16,18,0.92)',
-                      color: 'rgba(200,196,212,0.75)',
-                      border: '1px solid rgba(255,255,255,0.09)',
+                      background: i % 2 === 0 ? 'rgba(209,202,234,0.06)' : 'rgba(128,176,232,0.06)',
+                      color: i % 2 === 0 ? 'var(--color-lavender)' : 'var(--color-blue)',
+                      border: `1px solid ${i % 2 === 0 ? 'rgba(209,202,234,0.14)' : 'rgba(128,176,232,0.14)'}`,
                     }}>
                       {tech}
                     </span>

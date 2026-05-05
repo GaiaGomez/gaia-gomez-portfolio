@@ -402,7 +402,6 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-body);
   font-size: 0.67rem;
   font-weight: 600;
-  color: rgba(137, 142, 70, 0.55);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1;
@@ -468,7 +467,7 @@ img { display: block; max-width: 100%; }
 }
 
 .project-feature-btn--primary:hover {
-  color: rgba(255, 192, 192, 0.82);
+  color: var(--color-coral);
   gap: 10px;
   background: none;
   box-shadow: none;

@@ -206,7 +206,7 @@ export default function Contact() {
                     fontSize: 'var(--fs-label)',
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
-                    color: 'rgba(232,224,245,0.35)',
+                    color: 'rgba(209,202,234,0.55)',
                     marginBottom: '8px',
                   }}>
                     Name
@@ -229,7 +229,7 @@ export default function Contact() {
                     fontSize: 'var(--fs-label)',
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
-                    color: 'rgba(232,224,245,0.35)',
+                    color: 'rgba(128,176,232,0.55)',
                     marginBottom: '8px',
                   }}>
                     Email
@@ -252,7 +252,7 @@ export default function Contact() {
                     fontSize: 'var(--fs-label)',
                     letterSpacing: '1.5px',
                     textTransform: 'uppercase',
-                    color: 'rgba(232,224,245,0.35)',
+                    color: 'rgba(137,142,70,0.65)',
                     marginBottom: '8px',
                   }}>
                     Message
@@ -318,7 +318,7 @@ export default function Contact() {
             fontWeight: '700',
             color: 'rgba(241,238,248,0.76)',
           }}>
-            GG<span style={{ color: '#ffffff' }}>.</span>
+            GG<span style={{ color: 'var(--color-coral)' }}>.</span>
           </span>
           <span style={{
             fontFamily: "'DM Sans', sans-serif",
