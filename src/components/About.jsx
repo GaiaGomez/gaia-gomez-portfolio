@@ -26,25 +26,36 @@ const vibeCards = [
 
 const experienceItems = [
   {
-    role: 'Graphic designer',
+    role: 'Full Stack Developer & Product Builder',
+    company: 'Freelance',
+    type: 'Direct Clients',
+    period: '2026 – Present',
+    description:
+      'Development of full stack digital products, from planning to implementation. Definition of requirements, scope, priorities and deliverables alongside clients. Building web applications, internal platforms and SaaS solutions focused on business, product and user needs. End-to-end project management: strategy, technical execution, communication, follow-up and delivery.',
+  },
+  {
+    role: 'Graphic Designer',
     company: 'Stay Group',
     type: 'Hospitality operator',
-    period: '2025 – present',
-    description: 'Leading multichannel campaigns, branding, packaging, signage and communication materials for multiple sub-brands. Optimizing creative and digital workflows.',
+    period: '2025 – Present',
+    description:
+      'Led the design of multi-channel campaigns for multiple hospitality sub-brands. Developed branding, packaging, signage and communication materials for commercial positioning. Optimized creative and digital workflows, improving delivery times and brand consistency.',
   },
   {
-    role: 'Designer & developer',
+    role: 'Graphic Designer & Digital Consultant',
     company: 'Freelance',
-    type: 'Workana & direct clients',
+    type: 'Workana & Direct Clients',
     period: '2024 – 2025',
-    description: 'Visual identity and digital solutions for clients in Colombia, the U.S. and Latin America. UX/UI design and development of a mobile application. Full project management with international clients.',
+    description:
+      'Designed and implemented complete visual identity systems, brand strategy, graphic identity, digital and print materials. Consulted on digital transformation, process definition, tool selection, implementation and training. Led strategy and execution of digital marketing, content planning, brand positioning and institutional communication. Managed independent projects including scope, budget, timeline and delivery.',
   },
   {
-    role: 'Founder & creative director',
+    role: 'Founder & Project Lead',
     company: 'Mistik',
     type: 'Own venture',
     period: '2020 – 2024',
-    description: 'End-to-end brand creation: business model, e-commerce, digital marketing and operations. Managed strategy, pricing, suppliers and logistics.',
+    description:
+      'Created and managed the brand end to end, including business model, e-commerce, digital marketing and operations. Led commercial strategy, pricing, supplier management, logistics and customer experience. Managed full project strategy, budgeting, operations, communication and continuous improvement.',
   },
 ];
 
