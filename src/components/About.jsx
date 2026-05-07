@@ -126,13 +126,15 @@ export default function About() {
             </p>
 
             <p style={{ ...bodyText, marginBottom: '16px' }}>
-              I'm in my final semester of Software Engineering, with 5+ years in graphic design. I've spent years making things <span style={{ color: 'var(--color-lavender)' }}>look good</span>, now I'm obsessed with making them work well too.
+            My background combines <span style={{ color: 'var(--color-lavender)', fontWeight: 700 }}>Software Engineering</span> with 5+ years of experience in graphic design, digital marketing and <span style={{ color: 'var(--color-lavender)', fontWeight: 700 }}>project management</span>.
             </p>
+
             <p style={{ ...bodyText, marginBottom: '16px' }}>
-              I build full stack digital products with a <span style={{ color: 'var(--color-cream)' }}>design brain</span>, a curious mind and a very real need to understand how everything works.
+            I’ve spent years making things look good. Now I’m building <span style={{ color: 'var(--color-lavender)', fontWeight: 700 }}>full stack digital products</span> and getting obsessed with the whole process: strategy, planning, UX, development, testing, iteration and implementation.
             </p>
+
             <p style={bodyText}>
-              I like clear interfaces, smart systems, tiny details, good structure and products that feel nice to use. Currently exploring how <span style={{ color: 'var(--color-lavender)' }}>AI</span>, design and software can work together and having way too much fun testing things until they click.
+            I like clear interfaces, smart systems, tiny details, good structure and products that feel nice to use. Currently exploring how <span style={{ color: 'var(--color-lavender)', fontWeight: 700 }}>AI, design and software</span> can work together to turn messy ideas into useful products that actually click.
             </p>
           </div>
 
