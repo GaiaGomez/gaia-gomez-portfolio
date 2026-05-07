@@ -50,12 +50,12 @@ const experienceItems = [
 
 const educationItems = [
   {
-    degree: 'Software engineering (final semester)',
+    degree: 'Software engineering',
     institution: 'Politécnico Grancolombiano',
     period: '2022 – 2026',
   },
   {
-    degree: 'Diploma in computer science',
+    degree: 'Computer science',
     institution: 'Politécnico Grancolombiano',
     period: '2026',
   },
@@ -122,7 +122,7 @@ export default function About() {
               color: 'var(--accent)',
               marginBottom: '32px',
             }}>
-              <span style={{ color: 'var(--color-lavender)' }}>Software engineer</span>, <span style={{ color: 'var(--color-lavender)' }}>designer</span> by history, curious human by default.
+              <span style={{ color: 'var(--color-lavender)' }}>Software Engineer • Product Engineer • Full Stack Developer</span>, designer by history, curious human by default.
             </p>
 
             <p style={{ ...bodyText, marginBottom: '16px' }}>
