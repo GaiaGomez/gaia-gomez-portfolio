@@ -20,8 +20,8 @@ const Card = ({ children, style }) => (
   <div style={{
     padding: '14px 16px',
     borderRadius: '12px',
-    background: 'rgba(255,255,255,0.025)',
-    border: '1px solid rgba(255,255,255,0.07)',
+    background: '#070708',
+    border: '1px solid rgba(243,233,216,0.10)',
     ...style,
   }}>
     {children}
@@ -63,16 +63,16 @@ const FlowDiagram = ({ steps, note }) => (
       alignItems: 'center',
       padding: '16px 18px',
       borderRadius: '12px',
-      background: 'rgba(168,145,196,0.04)',
-      border: '1px solid rgba(168,145,196,0.12)',
+      background: '#050506',
+      border: '1px solid rgba(243,233,216,0.10)',
     }}>
       {steps.map((step, i) => (
         <span key={step} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
           <span style={{
             padding: '5px 13px',
             borderRadius: '999px',
-            background: 'rgba(168,145,196,0.1)',
-            border: '1px solid rgba(168,145,196,0.22)',
+            background: '#080809',
+            border: '1px solid rgba(243,233,216,0.12)',
             color: 'rgba(241,238,248,0.88)',
             fontSize: 'var(--text-nav)',
             fontWeight: '500',
@@ -108,8 +108,8 @@ const ArchitectureMap = ({ layers }) => (
     flexDirection: 'column',
     gap: '0',
     borderRadius: '12px',
-    background: 'rgba(255,255,255,0.02)',
-    border: '1px solid rgba(255,255,255,0.07)',
+    background: '#050506',
+    border: '1px solid rgba(243,233,216,0.10)',
     overflow: 'hidden',
   }}>
     {layers.map((layer, i) => (
@@ -127,7 +127,7 @@ const ArchitectureMap = ({ layers }) => (
           display: 'flex',
           alignItems: 'center',
           alignSelf: 'stretch',
-          background: 'rgba(168,145,196,0.03)',
+          background: '#070708',
         }}>
           <span style={{
             fontSize: 'var(--text-meta)',
@@ -215,8 +215,8 @@ const ProofCards = ({ items }) => (
       <div key={i} style={{
         padding: '14px 16px',
         borderRadius: '12px',
-        background: 'rgba(168,145,196,0.06)',
-        border: '1px solid rgba(168,145,196,0.15)',
+        background: '#050506',
+        border: '1px solid rgba(243,233,216,0.10)',
         display: 'flex',
         alignItems: 'flex-start',
         gap: '10px',
@@ -288,7 +288,7 @@ export default function ProjectDrawer({ project, onClose }) {
         style={{
           position: 'fixed',
           inset: 0,
-          background: 'rgba(3,3,4,0.85)',
+          background: 'rgba(0,0,0,0.86)',
           zIndex: 1000,
           animation: 'modalOverlayIn 0.2s ease',
         }}
@@ -299,9 +299,9 @@ export default function ProjectDrawer({ project, onClose }) {
         <div
           className="project-modal"
           style={{
-            background: 'rgba(12,11,15,0.98)',
-            border: '1px solid rgba(255,255,255,0.09)',
-            boxShadow: '0 40px 100px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.04)',
+            background: '#030304',
+            border: '1px solid rgba(243,233,216,0.12)',
+            boxShadow: '0 40px 100px rgba(0,0,0,0.82), 0 0 0 1px rgba(243,233,216,0.04)',
           }}
         >
           {/* ── Header ─────────────────────────────────── */}
@@ -416,8 +416,8 @@ export default function ProjectDrawer({ project, onClose }) {
                     lineHeight: '1.65',
                     padding: '16px 18px',
                     borderRadius: '12px',
-                    background: 'rgba(14,14,16,0.65)',
-                    border: '1px solid rgba(255,255,255,0.07)',
+                    background: '#050506',
+                    border: '1px solid rgba(243,233,216,0.10)',
                   }}>
                     {drawer.overview}
                   </p>
@@ -442,9 +442,9 @@ export default function ProjectDrawer({ project, onClose }) {
                         fontSize: 'var(--fs-label)',
                         fontFamily: 'var(--font-body)',
                         fontWeight: '500',
-                        background: 'rgba(168,145,196,0.07)',
+                        background: '#080809',
                         color: 'var(--color-lavender)',
-                        border: '1px solid rgba(168,145,196,0.18)',
+                        border: '1px solid rgba(243,233,216,0.12)',
                       }}>
                         {item}
                       </span>
@@ -460,8 +460,8 @@ export default function ProjectDrawer({ project, onClose }) {
                     lineHeight: '1.65',
                     padding: '16px 18px',
                     borderRadius: '12px',
-                    background: 'rgba(14,14,16,0.65)',
-                    border: '1px solid rgba(255,255,255,0.07)',
+                    background: '#050506',
+                    border: '1px solid rgba(243,233,216,0.10)',
                   }}>
                     {drawer.shows}
                   </p>
@@ -560,9 +560,9 @@ export default function ProjectDrawer({ project, onClose }) {
                         fontSize: 'var(--fs-label)',
                         fontFamily: 'var(--font-body)',
                         fontWeight: '500',
-                        background: 'rgba(168,145,196,0.07)',
+                        background: '#080809',
                         color: 'var(--color-lavender)',
-                        border: '1px solid rgba(168,145,196,0.18)',
+                        border: '1px solid rgba(243,233,216,0.12)',
                       }}>
                         {tech}
                       </span>
@@ -580,8 +580,8 @@ export default function ProjectDrawer({ project, onClose }) {
                       lineHeight: '1.65',
                       padding: '16px 18px',
                       borderRadius: '12px',
-                      background: 'rgba(14,14,16,0.65)',
-                      border: '1px solid rgba(255,255,255,0.07)',
+                      background: '#050506',
+                      border: '1px solid rgba(243,233,216,0.10)',
                     }}>
                       {drawer.state}
                     </p>
