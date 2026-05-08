@@ -279,11 +279,11 @@ export default function Hero() {
               <span
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: 'clamp(0.9rem, 1.25vw, 1.18rem)',
-                  fontWeight: '700',
+                  fontSize: 'clamp(1.08rem, 1.75vw, 1.55rem)',
+                  fontWeight: '800',
                   color: '#A891C4',
-                  letterSpacing: '-0.35px',
-                  lineHeight: '1.25',
+                  letterSpacing: '-0.45px',
+                  lineHeight: '1.2',
                   whiteSpace: 'normal',
                 }}
               >
@@ -318,18 +318,19 @@ export default function Hero() {
             </p>
 
             <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: 'clamp(1.4rem, 2.2vw, 2.4rem)',
-                color: '#F3E9D8',
-                lineHeight: '1.2',
-                marginBottom: '38px',
-                fontWeight: '600',
-                width: '100%',
-                maxWidth: '820px',
-              }}
+            style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 'clamp(0.95rem, 1.05vw, 1rem)',
+            color: 'rgba(243,233,216,0.78)',
+            lineHeight: '1.35',
+            marginBottom: '38px',
+            fontWeight: '500',
+            letterSpacing: '-0.1px',
+            width: '100%',
+            maxWidth: '820px',
+            }}
             >
-              Glad you&apos;re here.
+            Glad you&apos;re here.
             </p>
           </div>
 
