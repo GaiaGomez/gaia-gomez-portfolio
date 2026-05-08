@@ -143,8 +143,10 @@ export default function Hero() {
             padding: '10px 20px',
             borderRadius: '999px',
             background: 'rgba(16,16,18,0.88)',
-            border: `1px solid ${chip.color}28`,
-            color: chip.color,
+            border: '1px solid rgba(168, 145, 196, 0.38)',
+            color: '#A891C4',
+            boxShadow:
+           '0 0 18px rgba(168,145,196,0.16), inset 0 0 12px rgba(168,145,196,0.06)',       
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: 'var(--text-meta)',
             fontWeight: '500',
@@ -458,7 +460,7 @@ export default function Hero() {
             display: none !important;
           }
 
-          .hero-chip[data-chip="code"],
+          .hero-chip[data-chip="full-stack"],
           .hero-chip[data-chip="architecture"] {
             display: none !important;
           }
