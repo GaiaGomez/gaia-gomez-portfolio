@@ -240,7 +240,7 @@ export default function Hero() {
               <span
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 'var(--text-meta)',
+                  fontSize: 'clamp(0.9rem, 1.05vw, 1rem)',
                   color: 'rgba(255,255,255,0.55)',
                   letterSpacing: '0.3px',
                   fontWeight: '400',
@@ -366,7 +366,7 @@ export default function Hero() {
           position: 'absolute',
           top: '61%',
           bottom: 'auto',
-          left: '56%',
+          left: '58%',
           transform: 'translate(-50%, -50%)',
           height: '82vh',
           maxHeight: '920px',
