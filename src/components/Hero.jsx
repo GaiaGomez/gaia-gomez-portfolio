@@ -366,7 +366,7 @@ export default function Hero() {
           position: 'absolute',
           top: '61%',
           bottom: 'auto',
-          left: '47%',
+          left: '52%',
           transform: 'translate(-50%, -50%)',
           height: '82vh',
           maxHeight: '920px',
