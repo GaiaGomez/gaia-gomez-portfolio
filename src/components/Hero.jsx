@@ -260,7 +260,7 @@ export default function Hero() {
                 marginBottom: '14px',
               }}
             >
-              <span style={{ display: 'block', color: '#F3E9D8' }}>Gaia</span>
+              <span style={{ display: 'block', color: '#F3E9D8' }}>Gaia Gómez</span>
             </h1>
           </div>
 
