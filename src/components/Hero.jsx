@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 const roles = [
-  'Software Engineer + Designer',
+  'Software Engineer • Product Engineer • Full Stack Developer',
 ];
 
 const chips = [
@@ -36,9 +36,9 @@ export default function Hero() {
     let timeout;
     if (!isDeleting) {
       if (displayed.length < fullText.length) {
-        timeout = setTimeout(() => setDisplayed(fullText.slice(0, displayed.length + 1)), 80);
+        timeout = setTimeout(() => setDisplayed(fullText.slice(0, displayed.length + 1)), 42);
       } else {
-        timeout = setTimeout(() => setIsDeleting(true), 2200);
+        timeout = setTimeout(() => setIsDeleting(true), 3600);
       }
     } else {
       if (displayed.length > 0) {
@@ -214,23 +214,78 @@ export default function Hero() {
               maxWidth: '820px',
             }}>
               <span style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: 'clamp(1.05rem, 1.6vw, 1.4rem)',
-                fontWeight: '600',
-                color: 'rgba(255,255,255,0.82)',
-                letterSpacing: '-0.3px',
-              }}>
-                {displayed}
-                <span style={{
-                  opacity: showCursor ? 1 : 0,
-                  color: 'rgba(255,255,255,0.45)',
-                  marginLeft: '2px',
-                  fontWeight: '300',
-                  transition: 'opacity 0.1s',
-                }}>|</span>
-              </span>
+             fontFamily: "'Space Grotesk', sans-serif",
+             fontSize: 'clamp(0.92rem, 1.45vw, 1.28rem)',
+             fontWeight: '700',
+             color: '#A891C4',
+             letterSpacing: '-0.35px',
+             lineHeight: '1.25',
+             }}>
+             {displayed}
+             <span style={{
+             opacity: showCursor ? 1 : 0,
+             color: '#A891C4',
+             marginLeft: '3px',
+             fontWeight: '300',
+             transition: 'opacity 0.1s',
+             }}>|</span>
+             </span>
             </div>
+            {/* Group 2: Typewriter + Subtitle */}
+<div className="fade-in-up" style={{ animationDelay: '0.22s' }}>
+  <div style={{
+    marginBottom: '6px',
+    minHeight: '36px',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: '900px',
+  }}>
+    <span style={{
+      fontFamily: "'Space Grotesk', sans-serif",
+      fontSize: 'clamp(0.92rem, 1.45vw, 1.28rem)',
+      fontWeight: '700',
+      color: '#A891C4',
+      letterSpacing: '-0.35px',
+      lineHeight: '1.25',
+    }}>
+      {displayed}
+      <span style={{
+        opacity: showCursor ? 1 : 0,
+        color: '#A891C4',
+        marginLeft: '3px',
+        fontWeight: '300',
+        transition: 'opacity 0.1s',
+      }}>|</span>
+    </span>
+  </div>
 
+  <p style={{
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: 'clamp(0.95rem, 1.25vw, 1.1rem)',
+    color: 'rgba(243,233,216,0.78)',
+    lineHeight: '1.35',
+    marginTop: '2px',
+    marginBottom: '18px',
+    fontWeight: '500',
+    letterSpacing: '-0.1px',
+  }}>
+    with a Graphic Design background
+  </p>
+
+  <p style={{
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: 'clamp(1.4rem, 2.2vw, 2.4rem)',
+    color: '#F3E9D8',
+    lineHeight: '1.2',
+    marginBottom: '38px',
+    fontWeight: '600',
+    width: '100%',
+    maxWidth: '820px',
+  }}>
+    Glad you're here.
+  </p>
+</div>
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 'clamp(1.4rem, 2.2vw, 2.4rem)',
