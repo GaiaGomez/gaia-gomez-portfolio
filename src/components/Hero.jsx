@@ -253,7 +253,7 @@ export default function Hero() {
             <h1
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: 'clamp(4.2rem, 10vw, 9.5rem)',
+                fontSize: 'clamp(3.8rem, 7.4vw, 7.8rem)',
                 fontWeight: '700',
                 lineHeight: '0.9',
                 letterSpacing: '-2px',
