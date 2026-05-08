@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+// ── Primitive UI pieces ───────────────────────────────────
+
 const SectionLabel = ({ children }) => (
   <p style={{
     fontSize: 'var(--text-meta)',
@@ -41,6 +43,207 @@ const CardLabel = ({ children }) => (
   </p>
 );
 
+// Consistent section block: label + content + bottom gap
+const Section = ({ label, children }) => (
+  <div style={{ marginBottom: '28px' }}>
+    <SectionLabel>{label}</SectionLabel>
+    {children}
+  </div>
+);
+
+// ── Case study components ─────────────────────────────────
+
+// Pill chain showing a user workflow left-to-right
+const FlowDiagram = ({ steps, note }) => (
+  <div>
+    <div style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '6px',
+      alignItems: 'center',
+      padding: '16px 18px',
+      borderRadius: '12px',
+      background: 'rgba(168,145,196,0.04)',
+      border: '1px solid rgba(168,145,196,0.12)',
+    }}>
+      {steps.map((step, i) => (
+        <span key={step} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{
+            padding: '5px 13px',
+            borderRadius: '999px',
+            background: 'rgba(168,145,196,0.1)',
+            border: '1px solid rgba(168,145,196,0.22)',
+            color: 'rgba(241,238,248,0.88)',
+            fontSize: 'var(--text-nav)',
+            fontWeight: '500',
+            fontFamily: 'var(--font-body)',
+            whiteSpace: 'nowrap',
+          }}>
+            {step}
+          </span>
+          {i < steps.length - 1 && (
+            <span style={{ color: 'rgba(168,145,196,0.38)', fontSize: '0.7rem', flexShrink: 0 }}>→</span>
+          )}
+        </span>
+      ))}
+    </div>
+    {note && (
+      <p style={{
+        fontSize: 'var(--text-meta)',
+        color: 'rgba(241,238,248,0.32)',
+        fontFamily: 'var(--font-body)',
+        marginTop: '8px',
+        fontStyle: 'italic',
+      }}>
+        {note}
+      </p>
+    )}
+  </div>
+);
+
+// Labeled rows showing the tech stack by layer
+const ArchitectureMap = ({ layers }) => (
+  <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0',
+    borderRadius: '12px',
+    background: 'rgba(255,255,255,0.02)',
+    border: '1px solid rgba(255,255,255,0.07)',
+    overflow: 'hidden',
+  }}>
+    {layers.map((layer, i) => (
+      <div key={layer.label} style={{
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '0',
+        borderBottom: i < layers.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+      }}>
+        <div style={{
+          width: '84px',
+          flexShrink: 0,
+          padding: '10px 14px',
+          borderRight: '1px solid rgba(255,255,255,0.05)',
+          display: 'flex',
+          alignItems: 'center',
+          alignSelf: 'stretch',
+          background: 'rgba(168,145,196,0.03)',
+        }}>
+          <span style={{
+            fontSize: 'var(--text-meta)',
+            color: 'rgba(168,145,196,0.5)',
+            fontFamily: 'var(--font-body)',
+            letterSpacing: '1.2px',
+            textTransform: 'uppercase',
+            fontWeight: '600',
+            lineHeight: 1.2,
+          }}>
+            {layer.label}
+          </span>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', padding: '10px 14px', flex: 1 }}>
+          {layer.items.map(item => (
+            <span key={item} style={{
+              padding: '3px 9px',
+              borderRadius: '6px',
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              color: 'rgba(241,238,248,0.7)',
+              fontSize: 'var(--text-meta)',
+              fontFamily: 'var(--font-body)',
+              whiteSpace: 'nowrap',
+            }}>
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+// Reusable numbered 2-col card grid for decisions / ux / tradeoffs
+// Uses CSS class so the mobile single-column breakpoint applies
+const NumberedCards = ({ items }) => (
+  <div className="project-modal-2col" style={{ marginBottom: 0, gap: '8px' }}>
+    {items.map((d, i) => (
+      <Card key={i} style={{ padding: '14px 18px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+        <span style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: '0.65rem',
+          fontWeight: '700',
+          color: 'var(--color-lavender)',
+          opacity: 0.45,
+          paddingTop: '3px',
+          flexShrink: 0,
+          minWidth: '18px',
+        }}>
+          {String(i + 1).padStart(2, '0')}
+        </span>
+        <div>
+          <p style={{
+            fontSize: 'var(--fs-body)',
+            fontWeight: '600',
+            color: 'rgba(241,238,248,0.88)',
+            fontFamily: 'var(--font-body)',
+            marginBottom: '4px',
+          }}>
+            {d.title}
+          </p>
+          <p style={{
+            fontSize: 'var(--fs-body)',
+            color: 'rgba(241,238,248,0.5)',
+            fontFamily: 'var(--font-body)',
+            lineHeight: '1.55',
+          }}>
+            {d.text}
+          </p>
+        </div>
+      </Card>
+    ))}
+  </div>
+);
+
+// What this proves — lavender-tinted hiring signal cards
+const ProofCards = ({ items }) => (
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+    gap: '8px',
+  }}>
+    {items.map((item, i) => (
+      <div key={i} style={{
+        padding: '14px 16px',
+        borderRadius: '12px',
+        background: 'rgba(168,145,196,0.06)',
+        border: '1px solid rgba(168,145,196,0.15)',
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '10px',
+      }}>
+        <span style={{
+          color: 'var(--color-lavender)',
+          flexShrink: 0,
+          fontSize: '0.65rem',
+          marginTop: '4px',
+          opacity: 0.75,
+        }}>
+          ✦
+        </span>
+        <p style={{
+          fontSize: 'var(--fs-body)',
+          color: 'rgba(241,238,248,0.8)',
+          fontFamily: 'var(--font-body)',
+          lineHeight: '1.5',
+        }}>
+          {item}
+        </p>
+      </div>
+    ))}
+  </div>
+);
+
+// Gallery image with error fallback
 function GalleryImage({ src }) {
   const [error, setError] = useState(false);
   return error ? (
@@ -56,15 +259,12 @@ function GalleryImage({ src }) {
       src={src}
       alt=""
       onError={() => setError(true)}
-      style={{
-        width: '100%',
-        display: 'block',
-        borderRadius: '12px',
-        objectFit: 'cover',
-      }}
+      style={{ width: '100%', display: 'block', borderRadius: '12px', objectFit: 'cover' }}
     />
   );
 }
+
+// ── Main drawer component ─────────────────────────────────
 
 export default function ProjectDrawer({ project, onClose }) {
   const { drawer } = project;
@@ -94,7 +294,7 @@ export default function ProjectDrawer({ project, onClose }) {
         }}
       />
 
-      {/* Modal wrapper */}
+      {/* Modal */}
       <div className="project-modal-wrap">
         <div
           className="project-modal"
@@ -104,7 +304,7 @@ export default function ProjectDrawer({ project, onClose }) {
             boxShadow: '0 40px 100px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.04)',
           }}
         >
-          {/* Header */}
+          {/* ── Header ─────────────────────────────────── */}
           <div className="project-modal-header">
             <div style={{ flex: 1, minWidth: 0 }}>
               <h2 style={{
@@ -121,21 +321,17 @@ export default function ProjectDrawer({ project, onClose }) {
               <p style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'var(--fs-body)',
-                color: 'rgba(241,238,248,0.65)',
+                color: 'rgba(241,238,248,0.58)',
                 lineHeight: '1.45',
                 marginBottom: '5px',
               }}>
                 {drawer.subtitle}
               </p>
-              <p style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 'var(--fs-label)',
-                letterSpacing: '0.2px',
-              }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--fs-label)', letterSpacing: '0.2px' }}>
                 {drawer.meta.split(' · ').map((part, i) => (
                   <span key={i}>
                     {i > 0 && <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 4px' }}>·</span>}
-                    <span style={{ color: 'rgba(168,145,196,0.72)' }}>{part}</span>
+                    <span style={{ color: 'rgba(168,145,196,0.7)' }}>{part}</span>
                   </span>
                 ))}
               </p>
@@ -206,198 +402,198 @@ export default function ProjectDrawer({ project, onClose }) {
             </div>
           </div>
 
-          {/* Scrollable body */}
+          {/* ── Body ───────────────────────────────────── */}
           <div className="project-modal-body">
 
             {isDesign ? (
+              /* ── Design project branch ── */
               <>
-                {/* Overview */}
-                <SectionLabel>Overview</SectionLabel>
-                <p style={{
-                  fontSize: 'var(--fs-body)',
-                  color: 'rgba(241,238,248,0.65)',
-                  fontFamily: 'var(--font-body)',
-                  lineHeight: '1.65',
-                  padding: '16px 18px',
-                  borderRadius: '12px',
-                  background: 'rgba(14,14,16,0.65)',
-                  border: '1px solid rgba(255,255,255,0.07)',
-                  marginBottom: '24px',
-                }}>
-                  {drawer.overview}
-                </p>
+                <Section label="Overview">
+                  <p style={{
+                    fontSize: 'var(--fs-body)',
+                    color: 'rgba(241,238,248,0.65)',
+                    fontFamily: 'var(--font-body)',
+                    lineHeight: '1.65',
+                    padding: '16px 18px',
+                    borderRadius: '12px',
+                    background: 'rgba(14,14,16,0.65)',
+                    border: '1px solid rgba(255,255,255,0.07)',
+                  }}>
+                    {drawer.overview}
+                  </p>
+                </Section>
 
-                {/* Gallery */}
                 {drawer.gallery && (
-                  <>
-                    <SectionLabel>Work Samples</SectionLabel>
-                    <div className="design-gallery">
+                  <Section label="Work Samples">
+                    <div className="design-gallery" style={{ marginBottom: 0 }}>
                       {drawer.gallery.map((src, i) => (
                         <GalleryImage key={i} src={src} />
                       ))}
                     </div>
-                  </>
+                  </Section>
                 )}
 
-                {/* Disciplines */}
-                <SectionLabel>Disciplines</SectionLabel>
-                <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '7px',
-                  marginBottom: '24px',
-                }}>
-                  {drawer.stack.map((item, i) => (
-                    <span key={item} style={{
-                      padding: '4px 11px',
-                      borderRadius: '999px',
-                      fontSize: 'var(--fs-label)',
-                      fontFamily: 'var(--font-body)',
-                      fontWeight: '500',
-                      background: 'rgba(168,145,196,0.07)',
-                      color: 'var(--color-lavender)',
-                      border: '1px solid rgba(168,145,196,0.18)',
-                    }}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
+                <Section label="Disciplines">
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
+                    {drawer.stack.map(item => (
+                      <span key={item} style={{
+                        padding: '4px 11px',
+                        borderRadius: '999px',
+                        fontSize: 'var(--fs-label)',
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: '500',
+                        background: 'rgba(168,145,196,0.07)',
+                        color: 'var(--color-lavender)',
+                        border: '1px solid rgba(168,145,196,0.18)',
+                      }}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </Section>
 
-                {/* What it shows */}
-                <SectionLabel>What it shows</SectionLabel>
-                <p style={{
-                  fontSize: 'var(--fs-body)',
-                  color: 'rgba(241,238,248,0.65)',
-                  fontFamily: 'var(--font-body)',
-                  lineHeight: '1.65',
-                  padding: '16px 18px',
-                  borderRadius: '12px',
-                  background: 'rgba(14,14,16,0.65)',
-                  border: '1px solid rgba(255,255,255,0.07)',
-                }}>
-                  {drawer.shows}
-                </p>
+                <Section label="What it shows">
+                  <p style={{
+                    fontSize: 'var(--fs-body)',
+                    color: 'rgba(241,238,248,0.65)',
+                    fontFamily: 'var(--font-body)',
+                    lineHeight: '1.65',
+                    padding: '16px 18px',
+                    borderRadius: '12px',
+                    background: 'rgba(14,14,16,0.65)',
+                    border: '1px solid rgba(255,255,255,0.07)',
+                  }}>
+                    {drawer.shows}
+                  </p>
+                </Section>
               </>
             ) : (
+              /* ── Dev project branch ── */
               <>
-                {/* Snapshot — 3 cols */}
-                <div className="project-modal-snap-grid">
-                  {[
-                    { label: 'Role', value: drawer.snapshot.role },
-                    { label: 'Focus', value: drawer.snapshot.focus },
-                    { label: 'Stack', value: drawer.snapshot.stack },
-                  ].map(({ label, value }) => (
-                    <Card key={label}>
-                      <CardLabel>{label}</CardLabel>
-                      <p style={{
-                        fontSize: 'var(--fs-body)',
-                        color: 'rgba(241,238,248,0.82)',
-                        fontFamily: 'var(--font-body)',
-                        lineHeight: '1.4',
-                      }}>
-                        {value}
-                      </p>
-                    </Card>
-                  ))}
+                {/* 1. Snapshot */}
+                <div style={{ marginBottom: '28px' }}>
+                  <div className="project-modal-snap-grid" style={{ marginBottom: 0 }}>
+                    {[
+                      { label: 'Role', value: drawer.snapshot.role },
+                      { label: 'Focus', value: drawer.snapshot.focus },
+                      { label: 'Stack', value: drawer.snapshot.stack },
+                    ].map(({ label, value }) => (
+                      <Card key={label}>
+                        <CardLabel>{label}</CardLabel>
+                        <p style={{
+                          fontSize: 'var(--fs-body)',
+                          color: 'rgba(241,238,248,0.82)',
+                          fontFamily: 'var(--font-body)',
+                          lineHeight: '1.4',
+                        }}>
+                          {value}
+                        </p>
+                      </Card>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Challenge / Solution — 2 cols */}
-                <div className="project-modal-2col">
-                  {[
-                    { label: 'Challenge', text: drawer.challenge },
-                    { label: 'Solution', text: drawer.solution },
-                  ].map(({ label, text }) => (
-                    <Card key={label} style={{ padding: '18px 20px' }}>
-                      <CardLabel>{label}</CardLabel>
-                      <p style={{
-                        fontSize: 'var(--fs-body)',
-                        color: 'rgba(241,238,248,0.7)',
-                        fontFamily: 'var(--font-body)',
-                        lineHeight: '1.55',
-                      }}>
-                        {text}
-                      </p>
-                    </Card>
-                  ))}
+                {/* 2. Problem + Solution */}
+                <div style={{ marginBottom: '28px' }}>
+                  <div className="project-modal-2col" style={{ marginBottom: 0, gap: '8px' }}>
+                    {[
+                      { label: 'Problem', text: drawer.challenge },
+                      { label: 'Solution', text: drawer.solution },
+                    ].map(({ label, text }) => (
+                      <Card key={label} style={{ padding: '18px 20px' }}>
+                        <CardLabel>{label}</CardLabel>
+                        <p style={{
+                          fontSize: 'var(--fs-body)',
+                          color: 'rgba(241,238,248,0.68)',
+                          fontFamily: 'var(--font-body)',
+                          lineHeight: '1.62',
+                        }}>
+                          {text}
+                        </p>
+                      </Card>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Technical decisions — 2 cols */}
-                <SectionLabel>Technical Decisions</SectionLabel>
-                <div className="project-modal-2col">
-                  {drawer.decisions.map((d, i) => (
-                    <Card key={i} style={{ padding: '14px 18px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                      <span style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: '0.65rem',
-                        fontWeight: '700',
-                        color: 'var(--color-coral)',
-                        paddingTop: '3px',
-                        flexShrink: 0,
-                        minWidth: '18px',
+                {/* 3. Workflow */}
+                {drawer.flow?.length > 0 && (
+                  <Section label="Workflow">
+                    <FlowDiagram steps={drawer.flow} note={drawer.flowNote} />
+                  </Section>
+                )}
+
+                {/* 4. Architecture */}
+                {drawer.architecture?.length > 0 && (
+                  <Section label="Architecture">
+                    <ArchitectureMap layers={drawer.architecture} />
+                  </Section>
+                )}
+
+                {/* 5. Technical Decisions */}
+                {drawer.decisions?.length > 0 && (
+                  <Section label="Technical Decisions">
+                    <NumberedCards items={drawer.decisions} />
+                  </Section>
+                )}
+
+                {/* 6. UX Decisions */}
+                {drawer.ux?.length > 0 && (
+                  <Section label="UX Decisions">
+                    <NumberedCards items={drawer.ux} />
+                  </Section>
+                )}
+
+                {/* 7. Constraints & Tradeoffs */}
+                {drawer.tradeoffs?.length > 0 && (
+                  <Section label="Constraints & Tradeoffs">
+                    <NumberedCards items={drawer.tradeoffs} />
+                  </Section>
+                )}
+
+                {/* 8. Stack */}
+                <Section label="Stack">
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
+                    {drawer.stack.map(tech => (
+                      <span key={tech} style={{
+                        padding: '4px 11px',
+                        borderRadius: '999px',
+                        fontSize: 'var(--fs-label)',
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: '500',
+                        background: 'rgba(168,145,196,0.07)',
+                        color: 'var(--color-lavender)',
+                        border: '1px solid rgba(168,145,196,0.18)',
                       }}>
-                        {String(i + 1).padStart(2, '0')}
+                        {tech}
                       </span>
-                      <div>
-                        <p style={{
-                          fontSize: 'var(--fs-body)',
-                          fontWeight: '600',
-                          color: 'rgba(241,238,248,0.88)',
-                          fontFamily: 'var(--font-body)',
-                          marginBottom: '3px',
-                        }}>
-                          {d.title}
-                        </p>
-                        <p style={{
-                          fontSize: 'var(--fs-body)',
-                          color: 'rgba(241,238,248,0.55)',
-                          fontFamily: 'var(--font-body)',
-                          lineHeight: '1.5',
-                        }}>
-                          {d.text}
-                        </p>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                </Section>
 
-                {/* Stack pills */}
-                <SectionLabel>Stack</SectionLabel>
-                <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '7px',
-                  marginBottom: '24px',
-                }}>
-                  {drawer.stack.map((tech, i) => (
-                    <span key={tech} style={{
-                      padding: '4px 11px',
-                      borderRadius: '999px',
-                      fontSize: 'var(--fs-label)',
+                {/* 9. Current State */}
+                {drawer.state && (
+                  <Section label="Current State">
+                    <p style={{
+                      fontSize: 'var(--fs-body)',
+                      color: 'rgba(241,238,248,0.62)',
                       fontFamily: 'var(--font-body)',
-                      fontWeight: '500',
-                      background: 'rgba(168,145,196,0.07)',
-                      color: 'var(--color-lavender)',
-                      border: '1px solid rgba(168,145,196,0.18)',
+                      lineHeight: '1.65',
+                      padding: '16px 18px',
+                      borderRadius: '12px',
+                      background: 'rgba(14,14,16,0.65)',
+                      border: '1px solid rgba(255,255,255,0.07)',
                     }}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                      {drawer.state}
+                    </p>
+                  </Section>
+                )}
 
-                {/* What it shows */}
-                <SectionLabel>What it shows</SectionLabel>
-                <p style={{
-                  fontSize: 'var(--fs-body)',
-                  color: 'rgba(241,238,248,0.65)',
-                  fontFamily: 'var(--font-body)',
-                  lineHeight: '1.65',
-                  padding: '16px 18px',
-                  borderRadius: '12px',
-                  background: 'rgba(14,14,16,0.65)',
-                  border: '1px solid rgba(255,255,255,0.07)',
-                }}>
-                  {drawer.shows}
-                </p>
+                {/* 10. What this proves */}
+                {drawer.proof?.length > 0 && (
+                  <Section label="What this proves">
+                    <ProofCards items={drawer.proof} />
+                  </Section>
+                )}
               </>
             )}
           </div>
