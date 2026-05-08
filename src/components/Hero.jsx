@@ -5,11 +5,11 @@ const roles = [
 ];
 
 const chips = [
-  { label: 'Product', top: '20%', right: '10%', left: 'auto', bottom: 'auto', delay: '0s', color: '#A891C4' },
-  { label: 'Code', top: '43%', right: '3.5%', left: 'auto', bottom: 'auto', delay: '0.6s', color: '#A891C4' },
-  { label: 'Architecture', top: '67%', right: '10%', left: 'auto', bottom: 'auto', delay: '0.9s', color: '#A891C4' },
-  { label: 'Design', top: 'auto', right: '10%', left: 'auto', bottom: '12%', delay: '1.2s', color: '#A891C4' },
-  { label: 'AI', top: '24%', right: '33%', left: 'auto', bottom: 'auto', delay: '0.4s', color: '#A891C4' },
+  { label: 'Full Stack', top: '20%', right: '10%', left: 'auto', bottom: 'auto', delay: '0s' },
+  { label: 'Product', top: '43%', right: '3.5%', left: 'auto', bottom: 'auto', delay: '0.6s' },
+  { label: 'Architecture', top: '67%', right: '10%', left: 'auto', bottom: 'auto', delay: '0.9s' },
+  { label: 'Design', top: 'auto', right: '10%', left: 'auto', bottom: '12%', delay: '1.2s' },
+  { label: 'AI', top: '24%', right: '33%', left: 'auto', bottom: 'auto', delay: '0.4s' },
 ];
 
 export default function Hero() {
