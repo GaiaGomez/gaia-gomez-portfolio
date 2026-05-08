@@ -87,7 +87,7 @@ export default function Contact() {
               gap: '10px',
               marginBottom: '48px',
               fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: '18px',
+              fontSize: 'var(--text-lead)',
               fontWeight: '500',
               color: 'var(--color-cream)',
               borderBottom: '1px solid rgba(243,233,216,0.25)',
@@ -107,7 +107,7 @@ export default function Contact() {
             <div>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: '12px',
+                fontSize: 'var(--text-meta)',
                 letterSpacing: '2px',
                 textTransform: 'uppercase',
                 color: 'rgba(243,233,216,0.28)',
@@ -331,7 +331,7 @@ export default function Contact() {
           </span>
           <span style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: '13px',
+            fontSize: 'var(--text-meta)',
             color: 'rgba(243,233,216,0.18)',
           }}>
             © 2026 Gaia Gómez. Built by me.

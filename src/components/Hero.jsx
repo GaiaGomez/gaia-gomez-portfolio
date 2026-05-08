@@ -242,7 +242,7 @@ export default function Hero() {
               <span
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 'clamp(0.9rem, 1.05vw, 1rem)',
+                  fontSize: 'var(--text-body)',
                   color: 'rgba(255,255,255,0.55)',
                   letterSpacing: '0.3px',
                   fontWeight: '400',
@@ -255,7 +255,7 @@ export default function Hero() {
             <h1
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: 'clamp(3.8rem, 7.4vw, 7.8rem)',
+                fontSize: 'var(--text-hero-title)',
                 fontWeight: '700',
                 lineHeight: '0.9',
                 letterSpacing: '-2px',
@@ -281,7 +281,7 @@ export default function Hero() {
               <span
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: 'clamp(1rem, 1.55vw, 1.42rem)',
+                  fontSize: 'var(--text-lead)',
                   fontWeight: '800',
                   color: '#A891C4',
                   letterSpacing: '-0.45px',
@@ -307,7 +307,7 @@ export default function Hero() {
             <p
               style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: 'clamp(0.9rem, 1.05vw, 1rem)',
+                fontSize: 'var(--text-body)',
                 color: 'rgba(243,233,216,0.78)',
                 lineHeight: '1.35',
                 marginTop: '2px',
@@ -322,7 +322,7 @@ export default function Hero() {
             <p
             style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 'clamp(1rem, 1.15vw, 1.08rem)',
+            fontSize: 'var(--text-body)',
             color: 'rgba(243,233,216,0.78)',
             lineHeight: '1.35',
             marginBottom: '38px',

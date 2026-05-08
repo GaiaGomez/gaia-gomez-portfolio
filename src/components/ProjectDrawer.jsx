@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const SectionLabel = ({ children }) => (
   <p style={{
-    fontSize: '0.68rem',
+    fontSize: 'var(--text-meta)',
     fontWeight: '600',
     letterSpacing: '2px',
     textTransform: 'uppercase',
@@ -28,7 +28,7 @@ const Card = ({ children, style }) => (
 
 const CardLabel = ({ children }) => (
   <p style={{
-    fontSize: '0.65rem',
+    fontSize: 'var(--text-meta)',
     fontWeight: '600',
     letterSpacing: '1.8px',
     textTransform: 'uppercase',

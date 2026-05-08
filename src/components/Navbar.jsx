@@ -106,7 +106,7 @@ export default function Navbar() {
                 className="nav-link"
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 'var(--text-meta)',
+                  fontSize: 'var(--text-nav)',
                   fontWeight: '400',
                   color: 'rgba(241,238,248,0.72)',
                   transition: 'color 0.2s',

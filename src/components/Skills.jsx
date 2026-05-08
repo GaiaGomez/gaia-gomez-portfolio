@@ -68,7 +68,7 @@ export default function Skills() {
     }}>
       <p style={{
         fontFamily: "'Space Grotesk', sans-serif",
-        fontSize: 11,
+        fontSize: 'var(--text-meta)',
         letterSpacing: 3,
         color: "var(--color-lavender)",
         textTransform: "uppercase",
@@ -109,7 +109,7 @@ export default function Skills() {
           <div key={group.category}>
             <p style={{
               fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: 11,
+              fontSize: 'var(--text-meta)',
               letterSpacing: 3,
               color: cc.label,
               textTransform: "uppercase",
@@ -126,11 +126,11 @@ export default function Skills() {
               <div key={sk.name} style={{ marginBottom: 20 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
                   <span style={{
-                    fontSize: 13,
+                    fontSize: 'var(--text-nav)',
                     color: "#c4b8d8",
                     fontFamily: "'Space Grotesk', sans-serif",
                   }}>{sk.name}</span>
-                  <span style={{ fontSize: 12, color: MUTED }}>{sk.level}%</span>
+                  <span style={{ fontSize: 'var(--text-meta)', color: MUTED }}>{sk.level}%</span>
                 </div>
                 <div style={{
                   height: 3,

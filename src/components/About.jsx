@@ -283,7 +283,7 @@ export default function About() {
                                   <div>
                                     <span style={{
                                       fontFamily: "'Space Grotesk', sans-serif",
-                                      fontSize: '0.98rem',
+                                      fontSize: 'var(--text-body)',
                                       fontWeight: '600',
                                       color: 'var(--text)',
                                     }}>
@@ -292,14 +292,14 @@ export default function About() {
                                     <span style={{
                                       color: 'var(--color-lavender)',
                                       margin: '0 6px',
-                                      fontSize: '0.9rem',
+                                      fontSize: 'var(--text-body)',
                                       opacity: 0.65,
                                     }}>
                                       —
                                     </span>
                                     <span style={{
                                       fontFamily: "'DM Sans', sans-serif",
-                                      fontSize: '0.9rem',
+                                      fontSize: 'var(--text-body)',
                                       color: 'var(--color-lavender)',
                                       fontWeight: '500',
                                       opacity: 0.85,
@@ -355,7 +355,7 @@ export default function About() {
                                 <div>
                                   <div style={{
                                     fontFamily: "'Space Grotesk', sans-serif",
-                                    fontSize: '0.98rem',
+                                    fontSize: 'var(--text-body)',
                                     fontWeight: '600',
                                     color: 'var(--text)',
                                     marginBottom: '3px',
