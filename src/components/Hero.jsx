@@ -279,7 +279,7 @@ export default function Hero() {
               <span
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: 'clamp(1.08rem, 1.75vw, 1.55rem)',
+                  fontSize: 'clamp(1rem, 1.55vw, 1.42rem)',
                   fontWeight: '800',
                   color: '#A891C4',
                   letterSpacing: '-0.45px',
@@ -320,11 +320,11 @@ export default function Hero() {
             <p
             style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 'clamp(0.95rem, 1.05vw, 1rem)',
+            fontSize: 'clamp(1rem, 1.15vw, 1.08rem)',
             color: 'rgba(243,233,216,0.78)',
             lineHeight: '1.35',
             marginBottom: '38px',
-            fontWeight: '500',
+            fontWeight: '700',
             letterSpacing: '-0.1px',
             width: '100%',
             maxWidth: '820px',
