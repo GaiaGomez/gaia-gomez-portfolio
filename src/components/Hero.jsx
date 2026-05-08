@@ -253,7 +253,7 @@ export default function Hero() {
             <h1
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: 'var(--text-hero-title)',
+                fontSize: 'clamp(4.2rem, 10vw, 9.5rem)',
                 fontWeight: '700',
                 lineHeight: '0.9',
                 letterSpacing: '-2px',
@@ -366,7 +366,7 @@ export default function Hero() {
           position: 'absolute',
           top: '61%',
           bottom: 'auto',
-          left: '58%',
+          left: '61%',
           transform: 'translate(-50%, -50%)',
           height: '82vh',
           maxHeight: '920px',
