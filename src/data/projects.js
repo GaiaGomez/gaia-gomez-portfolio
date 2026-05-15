@@ -117,7 +117,7 @@ export const projects = [
     id: 3,
     title: "Como en Casa Admin",
     description: "A mobile-first internal operations dashboard for a café, built to manage team schedules, weekly tip distribution, inventory levels and purchase planning in one simple admin workspace.",
-    link: "https://como-en-casa-admin.vercel.app/",
+    link: "https://comoencasa.vercel.app/",
     image: "/projects/como-en-casa.webp",
     drawer: {
       subtitle: "Internal operations dashboard for café management",
@@ -168,7 +168,7 @@ export const projects = [
       stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Vercel", "Git", "GitHub"],
       state: "Deployed MVP with dashboard, team management, weekly schedule, tip distribution, inventory tracking, purchase planning, Supabase-backed employees and inventory, responsive layout across desktop and mobile.",
       shows: "Full-stack product thinking applied to a real small-business operations problem: workflow mapping, data modeling, mobile-first admin UX, Supabase integration and deployment.",
-      url: "https://como-en-casa-admin.vercel.app/",
+      url: "https://comoencasa.vercel.app/",
     },
   },
   {
