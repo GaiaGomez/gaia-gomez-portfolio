@@ -1,19 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 
 /*
-  Smiley — carita minimalista con lentes (un mini-autorretrato).
+  Smiley — carita en pixel art.
 
   Interacciones:
-  - Desktop: los ojos siguen el cursor y la cabeza se inclina un poquito hacia él.
-  - Hover: sonrisa grande + cachetes sonrojados.
+  - Desktop: los ojos siguen el cursor (en "pasitos" de píxel, look retro).
+  - Hover: sonrisa grande lavanda + cachetes.
   - Click / tap: guiño, rebote, chispita ✦ y cambia el "status".
   - Parpadea sola cada 2.5–6 s.
-  - prefers-reduced-motion: sin seguimiento, sin rebote ni parpadeo (queda estática).
+  - prefers-reduced-motion: queda estática.
 
-  Rendimiento: el seguimiento del cursor NO usa estado de React. Escribe los
-  transforms directo en el DOM vía refs dentro de requestAnimationFrame, así no
-  hay un re-render por frame. Además el loop se pausa cuando la carita no está
-  en pantalla (IntersectionObserver).
+  Rendimiento: el seguimiento del cursor NO usa estado de React; escribe los
+  transforms directo en el DOM vía refs dentro de requestAnimationFrame
+  (cero re-renders por frame) y se pausa fuera de pantalla (IntersectionObserver).
 */
 
 const STATUSES = [
@@ -26,15 +25,103 @@ const STATUSES = [
   'reading about embeddings',
 ];
 
-// Centros de los lentes en el viewBox 0 0 200 200
-const EYE_L = { x: 70, y: 92 };
-const EYE_R = { x: 130, y: 92 };
-const PUPIL_RANGE = 7; // px máximos que se mueve la pupila dentro del lente
+// ── Pixel art ───────────────────────────────────────────────────────────────
+// Grilla de 20×20 celdas; cada celda mide U unidades del viewBox (200×200).
+// "X" = píxel encendido. Editar la forma = editar estos dibujos.
+const U = 10;
+
+const RING = [
+  '....................',
+  '......XXXXXXXX......',
+  '....XXXXXXXXXXXX....',
+  '...XXXX......XXXX...',
+  '..XXX..........XXX..',
+  '..XX............XX..',
+  '.XXX............XXX.',
+  '.XX..............XX.',
+  '.XX..............XX.',
+  '.XX..............XX.',
+  '.XX..............XX.',
+  '.XX..............XX.',
+  '.XX..............XX.',
+  '.XXX............XXX.',
+  '..XX............XX..',
+  '..XXX..........XXX..',
+  '...XXXX......XXXX...',
+  '....XXXXXXXXXXXX....',
+  '......XXXXXXXX......',
+  '....................',
+];
+
+// Sonrisa normal (escalonada, como en la referencia)
+const MOUTH_IDLE = rowsAt(11, [
+  '.....XX......XX.....',
+  '......XXXXXXXX......',
+]);
+
+// Sonrisa grande (hover)
+const MOUTH_HAPPY = rowsAt(10, [
+  '.....XXXXXXXXXX.....',
+  '......XXXXXXXX......',
+  '........XXXX........',
+]);
+
+// Cachetes: debajo de los ojos, sin tocar el aro
+const CHEEKS = rowsAt(9, ['....XX........XX....']);
+
+// Ojito cerrado "^" del guiño (sobre el ojo izquierdo)
+const WINK = rowsAt(7, [
+  '......XX............',
+  '.....X..X...........',
+]);
+
+// Ojos: bloques de 2×2 celdas. Van aparte porque se animan (mirar/parpadear).
+const EYE_L = { x: 6 * U, y: 7 * U };
+const EYE_R = { x: 12 * U, y: 7 * U };
+const EYE_SIZE = 2 * U;
+const PUPIL_RANGE = 8;  // máximo desplazamiento de los ojos (unidades del viewBox)
+const PIXEL_STEP = 2.5; // los ojos se mueven en pasitos de 2.5 → se siente pixelado
+
+/** Pone un dibujo parcial en la fila `top` de una grilla de 20 filas. */
+function rowsAt(top, rows) {
+  return Array.from({ length: 20 }, (_, i) => rows[i - top] ?? '');
+}
+
+/**
+ * Convierte un dibujo ASCII en rects SVG. Junta las "X" seguidas de cada fila
+ * en un solo rect (menos nodos en el DOM que un rect por píxel).
+ */
+function toRects(pattern) {
+  const rects = [];
+  pattern.forEach((row, y) => {
+    let x = 0;
+    while (x < row.length) {
+      if (row[x] !== 'X') { x++; continue; }
+      const start = x;
+      while (row[x] === 'X') x++;
+      rects.push({ x: start * U, y: y * U, w: (x - start) * U });
+    }
+  });
+  return rects;
+}
+
+/** Grupo de píxeles. Los rects se solapan 0.6 para que no se vean costuras. */
+function Pixels({ pattern, className }) {
+  return (
+    <g className={className} filter="url(#px-soft)">
+      {toRects(pattern).map((r) => (
+        <rect key={`${r.x}-${r.y}`} x={r.x} y={r.y} width={r.w + 0.6} height={U + 0.6} />
+      ))}
+    </g>
+  );
+}
+
+const snap = (v) => Math.round(v / PIXEL_STEP) * PIXEL_STEP;
 
 export default function Smiley() {
-  const wrapRef = useRef(null);   // botón (para medir posición en pantalla)
-  const headRef = useRef(null);   // grupo que se inclina hacia el cursor
-  const pupilsRef = useRef(null); // grupo de pupilas que se desplaza
+  const wrapRef = useRef(null);  // botón (para medir posición en pantalla)
+  const headRef = useRef(null);  // grupo que se desplaza un poco hacia el cursor
+  const eyesRef = useRef(null);  // grupo de ojos que mira al cursor
 
   const [blink, setBlink] = useState(false);
   const [wink, setWink] = useState(false);
@@ -59,30 +146,29 @@ export default function Smiley() {
       const dx = e.clientX - (r.left + r.width / 2);
       const dy = e.clientY - (r.top + r.height / 2);
       const dist = Math.hypot(dx, dy) || 1;
-      // Intensidad crece con la distancia hasta ~350px y luego se satura
-      const k = Math.min(dist / 350, 1);
+      const k = Math.min(dist / 350, 1); // intensidad crece con la distancia y se satura
       target.x = (dx / dist) * k;
       target.y = (dy / dist) * k;
     };
 
     const tick = () => {
-      // Interpolación lineal (lerp): avanza 12% hacia el objetivo por frame
+      // Lerp: avanza 12% hacia el objetivo por frame (movimiento suave)
       cur.x += (target.x - cur.x) * 0.12;
       cur.y += (target.y - cur.y) * 0.12;
-      if (pupilsRef.current) {
-        pupilsRef.current.setAttribute(
+      if (eyesRef.current) {
+        eyesRef.current.setAttribute(
           'transform',
-          `translate(${(cur.x * PUPIL_RANGE).toFixed(2)} ${(cur.y * PUPIL_RANGE).toFixed(2)})`
+          `translate(${snap(cur.x * PUPIL_RANGE)} ${snap(cur.y * PUPIL_RANGE)})`
         );
       }
       if (headRef.current) {
+        // Solo traslación (sin rotar): rotar pixel art lo hace ver "chueco"
         headRef.current.style.transform =
-          `translate(${(cur.x * 4).toFixed(2)}px, ${(cur.y * 3).toFixed(2)}px) rotate(${(cur.x * 6).toFixed(2)}deg)`;
+          `translate(${snap(cur.x * 4)}px, ${snap(cur.y * 3)}px)`;
       }
       raf = visible ? requestAnimationFrame(tick) : null;
     };
 
-    // Solo anima cuando la carita está visible en pantalla
     const io = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       if (visible && !raf) raf = requestAnimationFrame(tick);
@@ -126,57 +212,49 @@ export default function Smiley() {
   };
 
   return (
-    <section className="smiley-section" aria-label="A tiny self-portrait">
+    <section className="smiley-section" aria-label="A tiny pixel smiley">
       <button
         ref={wrapRef}
         type="button"
         className="smiley-btn"
         onClick={handleClick}
-        aria-label="Smiley face with glasses. Click to make it wink."
+        aria-label="Pixel smiley face. Click to make it wink."
       >
         {/* key={bounce}: al cambiar, React remonta el div y la animación CSS se repite */}
         <div key={bounce} className={`smiley-float ${bounce ? 'is-bouncing' : ''}`}>
           <svg viewBox="0 0 200 200" className="smiley-svg" aria-hidden="true">
             <defs>
-              <radialGradient id="smiley-fill" cx="50%" cy="38%" r="65%">
-                <stop offset="0%" stopColor="rgba(168,145,196,0.16)" />
-                <stop offset="100%" stopColor="rgba(168,145,196,0.02)" />
-              </radialGradient>
+              {/*
+                "Gooey filter": desenfoca y vuelve a endurecer el borde (umbral de alfa).
+                Resultado: las esquinas de los píxeles quedan levemente redondeadas
+                y los bloques se funden en una sola forma, como en la referencia.
+              */}
+              <filter id="px-soft" x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+                <feGaussianBlur stdDeviation="1.6" />
+                <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" />
+              </filter>
             </defs>
 
             <g ref={headRef} className="smiley-head">
-              {/* Cara */}
-              <circle cx="100" cy="100" r="86" fill="url(#smiley-fill)" className="smiley-stroke" />
+              <Pixels pattern={RING} className="px-cream" />
+              <Pixels pattern={CHEEKS} className="px-cheek" />
 
-              {/* Cachetes (aparecen en hover) */}
-              <ellipse cx="52" cy="128" rx="13" ry="7" className="smiley-cheek" />
-              <ellipse cx="148" cy="128" rx="13" ry="7" className="smiley-cheek" />
-
-              {/* Pupilas: se mueven con el cursor; parpadean escalando en Y */}
-              <g ref={pupilsRef}>
-                <circle
-                  cx={EYE_L.x} cy={EYE_L.y} r="6.5"
-                  className={`smiley-pupil ${blink || wink ? 'is-closed' : ''}`}
+              {/* Ojos: miran al cursor y parpadean (scaleY) */}
+              <g ref={eyesRef}>
+                <rect
+                  x={EYE_L.x} y={EYE_L.y} width={EYE_SIZE} height={EYE_SIZE} rx="3"
+                  className={`px-eye ${blink || wink ? 'is-closed' : ''}`}
                 />
-                <circle
-                  cx={EYE_R.x} cy={EYE_R.y} r="6.5"
-                  className={`smiley-pupil ${blink ? 'is-closed' : ''}`}
+                <rect
+                  x={EYE_R.x} y={EYE_R.y} width={EYE_SIZE} height={EYE_SIZE} rx="3"
+                  className={`px-eye ${blink ? 'is-closed' : ''}`}
                 />
               </g>
-              {/* Ojito cerrado "^" del guiño */}
-              <path
-                d={`M${EYE_L.x - 8} ${EYE_L.y + 2} Q${EYE_L.x} ${EYE_L.y - 7} ${EYE_L.x + 8} ${EYE_L.y + 2}`}
-                className={`smiley-stroke smiley-wink ${wink ? 'is-on' : ''}`}
-              />
+              <Pixels pattern={WINK} className={`px-cream px-wink ${wink ? 'is-on' : ''}`} />
 
-              {/* Lentes redondos + puente */}
-              <circle cx={EYE_L.x} cy={EYE_L.y} r="21" className="smiley-stroke smiley-lens" />
-              <circle cx={EYE_R.x} cy={EYE_R.y} r="21" className="smiley-stroke smiley-lens" />
-              <path d="M91 90 Q100 83 109 90" className="smiley-stroke" />
-
-              {/* Boca: sonrisa simple ↔ sonrisa grande (crossfade en hover) */}
-              <path d="M78 134 Q100 150 122 134" className="smiley-stroke smiley-mouth-idle" />
-              <path d="M72 128 Q100 168 128 128 Z" className="smiley-mouth-happy" />
+              {/* Boca: sonrisa normal ↔ sonrisa grande (crossfade en hover) */}
+              <Pixels pattern={MOUTH_IDLE} className="px-cream px-mouth-idle" />
+              <Pixels pattern={MOUTH_HAPPY} className="px-mouth-happy" />
             </g>
           </svg>
 

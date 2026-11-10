@@ -932,59 +932,43 @@ img { display: block; max-width: 100%; }
   filter: drop-shadow(0 18px 40px rgba(168, 145, 196, 0.18));
 }
 
-/* El seguimiento escribe el transform desde JS; esto define el pivote */
-.smiley-head {
-  transform-box: view-box;
-  transform-origin: 100px 100px;
-}
+/* El seguimiento escribe el transform desde JS */
+.smiley-head { transform-box: view-box; }
 
-.smiley-stroke {
-  fill: none;
-  stroke: var(--color-cream);
-  stroke-width: 3.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.smiley-section circle.smiley-stroke:first-child { fill: url(#smiley-fill); }
-.smiley-lens { stroke-opacity: 0.9; }
+/* Pixel art */
+.px-cream { fill: var(--color-cream); }
 
-.smiley-pupil {
+.px-eye {
   fill: var(--color-cream);
   transform-box: fill-box;
   transform-origin: center;
-  transition: transform 0.09s ease;
+  transition: transform 0.09s steps(2); /* steps(): cierre "a saltos", más retro */
 }
-.smiley-pupil.is-closed { transform: scaleY(0.08); }
+.px-eye.is-closed { transform: scaleY(0.2); }
 
-.smiley-wink { opacity: 0; transition: opacity 0.08s; }
-.smiley-wink.is-on { opacity: 1; }
+.px-wink { opacity: 0; transition: opacity 0.08s; }
+.px-wink.is-on { opacity: 1; }
 
-.smiley-cheek {
+.px-cheek {
   fill: var(--color-lavender);
   opacity: 0;
   transition: opacity 0.3s var(--ease-standard);
 }
 
-.smiley-mouth-idle { transition: opacity 0.22s var(--ease-standard); }
-.smiley-mouth-happy {
+.px-mouth-idle { transition: opacity 0.2s steps(2); }
+.px-mouth-happy {
   fill: var(--color-lavender);
-  stroke: var(--color-cream);
-  stroke-width: 3.2;
-  stroke-linejoin: round;
   opacity: 0;
-  transform-box: fill-box;
-  transform-origin: 50% 0%;
-  transform: scaleY(0.4);
-  transition: opacity 0.22s var(--ease-standard), transform 0.32s var(--ease-standard);
+  transition: opacity 0.2s steps(2);
 }
 
-/* Hover (y foco con teclado): sonrisa grande + sonrojo */
-.smiley-btn:hover .smiley-mouth-idle,
-.smiley-btn:focus-visible .smiley-mouth-idle { opacity: 0; }
-.smiley-btn:hover .smiley-mouth-happy,
-.smiley-btn:focus-visible .smiley-mouth-happy { opacity: 1; transform: scaleY(1); }
-.smiley-btn:hover .smiley-cheek,
-.smiley-btn:focus-visible .smiley-cheek { opacity: 0.45; }
+/* Hover (y foco con teclado): sonrisa grande + cachetes */
+.smiley-btn:hover .px-mouth-idle,
+.smiley-btn:focus-visible .px-mouth-idle { opacity: 0; }
+.smiley-btn:hover .px-mouth-happy,
+.smiley-btn:focus-visible .px-mouth-happy { opacity: 1; }
+.smiley-btn:hover .px-cheek,
+.smiley-btn:focus-visible .px-cheek { opacity: 0.55; }
 
 .smiley-spark {
   position: absolute;
@@ -1024,8 +1008,8 @@ img { display: block; max-width: 100%; }
 }
 
 @keyframes smileyFloat {
-  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
-  50%      { transform: translateY(-10px) rotate(1.5deg); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
 }
 @keyframes smileyBounce {
   0%   { transform: scale(1, 1); }
