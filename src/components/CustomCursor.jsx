@@ -20,11 +20,10 @@ export default function CustomCursor() {
   const tgtScale = useRef(1);
   const isHover  = useRef(false);
   const raf      = useRef(null);
-  const [hasPointer, setHasPointer] = useState(false);
-
-  useEffect(() => {
-    setHasPointer(window.matchMedia('(pointer: fine)').matches);
-  }, []);
+  // Inicializador perezoso de useState: se calcula una sola vez en el primer
+  // render, sin un useEffect extra que provoque un segundo render.
+  // (Es seguro leer window aquí porque es una SPA de Vite, sin render en servidor.)
+  const [hasPointer] = useState(() => window.matchMedia('(pointer: fine)').matches);
 
   useEffect(() => {
     if (!hasPointer) return;

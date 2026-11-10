@@ -2,13 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 
 export function useReveal() {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  // Con reduced motion arranca visible desde el primer render (inicializador
+  // perezoso), en vez de hacer setVisible(true) dentro del effect.
+  const [reduceMotion] = useState(
+    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+  const [visible, setVisible] = useState(reduceMotion);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setVisible(true);
-      return;
-    }
+    if (reduceMotion) return;
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -22,7 +24,7 @@ export function useReveal() {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [reduceMotion]);
 
   return [ref, visible];
 }

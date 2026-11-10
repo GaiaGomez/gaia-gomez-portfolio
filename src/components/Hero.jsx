@@ -56,8 +56,14 @@ export default function Hero() {
       if (displayed.length > 0) {
         timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 45);
       } else {
-        setIsDeleting(false);
-        setRoleIdx((i) => (i + 1) % roles.length);
+        // Antes estos setState corrían directo en el cuerpo del effect, lo que
+        // dispara renders en cascada (regla react-hooks/set-state-in-effect).
+        // Dentro del setTimeout pasan como respuesta a un evento (el timer),
+        // y de paso dan una pausa natural antes de escribir el siguiente rol.
+        timeout = setTimeout(() => {
+          setIsDeleting(false);
+          setRoleIdx((i) => (i + 1) % roles.length);
+        }, 400);
       }
     }
 

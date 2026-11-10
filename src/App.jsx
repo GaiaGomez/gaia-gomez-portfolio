@@ -6,6 +6,7 @@ import Hero         from './components/Hero';
 import Projects     from './components/Projects';
 import About        from './components/About';
 import Contact      from './components/Contact';
+import Smiley       from './components/Smiley';
 
 export default function App() {
   const glowRef = useRef(null);
@@ -59,13 +60,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
-        <section className="skills-sticker-section">
-          <img
-            className="skills-sticker"
-            src="/center-sticker.png"
-            alt="Skills sticker bag"
-          />
-        </section>
+        <Smiley />
         <Projects />
         <Contact />
       </main>

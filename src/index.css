@@ -890,45 +890,167 @@ img { display: block; max-width: 100%; }
 @media (hover: none) {
   .ui-card:hover { transform: none; box-shadow: none; }
 }
-.skills-sticker-section {
-  width: 100%;
-  padding: 70px 24px 52px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+/* ── Smiley (reemplaza la bolsita de stickers) ─────────────── */
+.smiley-section {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 72px 24px 56px;
 }
 
-.skills-sticker {
-  width: min(420px, 78vw);
+.smiley-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+}
+.smiley-btn:focus-visible {
+  outline: 2px solid var(--color-lavender);
+  outline-offset: 10px;
+}
+
+.smiley-float {
+  position: relative;
+  width: min(220px, 56vw);
+  animation: smileyFloat 5s ease-in-out infinite;
+}
+/* El rebote del click reemplaza al float durante 0.6 s */
+.smiley-float.is-bouncing {
+  animation: smileyBounce 0.6s var(--ease-standard), smileyFloat 5s ease-in-out 0.6s infinite;
+}
+
+.smiley-svg {
+  width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
-  filter: drop-shadow(0 24px 38px rgba(0, 0, 0, 0.32));
-  animation: stickerFloat 5s ease-in-out infinite;
+  overflow: visible;
+  filter: drop-shadow(0 18px 40px rgba(168, 145, 196, 0.18));
 }
 
-@keyframes stickerFloat {
-  0% {
-    transform: translateY(0) rotate(-1deg);
-  }
+/* El seguimiento escribe el transform desde JS; esto define el pivote */
+.smiley-head {
+  transform-box: view-box;
+  transform-origin: 100px 100px;
+}
 
-  50% {
-    transform: translateY(-14px) rotate(1deg);
-  }
+.smiley-stroke {
+  fill: none;
+  stroke: var(--color-cream);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.smiley-section circle.smiley-stroke:first-child { fill: url(#smiley-fill); }
+.smiley-lens { stroke-opacity: 0.9; }
 
-  100% {
-    transform: translateY(0) rotate(-1deg);
-  }
+.smiley-pupil {
+  fill: var(--color-cream);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.09s ease;
+}
+.smiley-pupil.is-closed { transform: scaleY(0.08); }
+
+.smiley-wink { opacity: 0; transition: opacity 0.08s; }
+.smiley-wink.is-on { opacity: 1; }
+
+.smiley-cheek {
+  fill: var(--color-lavender);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-standard);
+}
+
+.smiley-mouth-idle { transition: opacity 0.22s var(--ease-standard); }
+.smiley-mouth-happy {
+  fill: var(--color-lavender);
+  stroke: var(--color-cream);
+  stroke-width: 3.2;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  transform: scaleY(0.4);
+  transition: opacity 0.22s var(--ease-standard), transform 0.32s var(--ease-standard);
+}
+
+/* Hover (y foco con teclado): sonrisa grande + sonrojo */
+.smiley-btn:hover .smiley-mouth-idle,
+.smiley-btn:focus-visible .smiley-mouth-idle { opacity: 0; }
+.smiley-btn:hover .smiley-mouth-happy,
+.smiley-btn:focus-visible .smiley-mouth-happy { opacity: 1; transform: scaleY(1); }
+.smiley-btn:hover .smiley-cheek,
+.smiley-btn:focus-visible .smiley-cheek { opacity: 0.45; }
+
+.smiley-spark {
+  position: absolute;
+  top: 6%;
+  right: 4%;
+  color: var(--color-lavender);
+  font-size: 1.6rem;
+  pointer-events: none;
+  animation: smileySpark 0.8s var(--ease-standard) forwards;
+}
+
+.smiley-status {
+  margin-top: 28px;
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.smiley-status-label { color: var(--color-lavender); }
+.smiley-status-text {
+  display: inline-block;
+  color: var(--accent);
+  animation: smileyStatusIn 0.4s var(--ease-standard);
+}
+.smiley-hint {
+  margin-top: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.smiley-hint-touch { display: none; }
+@media (hover: none) {
+  .smiley-hint-pointer { display: none; }
+  .smiley-hint-touch { display: inline; }
+}
+
+@keyframes smileyFloat {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50%      { transform: translateY(-10px) rotate(1.5deg); }
+}
+@keyframes smileyBounce {
+  0%   { transform: scale(1, 1); }
+  25%  { transform: scale(1.12, 0.88); }
+  50%  { transform: scale(0.94, 1.08) translateY(-12px); }
+  75%  { transform: scale(1.03, 0.97); }
+  100% { transform: scale(1, 1); }
+}
+@keyframes smileySpark {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.4) rotate(0deg); }
+  30%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(18px, -26px) scale(1.2) rotate(90deg); }
+}
+@keyframes smileyStatusIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 768px) {
-  .skills-sticker-section {
-    padding: 52px 20px 42px;
-  }
+  .smiley-section { padding: 52px 20px 42px; }
+}
 
-  .skills-sticker {
-    width: min(300px, 84vw);
-  }
+@media (prefers-reduced-motion: reduce) {
+  .smiley-float,
+  .smiley-float.is-bouncing,
+  .smiley-status-text,
+  .smiley-spark { animation: none; }
 }
