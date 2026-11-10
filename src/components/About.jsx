@@ -8,9 +8,9 @@ const vibeCards = [
     sub: 'Learning by doing',
   },
   {
-    phrase: 'New tools',
-    display: <><span style={{ color: 'var(--color-lavender)' }}>New</span> tools</>,
-    sub: 'No fear',
+    phrase: 'Deep in AI',
+    display: <>Deep in <span style={{ color: 'var(--color-lavender)' }}>AI</span></>,
+    sub: 'Master’s mode: on',
   },
   {
     phrase: 'Detail obsessed',
@@ -31,15 +31,15 @@ const experienceItems = [
     type: 'Direct Clients',
     period: '2026 – Present',
     description:
-      'Development of full stack digital products, from planning to implementation. Definition of requirements, scope, priorities and deliverables alongside clients. Building web applications, internal platforms and SaaS solutions focused on business, product and user needs. End-to-end project management: strategy, technical execution, communication, follow-up and delivery.',
+      'Building full stack products end to end with React, Next.js, TypeScript, Node.js and Supabase, from requirements and scope to deployment. Web apps and internal platforms for real users, like a clinical operations platform and a café operations dashboard. Integrating AI where it adds value: LLM APIs, prompt design, conversational assistants and automation workflows with n8n and Make.',
   },
   {
     role: 'Graphic Designer',
     company: 'Stay Group',
     type: 'Hospitality operator',
-    period: '2025 – Present',
+    period: '2025 – 2026',
     description:
-      'Led the design of multi-channel campaigns for multiple hospitality sub-brands. Developed branding, packaging, signage and communication materials for commercial positioning. Optimized creative and digital workflows, improving delivery times and brand consistency.',
+      'Designed multi-channel campaigns for several hospitality sub-brands: branding, packaging, signage, menus and communication materials. Streamlined creative and digital workflows, improving delivery times and brand consistency across brands.',
   },
   {
     role: 'Graphic Designer & Digital Consultant',
@@ -47,7 +47,7 @@ const experienceItems = [
     type: 'Workana & Direct Clients',
     period: '2024 – 2025',
     description:
-      'Designed and implemented complete visual identity systems, brand strategy, graphic identity, digital and print materials. Consulted on digital transformation, process definition, tool selection, implementation and training. Led strategy and execution of digital marketing, content planning, brand positioning and institutional communication. Managed independent projects including scope, budget, timeline and delivery.',
+      'Designed visual identity systems and digital and print materials for international clients. Consulted on digital transformation: process definition, tool selection, implementation and training. Planned and ran digital marketing and content strategy, managing scope, budget and timelines independently.',
   },
   {
     role: 'Founder & Project Lead',
@@ -55,31 +55,60 @@ const experienceItems = [
     type: 'Own venture',
     period: '2020 – 2024',
     description:
-      'Created and managed the brand end to end, including business model, e-commerce, digital marketing and operations. Led commercial strategy, pricing, supplier management, logistics and customer experience. Managed full project strategy, budgeting, operations, communication and continuous improvement.',
+      'Built and ran a clothing brand end to end: business model, e-commerce, digital marketing and operations. Led pricing, suppliers, logistics and customer experience, plus budgeting and continuous improvement.',
   },
 ];
 
+// `detail` es opcional: se muestra como una línea extra debajo de la institución.
 const educationItems = [
   {
-    degree: 'Software engineering',
+    degree: 'Master’s in Big Data, Data Science & Artificial Intelligence',
+    institution: 'Universidad Complutense de Madrid',
+    period: '2026 – 2027',
+    detail: 'In progress · RAG, embeddings, NoSQL & graph databases, cloud, distributed systems',
+  },
+  {
+    degree: 'Software Engineering',
     institution: 'Politécnico Grancolombiano',
     period: '2022 – 2026',
   },
   {
-    degree: 'Computer science',
+    degree: 'Diploma in Computer Science',
     institution: 'Politécnico Grancolombiano',
     period: '2026',
   },
   {
-    degree: 'Fashion design — Graphic design emphasis',
+    degree: 'Fashion Design — Graphic Design emphasis',
     institution: 'Universidad Pontificia Bolivariana',
     period: '2015 – 2020',
+  },
+];
+
+// Stack agrupado. "Learning now" es a propósito: muestra hacia dónde va el
+// perfil (AI Engineering) sin presentar como dominado lo que aún está en curso.
+const stackGroups = [
+  {
+    label: 'Engineering',
+    items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Node.js', 'REST APIs', 'PostgreSQL', 'Supabase', 'Tailwind CSS', 'Vitest', 'Playwright', 'Git', 'Vercel'],
+  },
+  {
+    label: 'AI & Data',
+    items: ['LLM APIs (Claude, OpenAI)', 'Prompt design', 'RAG', 'Embeddings', 'Semantic search', 'Python', 'MongoDB / NoSQL', 'n8n', 'Make', 'Claude Code', 'Cursor'],
+  },
+  {
+    label: 'Learning now',
+    items: ['AI agents', 'LangChain / LangGraph', 'FastAPI', 'pgvector', 'LLM evaluation', 'Docker'],
+  },
+  {
+    label: 'Design',
+    items: ['Figma', 'Adobe Creative Suite', 'Brand identity', 'Visual systems'],
   },
 ];
 
 const accordionSections = [
   { id: 'experience', label: 'Experience', items: experienceItems, type: 'experience' },
   { id: 'education', label: 'Education', items: educationItems, type: 'education' },
+  { id: 'stack', label: 'Stack', items: stackGroups, type: 'stack' },
 ];
 
 const bodyText = {
@@ -141,11 +170,15 @@ export default function About() {
             </p>
 
             <p style={{ ...bodyText, marginBottom: '16px' }}>
-            I’ve spent years making things look good. Now I’m building <span style={{ color: 'var(--color-lavender)', fontWeight: 700 }}>full stack digital products</span> and getting obsessed with the whole process: strategy, planning, UX, development, testing, iteration and implementation.
+            I’ve spent years making things look good. Now I build <span style={{ color: 'var(--color-lavender)', fontWeight: 700 }}>full stack digital products</span> end to end (strategy, UX, development, testing and deployment) and lately I’ve been going deep on <span style={{ color: 'var(--color-lavender)', fontWeight: 700 }}>applied AI</span>.
+            </p>
+
+            <p style={{ ...bodyText, marginBottom: '16px' }}>
+            I’m doing a <span style={{ color: 'var(--color-lavender)', fontWeight: 700 }}>Master’s in Big Data, Data Science & AI</span> at Universidad Complutense de Madrid, working with LLMs, RAG, embeddings and vector search. What excites me most is turning that into real software: products where AI actually solves a problem, not just a feature on the box.
             </p>
 
             <p style={bodyText}>
-            I like clear interfaces, smart systems, tiny details, good structure and products that feel nice to use. Currently exploring how <span style={{ color: 'var(--color-lavender)', fontWeight: 700 }}>AI, design and software</span> can work together to turn messy ideas into useful products that actually click.
+            I like clear interfaces, smart systems, tiny details and products that feel nice to use. Design taste plus engineering is still my favorite combo.
             </p>
           </div>
 
@@ -338,6 +371,46 @@ export default function About() {
                               </div>
                             ))}
                           </div>
+                        ) : section.type === 'stack' ? (
+                          // Stack: un bloque por grupo, con chips por herramienta
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            {section.items.map(group => (
+                              <div key={group.label} style={{
+                                padding: '18px 24px',
+                                borderRadius: '16px',
+                                background: 'rgba(16,16,18,0.6)',
+                                border: '1px solid rgba(255,255,255,0.06)',
+                              }}>
+                                <div style={{
+                                  fontFamily: "'Space Grotesk', sans-serif",
+                                  fontSize: 'var(--fs-label)',
+                                  fontWeight: '600',
+                                  color: 'var(--color-lavender)',
+                                  letterSpacing: '0.04em',
+                                  textTransform: 'uppercase',
+                                  marginBottom: '12px',
+                                  opacity: 0.85,
+                                }}>
+                                  {group.label}
+                                </div>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                                  {group.items.map(tool => (
+                                    <span key={tool} style={{
+                                      fontFamily: "'DM Sans', sans-serif",
+                                      fontSize: '0.84rem',
+                                      color: 'rgba(241,238,248,0.72)',
+                                      padding: '5px 12px',
+                                      borderRadius: '999px',
+                                      border: '1px solid rgba(168,145,196,0.25)',
+                                      background: 'rgba(168,145,196,0.06)',
+                                    }}>
+                                      {tool}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
                         ) : (
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             {section.items.map(item => (
@@ -370,6 +443,16 @@ export default function About() {
                                   }}>
                                     {item.institution}
                                   </div>
+                                  {item.detail && (
+                                    <div style={{
+                                      fontFamily: "'DM Sans', sans-serif",
+                                      fontSize: 'var(--fs-label)',
+                                      color: 'var(--muted)',
+                                      marginTop: '6px',
+                                    }}>
+                                      {item.detail}
+                                    </div>
+                                  )}
                                 </div>
                                 <span style={{
                                   fontFamily: "'DM Sans', sans-serif",

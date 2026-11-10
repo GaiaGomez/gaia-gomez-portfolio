@@ -316,7 +316,7 @@ export default function Hero() {
                 letterSpacing: '-0.1px',
               }}
             >
-              with a Graphic Design background
+              with a Graphic Design background and a growing focus on AI
             </p>
 
             <p
