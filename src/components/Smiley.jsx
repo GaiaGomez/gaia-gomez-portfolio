@@ -31,36 +31,38 @@ const STATUSES = [
 const U = 10;
 
 const RING = [
+  // Aro de 1 píxel de grosor; cada escalón comparte borde con el siguiente
+  // para que la línea se vea continua.
   '....................',
   '......XXXXXXXX......',
-  '....XXXXXXXXXXXX....',
-  '...XXXX......XXXX...',
-  '..XXX..........XXX..',
+  '....XXX......XXX....',
+  '...XX..........XX...',
   '..XX............XX..',
-  '.XXX............XXX.',
+  '..X..............X..',
   '.XX..............XX.',
+  '.X................X.',
+  '.X................X.',
+  '.X................X.',
+  '.X................X.',
+  '.X................X.',
+  '.X................X.',
   '.XX..............XX.',
-  '.XX..............XX.',
-  '.XX..............XX.',
-  '.XX..............XX.',
-  '.XX..............XX.',
-  '.XXX............XXX.',
+  '..X..............X..',
   '..XX............XX..',
-  '..XXX..........XXX..',
-  '...XXXX......XXXX...',
-  '....XXXXXXXXXXXX....',
+  '...XX..........XX...',
+  '....XXX......XXX....',
   '......XXXXXXXX......',
   '....................',
 ];
 
 // Sonrisa normal (escalonada, como en la referencia)
-const MOUTH_IDLE = rowsAt(11, [
+const MOUTH_IDLE = rowsAt(12, [
   '.....XX......XX.....',
   '......XXXXXXXX......',
 ]);
 
 // Sonrisa grande (hover)
-const MOUTH_HAPPY = rowsAt(10, [
+const MOUTH_HAPPY = rowsAt(11, [
   '.....XXXXXXXXXX.....',
   '......XXXXXXXX......',
   '........XXXX........',
